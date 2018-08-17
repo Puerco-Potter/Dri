@@ -1,0 +1,480 @@
+<?php
+/**
+ * @file
+ * Main module file
+ *
+ */
+
+/**
+ * Handle AJAX requests
+ * @return array
+ */
+function entityreference_hierarchy_menu() {
+  /* 1: field instance name, 
+  * 2: entity_type (for example, "node"),
+  * 3: entity_id (for example, for nid, "1234"), 
+  * 4: ref_type ("referenced" or "referencing"), 
+  * 5: reverse ("0" or "1"), 
+  * 6: delta ("0", "1", ... or "-1" for all)
+  * 7: random number - for unique ids of elements which appear multiple times in multi-hierarchies
+  */
+
+  $items = array();
+
+  $items['entityreference_hierarchy/%/%/%/%/%/%/%'] = array(
+    'page callback' => 'entityreference_hierarchy_print_links',
+    'page arguments' => array(1, 2, 3, 4, 5, 6, 7),
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function entityreference_hierarchy_theme() {
+  return array(
+    'entityreference_hierarchy_print_link' => array(
+      'arguments' => array('vars' => NULL),
+    ),
+    'entityreference_hierarchy_print_links' => array(
+      'arguments' => array('vars' => NULL, 'ajax_type' => NULL),
+    ),
+    'entityreference_hierarchy_expand_symbol' => array(
+      'arguments' => array(),
+    ),
+    'entityreference_hierarchy_retract_symbol' => array(
+      'arguments' => array(),
+    ),
+    'entityreference_hierarchy_print_hierarchy' => array(
+      'arguments' => array('vars' => NULL, 'ajax_type' => NULL),
+    ),    
+  );
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function entityreference_hierarchy_field_formatter_info() {
+  return array(
+    'entityreference_hierarchy' => array(
+      'label' => t('Hieararchical'),
+      'field types' => array('entityreference'),
+      'settings' => array(
+        'reverse' => FALSE, //put referencing in front of referenced or vice-versa
+        'autoload' => FALSE, //automatically load the first generation of linked entities
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function entityreference_hierarchy_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  //This gets the view_mode where our settings are stored
+  $display = $instance['display'][$view_mode];
+  //This gets the actual settings
+  $settings = $display['settings'];
+  //Initialize the element variable
+  $element = array();
+  //Add your select box
+  $element['reverse'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Reverse hierarchy'),
+    '#description' => t('If this is checked the referencing entities will appear as children instead of parents.'),
+    '#default_value'  => $settings['reverse'], // Get the value if it's already been set
+  );
+  $element['autoload'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Autoload'),
+    '#description' => t('If this is checked the first generation of parent and child entities are loaded automatically.'),  // helper text
+    '#default_value'  => $settings['autoload'], // Get the value if it's already been set
+  );
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function entityreference_hierarchy_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $summary = t('Hierarchical view, reverse: @reverse and autoload: @autoload', array(
+    '@reverse' => ($settings['reverse']) ? t('yes') : t('no'),//show yes or no instead of 1 or 0
+    '@autoload' => ($settings['autoload']) ? t('yes') : t('no'),//show yes or no instead of 1 or 0
+  ));
+  return $summary;
+}
+
+/**
+ * Acts as a dummy function for ajax requests which cannot be to theme_ able functions
+ */
+function entityreference_hierarchy_print_links($instance_name = NULL, $entity_type = NULL, $entity_id = NULL, $ref_type = NULL, $reverse = 0, $delta = -1, $randomid = '') {
+  return theme('entityreference_hierarchy_print_links', array(
+    'instance_name' => $instance_name,
+    'entity_type' => $entity_type,
+    'entity_id' => $entity_id,
+    'ref_type' => $ref_type,
+    'reverse' => $reverse,
+    'delta' => $delta,
+    'randomid' => $randomid,
+    )
+  );
+}
+
+function entityreference_hierarchy_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items) {
+  if ($field['type'] == 'entityreference') {
+    foreach ($items as $key => $item) {
+      if (!isset($item[0]['target_id'])) {
+        $items[$key][0]['target_id'] = '0';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function entityreference_hierarchy_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  switch ($display['type']) {
+    //Keep switch in case another formatter is added
+    case 'entityreference_hierarchy':
+      //foreach ($items as $delta => $item) { //although we do not display the target(s) here, but the current node title, we still need to loop as we print the current node title as many times as its links ()for multihierarchies)
+        $delta = 0;
+        $ref_type = 'both'; //ref_type is 'both' exceptionally here to allow both referenced and referencing links and regions on either side of the current entity
+        
+        $element[$delta] = array(
+          '#theme' => 'table',
+          '#header' => array(),
+          '#rows' => array(
+            theme(
+              'entityreference_hierarchy_print_link',
+              array(
+                'entity_type' => $entity_type,
+                'entity' => $entity,
+                'instance_field_name' => $instance['field_name'],
+                'ref_type' => $ref_type,
+                'reverse' => $display['settings']['reverse'],
+                'delta' => $delta,
+                'randomid' => mt_rand(),//randomid for the first item
+              )
+            ),
+          ),
+          '#attributes' => array('class' => array('entityreference_hierarchy_table')),
+        );
+      //}
+      drupal_add_js(drupal_get_path('module', 'entityreference_hierarchy') . '/js/entityreference_hierarchy.js', array('weight' => 1));
+      drupal_add_css(drupal_get_path('module', 'entityreference_hierarchy') . '/css/entityreference_hierarchy.css');
+      if ($display['settings']['autoload']) {   //read a setting for autoloading the first generation of links
+        drupal_add_js(drupal_get_path('module', 'entityreference_hierarchy') . '/js/entityreference_hierarchy_autoload.js', array('weight' => 2));
+      }
+    break;
+  }
+  
+  return $element;
+}
+
+/**
+ * Prints a list of children for a term
+ */
+function theme_entityreference_hierarchy_print_links($vars = NULL, $ajax_type = 'ajax') {
+  $instance_name = $vars['instance_name'];
+  $entity_type = $vars['entity_type'];
+  $entity_id = $vars['entity_id'];
+  $ref_type = $vars['ref_type'];
+  $reverse = $vars['reverse'];
+  $delta = $vars['delta'];
+  $oldrandomid = $vars['randomid'];
+
+  $newrandomid = mt_rand();
+
+  $rows = array();
+  $commands = array();
+  $output = '';
+  $field_info = field_info_field($instance_name);
+  $target_type = $field_info['settings']['target_type'];
+  switch ($ref_type) {
+    case 'referencing':
+      $referencing_target_ids = _entityreference_hierarchy_get_target_ids($entity_type, $instance_name, $entity_id);
+      if ($referencing_target_ids) {
+
+        foreach ($referencing_target_ids as $index => $referencing_target_id) {
+          //print 'delta ' . print_r($delta, TRUE);
+          //print 'index ' . print_r($index, TRUE);
+          if ($referencing_target_id['target_id'] != 0) {
+            //print 'targetid ' . print_r($referencing_target_id, TRUE);
+            $referenced_entity = entity_load($target_type, array($referencing_target_id['target_id']));
+            $rows[] = theme('entityreference_hierarchy_print_link', array(//TODO: this needs to return an array
+              'entity_type' => $target_type,
+              'entity' => reset($referenced_entity),
+              'instance_field_name' => $instance_name,
+              'ref_type' => $ref_type,
+              'reverse' => $reverse,
+              'delta' => $delta,
+              'randomid' => $newrandomid,
+              )
+            );
+          }
+        }
+
+        $replacement_symbol = theme('entityreference_hierarchy_replacement_symbol');
+
+        if (count($rows)>0) {
+          $output = theme('table', array('header' => array(), 'rows' => $rows, 'attributes' => array('class' => array('entityreference_hierarchy_table'))));
+        } else {
+          $output = '';
+        }
+        $commands[] = ajax_command_prepend('#entityreference_hierarchy_' . $entity_type . '_' . $entity_id . '_' . $ref_type . '_' . $oldrandomid, $output);
+
+      }
+      break;
+    case 'referenced':
+      $field_info = field_info_field($instance_name);
+      $field_table = key($field_info['storage']['details']['sql']['FIELD_LOAD_CURRENT']);
+      $field_column = $field_info['storage']['details']['sql']['FIELD_LOAD_CURRENT'][$field_table]['target_id'];
+      //$entities_referencing_ids = db_query('SELECT entity_id FROM {' . $field_table . '} WHERE ' . $field_column . '= :entity_id AND entity_type = :entity_type', array(':entity_id' => $entity_id, ':entity_type' => $entity_type));
+        
+      // Create an object of type SelectQuery
+      $query = db_select($field_table, 't');
+      $query->condition(db_and()->condition('t.' . $field_column, $entity_id, '=')->condition('t.entity_type', $entity_type, '='));
+      $query->join('node', 'n', 'n.nid = t.entity_id');
+      $query->fields('t', array('entity_id'));
+      $query->orderBy('n.title', 'ASC');
+      $entities_referencing_ids = $query->execute();
+
+      foreach ($entities_referencing_ids as $entity_referencing_id) {
+        $entity_referencing = entity_load($target_type, array($entity_referencing_id->entity_id));
+        $rows[] = theme('entityreference_hierarchy_print_link', array( //this needs to return an array
+          'entity_type' => $target_type,
+          'entity' => reset($entity_referencing),
+          'instance_field_name' => $instance_name,
+          'ref_type' => $ref_type,
+          'reverse' => $reverse,
+          'delta' => -1,
+          'randomid' => $newrandomid,
+          )
+        );
+      }
+      
+      $replacement_symbol = theme('entityreference_hierarchy_replacement_symbol');
+
+      if (count($rows)>0) {
+        $output = theme('table', array('header' => array(), 'rows' => $rows, 'attributes' => array('class' => array('entityreference_hierarchy_table'))));
+      } else {
+        $output = '';
+      }
+      
+      $commands[] = ajax_command_prepend('#entityreference_hierarchy_' . $entity_type . '_' . $entity_id . '_' . $ref_type . '_' . $oldrandomid, $output);
+      break;
+  }
+  if ($ajax_type == 'ajax') {
+    $page = array('#type' => 'ajax', '#commands' => $commands);
+    ajax_deliver($page);
+  }
+  else {
+    return $output;
+  }
+}
+
+/**
+ * Builds a renderable element of an entity with the expansion links on either side
+ */
+function theme_entityreference_hierarchy_print_link($vars = NULL) {
+  //$vars: entity_type, entity, instance_field_name, cur_ref_type, reverse, delta
+  $entity_type = $vars['entity_type'];
+  $entity = $vars['entity'];
+  $instance_field_name = $vars['instance_field_name'];
+  $cur_ref_type = $vars['ref_type'];
+  $reverse = $vars['reverse'];
+  $delta = $vars['delta'];
+  $randomid = $vars['randomid'];
+
+  if ($reverse) {
+    $ref_type[0] = 'referenced';
+    $ref_type[1] = 'referencing';
+  } 
+  else {
+    $ref_type[0] = 'referencing';
+    $ref_type[1] = 'referenced';
+  }
+
+  $entity_label = entity_label($entity_type, $entity);
+  $entity_id = entity_extract_ids($entity_type, $entity);
+  $entity_id = $entity_id[0];
+
+  if ($cur_ref_type == $ref_type[0] || $cur_ref_type == 'both') {
+    $delta = -1; //we print all the parents as a list so set delta = -1 for all
+    $test = theme_entityreference_hierarchy_print_links(array(
+      'instance_name' => $instance_field_name,
+      'entity_type' => $entity_type,
+      'entity_id' => $entity_id,
+      'ref_type' => $ref_type[0],
+      'reverse' => $reverse,
+      'delta' => $delta,
+      'randomid' => ''), 'noajax');
+    if ($test != '') {
+
+      $element[]['data'] = array(
+        '#theme' => 'html_tag',
+        '#tag' => 'div',
+        '#attributes' => array(
+          'id' => 'entityreference_hierarchy_' . $entity_type . '_' . $entity_id . '_' . $ref_type[0] . '_' . $randomid,
+          'class' => 'entityreference_hierarchy_parent',
+        ),
+        '#value' => '', //leave it empty when it first loads
+      );
+
+      $prelink_show = array(
+        '#type' => 'link',
+        '#title' => theme('entityreference_hierarchy_expand_symbol'),//[+]
+        '#href' => 'entityreference_hierarchy/' . $instance_field_name . '/' . $entity_type . '/' . $entity_id . '/' . $ref_type[0] . '/' . $reverse . '/' . $delta . '/' . $randomid . '/nojs/',
+        '#id' => 'ajax_show_' . $entity_type . '_' . $entity_id . '_' . $ref_type[0] . '_' . $randomid,
+        '#attributes' => array('class' => 'entityreference_hierarchy_ajax_show'),
+        '#ajax' => array(
+          'wrapper' => 'entityreference_hierarchy_' . $entity_type . '_' . $entity_id . '_' . $ref_type[0] . '_' . $randomid,
+          'method' => 'html',
+        ),
+      );
+      $prelink_hide = array(
+        '#markup' => l(theme('entityreference_hierarchy_retract_symbol'),//[-]
+          'javascript:void(0)', array(
+          'attributes' => array(
+            'class' => array('entityreference_hierarchy_ajax_hide'),
+            'id' => 'ajax_hide_' . $entity_type . '_' . $entity_id . '_' . $ref_type[0] . '_' . $randomid,
+            'style' => 'display:none',
+          ),
+          'external' => TRUE,
+        )),
+      );
+
+    } else {
+      $prelink_show = array();
+      $prelink_hide = array();
+    }
+  } 
+  else {
+    $prelink_show = array();
+    $prelink_hide = array();
+  }
+
+  if ($cur_ref_type == $ref_type[1] || $cur_ref_type == 'both') {
+    $delta = -1; //we print all children is each hierarchy for multihierarchies so specify $delta as -1 for all
+    //check if there are any references
+    $test = theme_entityreference_hierarchy_print_links(array(
+      'instance_name' => $instance_field_name,
+      'entity_type' => $entity_type,
+      'entity_id' => $entity_id,
+      'ref_type' => $ref_type[1],
+      'reverse' => $reverse,
+      'delta' => $delta,
+      'randomid' => ''), 'noajax');
+    if ($test != '') {
+      $postlink_show = array(
+        '#type' => 'link',
+        '#title' => theme('entityreference_hierarchy_expand_symbol'),//[+]
+        '#href' => 'entityreference_hierarchy/' . $instance_field_name . '/' . $entity_type . '/' . $entity_id . '/' . $ref_type[1] . '/' . $reverse . '/' . $delta . '/' . $randomid . '/nojs/',
+        '#id' => 'ajax_show_' . $entity_type . '_' . $entity_id . '_' . $ref_type[1] . '_' . $randomid,
+        '#attributes' => array('class' => 'entityreference_hierarchy_ajax_show'),
+        '#ajax' => array(
+          'wrapper' => 'entityreference_hierarchy_' . $entity_type . '_' . $entity_id . '_' . $ref_type[1] . '_' . $randomid,
+          'method' => 'html',
+        ),
+      );
+      $postlink_hide = array(
+        '#markup' => l(theme('entityreference_hierarchy_retract_symbol'),//[-]
+          'javascript:void(0)', array(
+          'attributes' => array(
+            'class' => array('entityreference_hierarchy_ajax_hide'),
+            'id' => 'ajax_hide_' . $entity_type . '_' . $entity_id . '_' . $ref_type[1] . '_' . $randomid,
+            'style' => 'display:none',
+          ),
+          'external' => TRUE,
+        )),
+      );
+
+    } else {
+      $postlink_show = array();
+      $postlink_hide = array();
+    }
+  }
+  else {
+    $postlink_show = array();
+    $postlink_hide = array();
+  }
+
+  $element[]['data'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'id' => 'entityreference_hierarchy_' . $entity_type . '_' . $entity_id . '_' . $randomid,
+      'class' => 'entityreference_hierarchy_entity',
+    ),
+    'pre-link-show' => $prelink_show,
+    'pre-link-hide' => $prelink_hide,
+    'label' => array(
+      '#theme' => 'link',
+      '#text' => $entity_label,
+      '#path' => $entity_type . '/' . $entity_id,
+      '#options' => array(
+        'attributes' => array('class' => array('entityreference_hierarchy_entity_link')),
+        'html' => FALSE,
+      ),
+    ),
+    'post-link-show' => $postlink_show,
+    'post-link-hide' => $postlink_hide,
+  );
+
+  if (($cur_ref_type == $ref_type[1] || $cur_ref_type == 'both') && $test!='') {
+    $element[]['data'] = array(
+      '#theme' => 'html_tag',
+      '#tag' => 'div',
+      '#attributes' => array(
+        'id' => 'entityreference_hierarchy_' . $entity_type . '_' . $entity_id . '_' . $ref_type[1] . '_' . $randomid,
+        'class' => 'entityreference_hierarchy_child',
+      ),
+      '#value' => '', //leave it empty when it first loads
+    );
+  }
+
+  //$element[] = array(
+    //'#markup' => '</tr>',
+  //);
+ 
+  return $element;
+}
+
+/**
+ * Displays the expansion symbol
+ */
+function theme_entityreference_hierarchy_expand_symbol() {
+  return '[+]';
+}
+
+/**
+ * Displays the retraction symbol
+ */
+function theme_entityreference_hierarchy_retract_symbol() {
+  return '[-]';
+}
+
+/**
+ * Loads the target id of an entityreference field
+ */
+function _entityreference_hierarchy_get_target_ids($entity_type, $instance_name, $entity_id) {
+  $entity = entity_load($entity_type, array($entity_id));
+  //print_r($delta);
+  $target_ids = $entity[$entity_id];
+  $target_ids = $target_ids->$instance_name;
+  if (isset($target_ids['und'])){
+    $target_ids = $target_ids['und']; //TODO: internationalisation
+    return $target_ids;
+  } else {
+    return FALSE;
+  }
+  
+}

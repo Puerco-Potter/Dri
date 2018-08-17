@@ -1,0 +1,15 @@
+name = Entity reference hierarchy
+description = Show entity reference fields as browsable linked hierarchies
+dependencies[] = entity
+files[] = entityreference_hierarchy.module
+files[] = js/entityreference_hierarchy.js
+files[] = js/entityreference_hierarchy_autoload.js
+files[] = css/entityreference_hierarchy.css
+core = 7.x
+
+; Information added by Drupal.org packaging script on 2015-02-06
+version = "7.x-1.0-beta1"
+core = "7.x"
+project = "entityreference_hierarchy"
+datestamp = "1423237006"
+

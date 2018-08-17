@@ -1,0 +1,34 @@
+
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "View"
+msgstr "Ver"
+
+msgid "Delete"
+msgstr "Borrar"
+
+msgid "CakePHP: the rapid development php framework"
+msgstr "Dri"
+
+msgid "Actions"
+msgstr "Acciones"
+
+msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
+msgstr "Página %page% de %pages%, mostrando %current% registros de %count% en total, desde %start%, hasta %end%"
+
+msgid "previous"
+msgstr "previo"
+
+msgid "next"
+msgstr "siguiente"
+
+msgid "New %s"
+msgstr "Nueva %s"
+
+msgid "Are you sure you want to delete"
+msgstr "Está seguro de querer borralo"
+
+msgid "List"
+msgstr "Lista"

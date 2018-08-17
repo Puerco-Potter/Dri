@@ -1,0 +1,2 @@
+[05-May-2015 03:31:06 America/Chicago] PHP Warning:  require_once(/home/drinelmondo/public_html/includes/install.core.inc): failed to open stream: No such file or directory in /home/drinelmondo/public_html/install.php on line 25
+[05-May-2015 03:31:06 America/Chicago] PHP Fatal error:  require_once(): Failed opening required '/home/drinelmondo/public_html/includes/install.core.inc' (include_path='.:/opt/php54/lib/php') in /home/drinelmondo/public_html/install.php on line 25

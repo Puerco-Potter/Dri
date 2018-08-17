@@ -1,0 +1,311 @@
+.node {
+
+  cursor: pointer;
+
+}
+
+
+/*
+.overlay{
+
+    background-color:#EEE;
+
+}
+*/
+
+
+.node circle {
+
+  fill: #fff;
+
+  stroke: steelblue;
+
+  stroke-width: 1.5px;
+
+}
+
+
+
+.node text {
+
+  font-size:10px; 
+
+  font-family:sans-serif;
+
+}
+
+
+
+.link {
+
+  fill: none;
+
+  stroke: #ccc;
+
+  stroke-width: 2.5px;
+
+}
+
+
+
+.templink {
+
+  fill: none;
+
+  stroke: red;
+
+  stroke-width: 3px;
+
+}
+
+
+
+.ghostCircle.show{
+
+    display:block;
+
+}
+
+
+
+.ghostCircle, .activeDrag .ghostCircle{
+
+    display: none;
+
+}
+
+
+
+div.tooltip {	
+
+    position: absolute;			
+
+    text-align: center;			
+
+    width: 180px;					
+
+    height: auto;					
+
+    padding: 2px;				
+
+    font: 12px sans-serif;		
+
+    background: lightsteelblue;	
+
+    border: 0px;		
+
+    border-radius: 8px;			
+
+    pointer-events: none;			
+    
+}
+
+div#buscartitle{
+	width: 100%;
+}
+
+div#contentinfo{
+	
+    height: 280px;
+    overflow-y: scroll;
+}
+
+div.info {	
+
+    position: absolute;			
+
+    text-align: center;			
+
+    width: 320px;					
+
+    /*height: 280px;*/
+
+    padding: 2px;				
+
+    font: 12px sans-serif;		
+
+    background: lightsteelblue;	
+
+    border: 0px;		
+
+    border-radius: 8px;			
+
+    left: 10px;
+
+    top: 10px;
+
+   /* overflow-y: scroll;*/
+    padding-top: 2px;
+
+    z-index: 400;
+
+}
+
+
+
+ul {
+
+  list-style-type: none;
+
+  margin: 0;
+
+  padding: 0;
+
+}
+
+ 
+
+li {
+
+  font: 200 14px/1.5 Helvetica, Verdana, sans-serif;
+
+  border-bottom: 1px solid #ccc;
+
+}
+
+ 
+
+li:last-child {
+
+  border: none;
+
+}
+
+li a {
+
+  text-decoration: none;
+
+  color: #000;
+
+  display: block;
+
+  /*width: 200px;*/
+
+ 
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+
+}
+
+li a:hover {
+
+  font-size: 20px;
+
+  background: #f6f6f6;
+
+}
+
+
+
+.seleccionado {
+
+  font-size:20px; 
+
+  font-family:sans-serif;
+
+}
+
+div.formulario {  
+
+    position: absolute;     
+
+    text-align: center;     
+
+    width: 320px;         
+
+  /*  height: 280px;*/          
+
+    padding: 2px;       
+
+    font: 12px sans-serif;    
+
+    background: lightsteelblue; 
+
+    border: 0px;    
+
+    border-radius: 8px;     
+
+    right: 2px;
+
+    top: 2px;
+
+}
+
+.nodo {
+    font-style: normal;
+}
+
+
+.ubicacion {
+    font-style: italic;
+    font-weight: bolder;
+} 
+
+div.infofooter {  
+
+    position: absolute;     
+
+    text-align: center;     
+
+    width: 150px;         
+
+    height: 100px;
+
+    padding: 2px;       
+
+    font: 12px sans-serif;    
+
+    background: lightsteelblue; 
+
+    border: 0px;    
+
+    border-radius: 8px;     
+
+    left: 10px;
+
+    bottom: 10px;
+
+    padding-top: 10px;
+
+}
+
+h1 {
+      margin-top: 2px;
+}
+
+div.imagendri {  
+
+    background-image: url('../img/drimap.png');
+    background-size: 320px 407px;
+
+    position: absolute;     
+
+    text-align: center;     
+
+    width: 320px;         
+
+    height: 407px;
+
+    padding: 2px;       
+
+    font: 12px sans-serif;    
+
+   /* background: lightsteelblue; */
+
+    border: 0px;    
+
+    border-radius: 8px;     
+
+    left: 10px;
+
+    top: 44px;
+
+}

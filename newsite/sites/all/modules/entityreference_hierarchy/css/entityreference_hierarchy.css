@@ -1,0 +1,25 @@
+.entityreference_hierarchy_entity_link {
+  padding: 0 5px 0 5px;
+}
+
+.entityreference_hierarchy_no_links {
+  display: inline;
+}
+
+.entityreference_hierarchy_table {
+  width: auto;
+}
+
+.entityreference_hierarchy_table td {
+  border: 0px;
+  text-align: center;
+}
+
+.entityreference_hierarchy_table tr.odd {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.05);
+}
+
+.entityreference_hierarchy_table tr.even,
+.entityreference_hierarchy_table tr {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.02);
+}
