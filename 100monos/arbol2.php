@@ -13,11 +13,14 @@
 		$dbname="drinelmo_arbol";
 		$conn = new mysqli($servername, $username, $password, $dbname);
 
-		$sql = "SELECT p1.id, p2.nombre, p2.id as pequeno, p2.nombre FROM pariente p1 INNER JOIN pariente p2 ON p1.id = p2.padre_id ORDER BY p1.id";
+		$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.nombre FROM pariente p1 INNER JOIN pariente p2 ON p1.id = p2.padre_id ORDER BY p1.id";
 		$result = $conn->query($sql);
 
-		$sql2 = "SELECT p1.id, p1.nombre, p1.padre_id FROM pariente p1 WHERE p1.padre_id IS NULL ORDER BY p1.id";
+		$sql2 = "SELECT p1.id, p1.nombre, p1.nacimiento, p1.padre_id, p1.id as pequeno FROM pariente p1 WHERE p1.padre_id IS NULL ORDER BY p1.id";
 		$raices = $conn->query($sql2);
+
+		$sql3 = "SELECT * FROM pariente";
+		$todos = $conn->query($sql3);
 	?>
 
 		<style type="text/css">
@@ -181,15 +184,35 @@
 
 		/*Thats all. I hope you enjoyed it.
 		Thanks :)*/
+		
+		.anchor{
+		display: block;
+		height: 115px; /*same height as header*/
+		margin-top: -115px; /*same height as header*/
+		margin-left: -215px;
+		margin-right: -215px;
+		visibility: hidden;
+		}
+		
+		
 			</style>
 
 </head>
 <body class="bg-dark">
 	<nav class="navbar fixed-top navbar-light bg-light">
   		<a class="navbar-brand" href="#">DRI</a>
-  		<form class="form-inline">
-    		<input class="form-control mr-sm-2" type="search" placeholder="Nombre/Nome/Name" aria-label="Buscar">
-    		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  		<form action="/action_page.php" class="form-inline w-75">
+    		<input onSelect="yesnoCheck(this)" list="gente" class="form-control mr-sm-2 w-75 nombreGente" type="search" placeholder="Nombre/Nome/Name" aria-label="Buscar"  autocomplete=off>
+			<datalist id="gente">
+			<?php
+				while( $persona = mysqli_fetch_assoc( $todos)){
+					echo '<option value="' . $persona["id"] . '">';
+						echo $persona["nombre"] . "(" . $persona["nacimiento"] . ")";
+					echo "</option>";
+				} 
+			?>
+			</datalist>
+    		<!-- <span class="btn btn-outline-success my-2 my-sm-0 botonDeBusqueda">Search</span> -->
   		</form>
 	</nav>
 	<div>
@@ -198,122 +221,18 @@
 
 	<div>
 		<div style="height: 100px;"></div>
-<!-- 		<div class="tree" style="display: inline-flex; width: 10000px;">
-			<ul class="red">
-				<li class="red">
-					<a href="#">Iginio</a>
-					<ul>
-						<li>
-							<a href="#">Victor Hugo</a>
-						</li>
-						<li>
-							<a href="#">Ruben Alberto</a>
-						</li>
-						<li>
-							<a href="#">Gladys Mercedes</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			<ul>
-				<li>
-					<a href="#">ENOCH</a>
-					<ul>
-						<li>
-							<a href="#">Amadeo</a>
-							<ul>
-								<li>
-									<a href="#">Alessandro</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="#">Alessandro</a>
-							<ul>
-								<li><a href="#">Alessandro</a></li>
-								<li>
-									<a href="#">Alessandro</a>
-									<ul>
-										<li>
-											<a href="#">Alessandro</a>
-										</li>
-										<li>
-											<a href="#">Alessandro</a>
-										</li>
-										<li>
-											<a href="#">Alessandro</a>
-										</li>
-									</ul>
-								</li>
-								<li><a href="#">Alessandro</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			<ul class="blue">
-				<li>
-					<a href="#">Alessandro</a>
-					<ul>
-						<li>
-							<a href="#">Alessandro</a>
-							<ul>
-								<li>
-									<a href="#">Alessandro</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="#">Alessandro</a>
-							<ul>
-								<li><a href="#">Alessandro</a></li>
-								<li>
-									<a href="#">Alessandro</a>
-									<ul>
-										<li>
-											<a href="#">Alessandro</a>
-										</li>
-										<li>
-											<a href="#">Alessandro</a>
-										</li>
-										<li>
-											<a href="#">Alessandro</a>
-										</li>
-									</ul>
-								</li>
-								<li><a href="#">Alessandro</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
 
-	</div>
-</div>
- -->
-
-<div class="tree" style="display: inline-flex; width: 210000px;">
+<div class="tree zoomable" style="display: inline-flex; width: 210000px;">
 
 	<?php
 
 	while( $row = mysqli_fetch_assoc($result)){
     	$resguardo[$row["id"]][] = $row;
 	}
-	
-
-
-	//print_r($resguardo);
-
-	//while( $row = mysqli_fetch_assoc( $result)){
-    //	$resguard[] = $row;
-	//}
 
 	while( $raiz = mysqli_fetch_assoc( $raices)){
     	echo '<ul>';
     	$tree = hacer_arbol($resguardo, $raiz);
-    	//print_r($tree);
-    //	$tree = make_tree($resguard, $raiz);
 		preorder2($tree);
 		echo "</ul>";
 	} 
@@ -337,7 +256,6 @@
 				$bandera= false;
 				if (isset($resguardo[$children["pequeno"]])) {
 		    		$bandera = true;
-		    		//print_r($resguardo[$children["pequeno"]]);
 		    	}
 
 				if ($bandera == false){
@@ -351,9 +269,10 @@
 
 			function preorder2(&$root) {
 			    if ($root) {
-			    	echo "<li>";
-			    	echo '<a href="">';
-			        echo $root["nombre"];
+					echo "<li>";
+					echo '<span class="anchor" id="invisible' . $root["pequeno"] . '"></span>';
+			    	echo '<a class="clickable" href="#invisible' . $root["pequeno"] . '">';
+			        echo str_replace(" ", "<br>",  $root["nombre"]) . "<br>" . str_replace(" ", "<br>",  $root["nacimiento"]);
 			    	echo "</a>";
 
 			        if (array_key_exists("children", $root)) {
@@ -370,4 +289,26 @@
 
 		?>
 </body>
+
+<script src='https://cdn.rawgit.com/anvaka/panzoom/v6.1.3/dist/panzoom.min.js'></script>
+<script>
+	var area = document.querySelector('.zoomable')
+	panzoom(area, {
+		zoomDoubleClickSpeed: 1, 
+	})
+
+	//$(".botonDeBusqueda").click(function(event){
+	//	
+	//});
+
+	$(".clickable").click(function(event){
+		event.stopPropagation();
+	});
+</script>
+<script>
+    function yesnoCheck(that) {
+        var bla = $('.nombreGente').val();
+		location.hash = "invisible" + bla;
+    }
+</script>
 </html>
