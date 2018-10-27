@@ -35,6 +35,9 @@
 	</div>
 	<br>
 	<div class="container card">
+		<div class="form-group">
+			<a class="btn btn-info float-right" role="button" href="">Crear un Pariente Nuevo</a>
+		</div>
 		<table class="table" data-filtering="true">
 			<thead>
 				<tr>
