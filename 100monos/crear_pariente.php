@@ -30,11 +30,7 @@
         $paises = $conn->query($sql2);
         
         $sql3 = "SELECT * FROM ubicacion";
-        $lugares = $conn->query($sql3);
-        
-        $sql4 = "SELECT * FROM pariente WHERE id=" . $_GET['id'];
-        $pariente1 = $conn->query($sql4);
-        $pariente = mysqli_fetch_assoc($pariente1)
+		$lugares = $conn->query($sql3);
 	?>
 
 </head>
@@ -46,19 +42,19 @@
 	<div class="container card">
         <?php
             if (isset($_POST['confirmar'])) {
-                echo "Pariente Editado";
+                echo "Pariente Creado";
             }
         ?>
         <div class="form-group">
 			<a class="btn btn-secondary float-right" role="button" href="lista_parientes.php">Volver a la lista</a>
 		</div>
-        <h3>Ver/Editar Pariente</h3>
+        <h3>Creacion de Pariente Nuevo</h3>
         <form method="post">
 			<div class="form-group">
 				<label for="usuario">Nombre:</label>
-		    	<input type="string" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre..." value="<?php echo $pariente['nombre'] ?>">
+		    	<input type="string" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre...">
                 <label for="usuario">Padre:</label>
-                <input list="gente" class="form-control" id="padre" name="padre" type="search" placeholder="Nombre del Padre..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente['padre_id'] ?>">
+                <input list="gente" class="form-control" id="padre" name="padre" type="search" placeholder="Nombre del Padre..." aria-label="Buscar"  autocomplete=off>
                 <datalist id="gente">
                     <?php
                         while( $persona = mysqli_fetch_assoc( $todos)){
@@ -69,7 +65,7 @@
                     ?>
                 </datalist>
                 <label for="pais">Origen:</label>
-                <input list="paises" class="form-control" id="pais" name="pais" type="search" placeholder="Origen..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente['origen_id'] ?>">
+                <input list="paises" class="form-control" id="pais" name="pais" type="search" placeholder="Origen..." aria-label="Buscar"  autocomplete=off>
                 <datalist id="paises">
                     <?php
                         while( $pais = mysqli_fetch_assoc( $paises)){
@@ -80,7 +76,7 @@
                     ?>
                 </datalist>
                 <label for="lugar">Ubicacion:</label>
-                <input list="lugares" class="form-control" id="lugar" name="lugar" type="search" placeholder="Ubicacion..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente['radicado_id'] ?>">
+                <input list="lugares" class="form-control" id="lugar" name="lugar" type="search" placeholder="Ubicacion..." aria-label="Buscar"  autocomplete=off>
                 <datalist id="lugares">
                     <?php
                         while( $lugar = mysqli_fetch_assoc( $lugares)){
@@ -91,13 +87,13 @@
                     ?>
                 </datalist>
                 <label for="nacimiento">Nacimiento:</label>
-                <textarea class="form-control" id="nacimiento" name="nacimiento" placeholder="Nacimiento..."><?php echo $pariente['nacimiento'] ?></textarea>
+                <textarea class="form-control" id="nacimiento" name="nacimiento" placeholder="Nacimiento..."></textarea>
                 <label for="muerte">Muerte:</label>
-                <textarea class="form-control" id="muerte" name="muerte" placeholder="Muerte..."><?php echo $pariente['muerte'] ?></textarea>
+                <textarea class="form-control" id="muerte" name="muerte" placeholder="Muerte..."></textarea>
                 <label for="comentario">Comentario:</label>
-                <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario..."><?php echo $pariente['comentario'] ?></textarea>
+                <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario..."></textarea>
                 <hr>
-                <button id="confirmar" name="confirmar" type="submit" class="btn btn-success">Guardar Cambios al Pariente</button>
+                <button id="confirmar" name="confirmar" type="submit" class="btn btn-success">Crear Pariente</button>
             </div>
 		</form>
     </div>
@@ -115,16 +111,10 @@
                 $_POST['lugar'] = 'NULL';
             }
 
-            $sql_subida = "UPDATE `pariente` SET 
-            `nombre`='" . $_POST['nombre'] ."',
-            `padre_id`=" . $_POST['padre'] .",
-            `origen_id`=" . $_POST['pais'] .",
-            `radicado_id`=" . $_POST['lugar'] .",
-            `nacimiento`='" . $_POST['nacimiento'] ."',
-            `muerte`='" . $_POST['muerte'] ."',
-            `comentario`='" . $_POST['comentario'] ."',
-            `enlace`=''
-            WHERE id=" . $_GET['id'];
+            $sql_subida = "INSERT INTO `pariente`
+            (`nombre`, `padre_id`, `origen_id`, `radicado_id`, `nacimiento`, `muerte`, `comentario`,`enlace`)
+             VALUES 
+             ('" . $_POST['nombre'] ."',". $_POST['padre'] .",". $_POST['pais'] .",". $_POST['lugar'] .",'". $_POST['nacimiento'] ."','". $_POST['muerte'] ."','". $_POST['comentario'] . "', '')";
             $resultado = $conn->query($sql_subida);
         }
 	?>

@@ -36,9 +36,10 @@
 	<br>
 	<div class="container card">
 		<div class="form-group">
-			<a class="btn btn-info float-right" role="button" href="">Crear un Pariente Nuevo</a>
+			<a class="btn btn-info float-right" role="button" href="crear_pariente.php">Crear un Pariente Nuevo</a>
 		</div>
-		<table class="table" data-filtering="true">
+		<table class="table" data-filtering="true" data-sorting="true" data-empty="Sin Parientes" data-paging-count-format="{CP} de {TP}"
+            data-paging="true" data-paging-size="20" data-filter-placeholder="Buscar">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -56,7 +57,7 @@
 				    		echo '<td>' . $row['nombre'] . '</td>';
 				    		echo '<td>' . $row['padre_id'] . '</td>';
 				    		echo '<td>' . $row['nacimiento'] . '</td>';
-				    		echo '<td><a class="btn btn-primary" href="">Ver/Editar</a></td>';
+				    		echo '<td><a class="btn btn-primary" href="editar_pariente.php?id='. $row['id'] .'" >Ver/Editar</a></td>';
 				    	echo '</tr>';
 					}
 				?>
