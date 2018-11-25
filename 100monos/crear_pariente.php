@@ -1,3 +1,17 @@
+<?php
+        require('conexion.php');
+
+        require('redireccion.php');
+        
+        $sql1 = "SELECT * FROM pariente";
+        $todos = $conn->query($sql1);
+        
+        $sql2 = "SELECT * FROM pais";
+        $paises = $conn->query($sql2);
+        
+        $sql3 = "SELECT * FROM ubicacion";
+        $lugares = $conn->query($sql3);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,31 +21,6 @@
 	<script src="//code.jquery.com/jquery.min.js"></script>
 	<LINK href="footable\css\footable.standalone.min.css" rel="stylesheet" type="text/css">
 	<LINK href="fontawesome\css\font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<?php
-		$servername="localhost";
-		$username="root";
-		$password="";
-		$dbname="drinelmo_arbol";
-		$conn = new mysqli($servername, $username, $password, $dbname);
-
-		if (isset($_SESSION["usuario"])) {
-			if ($_SESSION["usuario"] == "admin" AND $_SESSION["pass"] == "admin" ) {
-	    	}else{
-	    	echo 'ingresado';
-				header('Location: admin.php');
-			}
-        }
-        
-        $sql1 = "SELECT * FROM pariente";
-        $todos = $conn->query($sql1);
-        
-        $sql2 = "SELECT * FROM pais";
-        $paises = $conn->query($sql2);
-        
-        $sql3 = "SELECT * FROM ubicacion";
-		$lugares = $conn->query($sql3);
-	?>
 
 </head>
 <body class="bg-dark">

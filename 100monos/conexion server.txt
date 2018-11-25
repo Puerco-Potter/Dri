@@ -1,0 +1,4 @@
+$servername="localhost";
+		$username="drinelmo_arbol";
+		$password="Osiris09!";
+		$dbname="drinelmo_arbol";

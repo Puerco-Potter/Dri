@@ -1,27 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>DRI</title>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<LINK href="bootstrap\css\bootstrap.min.css" rel="stylesheet" type="text/css">
-	<script src="//code.jquery.com/jquery.min.js"></script>
-	<LINK href="footable\css\footable.standalone.min.css" rel="stylesheet" type="text/css">
-	<LINK href="fontawesome\css\font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<?php
-		$servername="localhost";
-		$username="root";
-		$password="";
-		$dbname="drinelmo_arbol";
-		$conn = new mysqli($servername, $username, $password, $dbname);
+<?php
+        require('conexion.php');
 
-		if (isset($_SESSION["usuario"])) {
-			if ($_SESSION["usuario"] == "admin" AND $_SESSION["pass"] == "admin" ) {
-	    	}else{
-	    	echo 'ingresado';
-				header('Location: admin.php');
-			}
-        }
+        require('redireccion.php');
         
         $sql1 = "SELECT * FROM pariente";
         $todos = $conn->query($sql1);
@@ -35,7 +15,16 @@
         $sql4 = "SELECT * FROM pariente WHERE id=" . $_GET['id'];
         $pariente1 = $conn->query($sql4);
         $pariente = mysqli_fetch_assoc($pariente1)
-	?>
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DRI</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<LINK href="bootstrap\css\bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script src="//code.jquery.com/jquery.min.js"></script>
+	<LINK href="footable\css\footable.standalone.min.css" rel="stylesheet" type="text/css">
+	<LINK href="fontawesome\css\font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 <body class="bg-dark">

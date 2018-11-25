@@ -1,3 +1,11 @@
+<?php
+		require('conexion.php');
+
+		$sql = "SELECT * FROM pariente p1 ORDER BY nombre";
+		$result = $conn->query($sql);
+
+		require('redireccion.php');	
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,25 +16,6 @@
 	<script src="footable\js\footable.min.js"></script>
 	<LINK href="footable\css\footable.standalone.min.css" rel="stylesheet" type="text/css">
 	<LINK href="fontawesome\css\font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<?php
-		$servername="localhost";
-		$username="root";
-		$password="";
-		$dbname="drinelmo_arbol";
-		$conn = new mysqli($servername, $username, $password, $dbname);
-
-		$sql = "SELECT * FROM pariente p1 ORDER BY nombre";
-		$result = $conn->query($sql);
-
-		if (isset($_SESSION["usuario"])) {
-			if ($_SESSION["usuario"] == "admin" AND $_SESSION["pass"] == "admin" ) {
-	    	}else{
-	    	echo 'ingresado';
-				header('Location: admin.php');
-			}
-		}	
-	?>
 
 </head>
 <body class="bg-dark">

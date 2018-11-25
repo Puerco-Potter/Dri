@@ -1,3 +1,6 @@
+<?php
+		require('conexion.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,14 +8,12 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<LINK href="bootstrap\css\bootstrap.min.css" rel="stylesheet" type="text/css">
 	<script src="//code.jquery.com/jquery.min.js"></script>
+	<script src="mousewheel/jquery.mousewheel.min.js"></script>
+	<script src="panzoom/dist/jquery.panzoom.min.js"></script>
+	<LINK href="fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
 
 	<?php
-		$servername="localhost";
-		$username="root";
-		$password="";
-		$dbname="drinelmo_arbol";
-		$conn = new mysqli($servername, $username, $password, $dbname);
-
 		$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.nombre FROM pariente p1 INNER JOIN pariente p2 ON p1.id = p2.padre_id ORDER BY p1.id";
 		$result = $conn->query($sql);
 
@@ -51,12 +52,12 @@
 		.tree li::before, .tree li::after{
 			content: '';
 			position: absolute; top: 0; right: 50%;
-			border-top: 1px solid white;
+			border-top: 3px solid white;
 			width: 50%; height: 20px;
 		}
 		.tree li::after{
 			right: auto; left: 50%;
-			border-left: 1px solid white;
+			border-left: 3px solid white;
 		}
 
 		/*We need to remove left-right connectors from elements without 
@@ -75,7 +76,7 @@
 		}
 		/*Adding back the vertical connector to the last nodes*/
 		.tree li:last-child::before{
-			border-right: 1px solid white;
+			border-right: 3px solid white;
 			border-radius: 0 5px 0 0;
 			-webkit-border-radius: 0 5px 0 0;
 			-moz-border-radius: 0 5px 0 0;
@@ -90,7 +91,7 @@
 		.tree ul ul::before{
 			content: '';
 			position: absolute; top: 0; left: 50%;
-			border-left: 1px solid white;
+			border-left: 3px solid white;
 			width: 0; height: 20px;
 		}
 
@@ -113,62 +114,6 @@
 		}
 
 
-		/*red*/
-		.red li::before, .red li::after{
-			border-top: 1px solid red;
-		}
-		.red li::after{
-			border-left: 1px solid red;
-		}
-		/*Adding back the vertical connector to the last nodes*/
-		.red li:last-child::before{
-			border-right: 1px solid red;
-		}
-		.red li:first-child::after{
-		}
-
-		/*Time to add downward connectors from parents*/
-		.red ul ul::before{
-			border-left: 1px solid red;
-		}
-
-		.red li a{
-			border: 1px solid red;
-		}
-
-		.tree ul.red ul::before{
-			border-left: 1px solid red;
-		}
-		/*red*/
-
-		/*blue*/
-		.blue li::before, .blue li::after{
-			border-top: 1px solid blue;
-		}
-		.blue li::after{
-			border-left: 1px solid blue;
-		}
-		/*Adding back the vertical connector to the last nodes*/
-		.blue li:last-child::before{
-			border-right: 1px solid blue;
-		}
-		.blue li:first-child::after{
-		}
-
-		/*Time to add downward connectors from parents*/
-		.blue ul ul::before{
-			border-left: 1px solid blue;
-		}
-
-		.blue li a{
-			border: 1px solid blue;
-		}
-
-		.tree ul.blue ul::before{
-			border-left: 1px solid blue;
-		}
-		/*blue*/
-
 		/*Time for some hover effects*/
 		/*We will apply the hover effect the the lineage of the element also*/
 		.tree li a:hover, .tree li a:hover+ul li a {
@@ -185,14 +130,19 @@
 		/*Thats all. I hope you enjoyed it.
 		Thanks :)*/
 		
-		.anchor{
-		display: block;
-		height: 115px; /*same height as header*/
-		margin-top: -115px; /*same height as header*/
-		margin-left: -215px;
-		margin-right: -215px;
-		visibility: hidden;
+		 /* The animation code */
+		@keyframes example {
+		    0%   {background-color: green;}  
+			100% {background-color: green;}
+		    
 		}
+
+		/* The element to apply the animation to */
+		.cambio {
+		    animation-name: example;
+		    animation-duration: 6s;
+		} 
+		
 		
 		
 			</style>
@@ -201,19 +151,22 @@
 <body class="bg-dark">
 	<nav class="navbar fixed-top navbar-light bg-light">
   		<a class="navbar-brand" href="#">DRI</a>
-  		<form action="/action_page.php" class="form-inline w-75">
-    		<input onSelect="yesnoCheck(this)" list="gente" class="form-control mr-sm-2 w-75 nombreGente" type="search" placeholder="Nombre/Nome/Name" aria-label="Buscar"  autocomplete=off>
+  		<div class="form-inline w-75">
+    		<input id="selected" list="gente" type="" name="" class="form-control mr-sm-2 w-75 nombreGente" placeholder="Nombre / Nome / Name">
 			<datalist id="gente">
+
 			<?php
 				while( $persona = mysqli_fetch_assoc( $todos)){
-					echo '<option value="' . $persona["id"] . '">';
+					echo '<option data-value="' . $persona["id"] . '" value="';
 						echo $persona["nombre"] . "(" . $persona["nacimiento"] . ")";
-					echo "</option>";
+					echo '"></option>';
 				} 
 			?>
 			</datalist>
+			<btn id="boton" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i>
+</btn>
     		<!-- <span class="btn btn-outline-success my-2 my-sm-0 botonDeBusqueda">Search</span> -->
-  		</form>
+  		</div>
 	</nav>
 	<div>
 		
@@ -222,7 +175,7 @@
 	<div>
 		<div style="height: 100px;"></div>
 
-<div class="tree zoomable" style="display: inline-flex; width: 210000px;">
+<div id="arbol" class="tree panzoom-elements" style="display: inline-flex; width: 210000px;">
 
 	<?php
 
@@ -270,8 +223,7 @@
 			function preorder2(&$root) {
 			    if ($root) {
 					echo "<li>";
-					echo '<span class="anchor" id="invisible' . $root["pequeno"] . '"></span>';
-			    	echo '<a class="clickable" href="#invisible' . $root["pequeno"] . '">';
+			    	echo '<a class="clickable" id="pariente' . $root["pequeno"] . '" href="#invisible' . $root["pequeno"] . '">';
 			        echo str_replace(" ", "<br>",  $root["nombre"]) . "<br>" . str_replace(" ", "<br>",  $root["nacimiento"]);
 			    	echo "</a>";
 
@@ -290,25 +242,68 @@
 		?>
 </body>
 
-<script src='https://cdn.rawgit.com/anvaka/panzoom/v6.1.3/dist/panzoom.min.js'></script>
+
 <script>
-	var area = document.querySelector('.zoomable')
-	panzoom(area, {
-		zoomDoubleClickSpeed: 1, 
-	})
-
-	//$(".botonDeBusqueda").click(function(event){
-	//	
-	//});
-
-	$(".clickable").click(function(event){
-		event.stopPropagation();
+	$(document).ready(function() {
+		//esto es para que los nombres permanezcan sin borrarse del imput
+	var data = {}; 
+	$("#gente option").each(function(i,el) {  
+	   data[$(el).data("value")] = $(el).val();
 	});
+	// `data` : object of `data-value` : `value`
+	console.log(data, $("#gente option").val());
+
+
+	    $('#boton').click(function()
+	    {	
+	    	$("#arbol").panzoom("reset");
+	        var value = $('#selected').val();
+	        var valor = "" + $('#gente [value="' + value + '"]').data('value');
+	        var ancla = "#pariente" + valor;
+	        var anclajs = "pariente" + valor;
+	        //$('html, body').animate({
+    		//	scrollTop: $(ancla).offset().top -100
+	    	//}, 1000);
+	    	
+	    	setTimeout(function () { 
+			    var y = $(ancla).offset().top -100;
+	    		var x = $(ancla).offset().left -100;
+	    		$("#arbol").panzoom("setMatrix", [ 1, 0, 0, 1, -x, -y ])
+			}, 1000);
+			var $el = document.getElementById(anclajs);
+			$el.classList.add("cambio");
+			setTimeout(function () { 
+			    $el.classList.remove("cambio");
+			}, 4000);
+	    	
+		});
+	});
+    
 </script>
 <script>
-    function yesnoCheck(that) {
-        var bla = $('.nombreGente').val();
-		location.hash = "invisible" + bla;
-    }
-</script>
+        (function() {
+          var $panzoom = $(".panzoom-elements").panzoom();
+          $panzoom.parent().on('mousewheel.focal', function( e ) {
+            e.preventDefault();
+            var delta = e.delta || e.originalEvent.wheelDelta;
+            var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+            $panzoom.panzoom('zoom', zoomOut, {
+              increment: 0.1,
+              animate: false,
+              focal: e
+            });
+          });
+        })();
+
+        $( "#boton2" ).click(function() {
+	  		
+			var $el = document.getElementById("panzoom");
+			$el.classList.add("cambio");
+			setTimeout(function () { 
+			    $el.classList.remove("cambio");
+			}, 4000);
+
+			;
+		});
+      </script>
 </html>
