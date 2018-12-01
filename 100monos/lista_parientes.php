@@ -44,9 +44,9 @@
 				    	echo '<tr>';
 				    		echo '<td>' . $row['id'] . '</td>';
 				    		echo '<td>' . $row['nombre'] . '</td>';
-				    		echo '<td>' . $row['padre_id'] . '</td>';
+				    		echo '<td>'. '<a class="btn btn-primary" href="editar_pariente.php?id='. $row['padre_id'] .'" ><i class="fa fa-search" aria-hidden="true"></i></a> ' . $row['padre_id'] . '</td>';
 				    		echo '<td>' . $row['nacimiento'] . '</td>';
-				    		echo '<td><a class="btn btn-primary" href="editar_pariente.php?id='. $row['id'] .'" >Ver/Editar</a></td>';
+				    		echo '<td><a class="btn btn-primary" href="editar_pariente.php?id='. $row['id'] .'" ><i class="fa fa-eye" aria-hidden="true"></i> / <i class="fa fa-pencil" aria-hidden="true"></i></a></td>';
 				    	echo '</tr>';
 					}
 				?>

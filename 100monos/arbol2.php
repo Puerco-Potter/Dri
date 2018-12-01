@@ -25,106 +25,121 @@
 	?>
 
 		<style type="text/css">
-				/*Now the CSS*/
-		* {margin: 0; padding: 0;}
 
-		.tree ul {
-			padding-top: 20px; position: relative;
-			
-			transition: all 0.5s;
-			-webkit-transition: all 0.5s;
-			-moz-transition: all 0.5s;
+		body {
+		min-width: 100%;
+		margin: 0;
+		color: white;
+		font: 16px Verdana, sans-serif;
+		background: black;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		overflow: hidden;
 		}
 
-		.tree li {
-			float: left; text-align: center;
-			list-style-type: none;
-			position: relative;
-			padding: 20px 5px 0 5px;
-			
-			transition: all 0.5s;
-			-webkit-transition: all 0.5s;
-			-moz-transition: all 0.5s;
+		#wrapper {
+		position: relative;
+		width:1000%;
 		}
 
-		/*We will use ::before and ::after to draw the connectors*/
-
-		.tree li::before, .tree li::after{
-			content: '';
-			position: absolute; top: 0; right: 50%;
-			border-top: 3px solid white;
-			width: 50%; height: 20px;
+		.branch {
+		position: relative;
+		margin-left: 600px;
 		}
-		.tree li::after{
-			right: auto; left: 50%;
-			border-left: 3px solid white;
+		
+		#wrapper >.entry::before {
+		display: none;
 		}
-
-		/*We need to remove left-right connectors from elements without 
-		any siblings*/
-		.tree li:only-child::after, .tree li:only-child::before {
-			display: none;
+		#wrapper >.entry::after {
+		display: none;
 		}
 
-		/*Remove space from the top of single children*/
-		.tree li:only-child{ padding-top: 0;}
-
-		/*Remove left connector from first child and 
-		right connector from last child*/
-		.tree li:first-child::before, .tree li:last-child::after{
-			border: 0 none;
+		.branch:before{
+			content: "";
+			width: 50px;
+			border-top: 5px solid white;
+			position: absolute;
+			left: -100px;
+			top: 50%;
+			margin-top: 1px;
 		}
-		/*Adding back the vertical connector to the last nodes*/
-		.tree li:last-child::before{
-			border-right: 3px solid white;
-			border-radius: 0 5px 0 0;
-			-webkit-border-radius: 0 5px 0 0;
-			-moz-border-radius: 0 5px 0 0;
+		
+		.entry:before {
+			content: "";
+			height: 100%;
+			border-left: 5px solid white;
+			position: absolute;
+			left: -50px;
 		}
-		.tree li:first-child::after{
-			border-radius: 5px 0 0 0;
-			-webkit-border-radius: 5px 0 0 0;
-			-moz-border-radius: 5px 0 0 0;
-		}
-
-		/*Time to add downward connectors from parents*/
-		.tree ul ul::before{
-			content: '';
-			position: absolute; top: 0; left: 50%;
-			border-left: 3px solid white;
-			width: 0; height: 20px;
-		}
-
-		.tree li a{
-			border: 1px solid white;
-			padding: 5px 10px;
-			text-decoration: none;
-			color: white;
-			font-family: arial, verdana, tahoma;
-			font-size: 11px;
-			display: inline-block;
-			
-			border-radius: 5px;
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			
-			transition: all 0.5s;
-			-webkit-transition: all 0.5s;
-			-moz-transition: all 0.5s;
+		
+		.entry:after {
+			content: "";
+			width: 50px;
+			border-top: 5px solid white;
+			position: absolute;
+			left: -50px;
+			top: 50%;
+			margin-top: 1px;
 		}
 
-
-		/*Time for some hover effects*/
-		/*We will apply the hover effect the the lineage of the element also*/
-		.tree li a:hover, .tree li a:hover+ul li a {
-			background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+		.entry:first-child:before {
+			width: 10px;
+			height: 50%;
+			top: 50%;
+			margin-top: 2px;
+			border-radius: 10px 0 0 0;
 		}
-		/*Connector styles on hover*/
-		.tree li a:hover+ul li::after, 
-		.tree li a:hover+ul li::before, 
-		.tree li a:hover+ul::before, 
-		.tree li a:hover+ul ul::before{
-			border-color:  #94a0b4;
+
+		.entry:first-child:after {
+			height: 10px;
+			border-radius: 10px 0 0 0;
+			}
+
+		.entry:last-child:before {
+			width: 10px;
+			height: 50%;
+			border-radius: 0 0 0 10px;
+		}
+
+		.entry:last-child:after {
+		height: 10px;
+		border-top: none;
+		border-bottom: 5px solid white;
+		border-radius: 0 0 0 10px;
+		margin-top: -9px;
+		}
+
+		.entry {
+		position: relative;
+		min-height: 60px;
+		}
+		
+		.entry:only-child:before {
+		display: none !important;
+		}
+		.entry:only-child:after {
+		width: 50px;
+		height: 0;
+		margin-top: 1px;
+		border-radius: 0;
+		}
+
+		.label {
+		display: block;
+		min-width: 500px;
+		padding: 5px 10px;
+		line-height: 20px;
+		text-align: center;
+		border: 2px solid white;
+		border-radius: 5px;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		margin-top: -15px;
+		background-color: darkblue;
+		z-index:2;
 		}
 
 		/*Thats all. I hope you enjoyed it.
@@ -132,15 +147,27 @@
 		
 		 /* The animation code */
 		@keyframes example {
-		    0%   {background-color: green;}  
-			100% {background-color: green;}
-		    
+			0%   {background-color: darkblue; font-size:large;}
+			5%   {background-color: green;}
+			10%   {background-color: darkblue;}
+			15%   {background-color: green;}
+			20%   {background-color: darkblue;}
+			25%   {background-color: green;}
+			30%   {background-color: darkblue;}
+			35%   {background-color: green;}
+			40%   {background-color: darkblue;}
+			45%   {background-color: green;}
+			50%   {background-color: darkblue;}
+			55%   {background-color: green;}
+			70%   {background-color: darkblue;}
+			85%   {background-color: green;}
+		    100%   {background-color: darkblue;font-size:large;}
 		}
 
 		/* The element to apply the animation to */
 		.cambio {
 		    animation-name: example;
-		    animation-duration: 6s;
+		    animation-duration: 3s;
 		} 
 		
 		
@@ -175,7 +202,7 @@
 	<div>
 		<div style="height: 100px;"></div>
 
-<div id="arbol" class="tree panzoom-elements" style="display: inline-flex; width: 210000px;">
+<div id="wrapper" class="panzoom-elements">
 
 	<?php
 
@@ -184,10 +211,8 @@
 	}
 
 	while( $raiz = mysqli_fetch_assoc( $raices)){
-    	echo '<ul>';
     	$tree = hacer_arbol($resguardo, $raiz);
 		preorder2($tree);
-		echo "</ul>";
 	} 
 	?>
 </div>
@@ -197,9 +222,11 @@
 			function hacer_arbol($resguardo, $raiz){
 				$tree = [];
 				$tree = $raiz;
-				foreach ($resguardo[$raiz["id"]] as $node) {
-		    		agregar($tree, $node, $resguardo);
-		    	}
+				if(array_key_exists($raiz["id"], $resguardo)){
+					foreach ($resguardo[$raiz["id"]] as $node) {
+						agregar($tree, $node, $resguardo);
+					}
+				}
 		    	return $tree;
 			}
 
@@ -222,19 +249,22 @@
 
 			function preorder2(&$root) {
 			    if ($root) {
-					echo "<li>";
-			    	echo '<a class="clickable" id="pariente' . $root["pequeno"] . '" href="#invisible' . $root["pequeno"] . '">';
-			        echo str_replace(" ", "<br>",  $root["nombre"]) . "<br>" . str_replace(" ", "<br>",  $root["nacimiento"]);
-			    	echo "</a>";
+					echo "<div class='entry'>";
+					
+			    	echo '<span class="label" id="pariente' . $root["pequeno"] . '">';
+			        echo  "" .$root["nombre"] . "<br> (" .  $root["nacimiento"] . ")";
+					echo "</span>";
+					
 
-			        if (array_key_exists("children", $root)) {
-			            echo "<ul>";
+			        if (array_key_exists("children", $root)) { 
+			            echo "<div class='branch'>";
 			            foreach ($root["children"] as $c) {
-			                preorder2($c);
+							preorder2($c);
 			            }
-			            echo "</ul>";
-			        }
-			    	echo "</li>";
+						echo "</div>";
+					}
+					
+			    	echo "</div>";
 			    }
 			}
 
@@ -256,7 +286,7 @@
 
 	    $('#boton').click(function()
 	    {	
-	    	$("#arbol").panzoom("reset");
+	    	$("#wrapper").panzoom("reset");
 	        var value = $('#selected').val();
 	        var valor = "" + $('#gente [value="' + value + '"]').data('value');
 	        var ancla = "#pariente" + valor;
@@ -268,13 +298,13 @@
 	    	setTimeout(function () { 
 			    var y = $(ancla).offset().top -100;
 	    		var x = $(ancla).offset().left -100;
-	    		$("#arbol").panzoom("setMatrix", [ 1, 0, 0, 1, -x, -y ])
+	    		$("#wrapper").panzoom("setMatrix", [ 1, 0, 0, 1, -x, -y ])
 			}, 1000);
 			var $el = document.getElementById(anclajs);
 			$el.classList.add("cambio");
 			setTimeout(function () { 
 			    $el.classList.remove("cambio");
-			}, 4000);
+			}, 6000);
 	    	
 		});
 	});
@@ -283,6 +313,9 @@
 <script>
         (function() {
           var $panzoom = $(".panzoom-elements").panzoom();
+		  $panzoom.panzoom("option", {
+			minScale: 0.05,
+			});
           $panzoom.parent().on('mousewheel.focal', function( e ) {
             e.preventDefault();
             var delta = e.delta || e.originalEvent.wheelDelta;
@@ -294,16 +327,5 @@
             });
           });
         })();
-
-        $( "#boton2" ).click(function() {
-	  		
-			var $el = document.getElementById("panzoom");
-			$el.classList.add("cambio");
-			setTimeout(function () { 
-			    $el.classList.remove("cambio");
-			}, 4000);
-
-			;
-		});
       </script>
 </html>

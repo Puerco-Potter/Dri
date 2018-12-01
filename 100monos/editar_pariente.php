@@ -14,7 +14,10 @@
         
         $sql4 = "SELECT * FROM pariente WHERE id=" . $_GET['id'];
         $pariente1 = $conn->query($sql4);
-        $pariente = mysqli_fetch_assoc($pariente1)
+        $pariente = mysqli_fetch_assoc($pariente1);
+
+        $sql5 = "SELECT * FROM pariente WHERE padre_id=" . $_GET['id'];
+        $hijos = $conn->query($sql5);
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,18 +38,23 @@
 	<div class="container card">
         <?php
             if (isset($_POST['confirmar'])) {
-                echo "Pariente Editado";
+                echo "<h2 class='text-muted'>Pariente Editado</h2>";
             }
         ?>
         <div class="form-group">
-			<a class="btn btn-secondary float-right" role="button" href="lista_parientes.php">Volver a la lista</a>
-		</div>
+            <div class="float-right">
+                <a class="btn btn-info" role="button" href='editar_pariente.php?id=<?php echo $pariente["id"]; ?>'><i class="fa fa-refresh" aria-hidden="true"></i> Recargar Datos</a>
+			    <a class="btn btn-secondary " role="button" href="lista_parientes.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver a la lista</a>
+            </div>
+        </div>
         <h3>Ver/Editar Pariente</h3>
         <form method="post">
 			<div class="form-group">
 				<label for="usuario">Nombre:</label>
 		    	<input type="string" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre..." value="<?php echo $pariente['nombre'] ?>">
                 <label for="usuario">Padre:</label>
+                <br>
+                <a class="btn btn-secondary" href="editar_pariente.php?id=<?php echo $pariente['padre_id'] ?>"><i class="fa fa-search" aria-hidden="true"></i> Ir al Padre</a>
                 <input list="gente" class="form-control" id="padre" name="padre" type="search" placeholder="Nombre del Padre..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente['padre_id'] ?>">
                 <datalist id="gente">
                     <?php
@@ -86,9 +94,38 @@
                 <label for="comentario">Comentario:</label>
                 <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario..."><?php echo $pariente['comentario'] ?></textarea>
                 <hr>
-                <button id="confirmar" name="confirmar" type="submit" class="btn btn-success">Guardar Cambios al Pariente</button>
+                <button id="confirmar" name="confirmar" type="submit" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Guardar Cambios al Pariente</button>
             </div>
 		</form>
+        <div>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Nacimiento</th>
+                <!-- <th scope="col">Orden</th> -->
+                <th scope="col">Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+            <h3>Hijos:</h3>
+            <?php
+                while( $hijo = mysqli_fetch_assoc( $hijos)){
+                    echo "<tr>";
+                    echo "<td>". $hijo["id"]. "</td>";
+                    echo "<td>". $hijo["nombre"]. "</td>";
+                    echo "<td>". $hijo["nacimiento"]. "</td>";
+                   /*  echo "<td>". $hijo["orden"]. "</td>"; */
+                    echo "<td><a class='btn btn-primary' href='editar_pariente.php?id=". $hijo["id"] ."'><i class='fa fa-eye' aria-hidden='true'></i> / <i class='fa fa-pencil' aria-hidden='true'></i></a></td>";
+                    echo "</tr>"; 
+                };
+                
+            ?>
+            </tbody>
+        </table>
+        
+        </div>
     </div>
 
     <?php
@@ -117,6 +154,7 @@
             $resultado = $conn->query($sql_subida);
         }
 	?>
+
 
 </body>
 </html>
