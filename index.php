@@ -11,7 +11,7 @@
 			<br>
 		</div>
 		<div class="d-flex justify-content-center">
-			<img style="width: 25%;" src="100monos\imagenes\it.png">
+			<img style="width: 275px; height: 185px" src="100monos\imagenes\it.png">
 		</div>
 		<div class="d-flex justify-content-center">
 			<h5 class="text-muted">Proyecto iniciado el 30
@@ -32,6 +32,7 @@
 		<a href="dri/" class="btn btn-success btn-lg">Arbol Genealogico Interactivo</a>
 		<a href="100monos/arbol2.php" class="btn btn-danger btn-lg">Arbol Genealogico Interactivo 2.0 Beta</a>
 		</div>
+		<hr>
 	</div>
 
 </body>
