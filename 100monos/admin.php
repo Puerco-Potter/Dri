@@ -31,7 +31,7 @@
 </head>
 <body class="bg-dark">
 	<div class="d-flex justify-content-center">
-			<img style="width: 25%;" src="imagenes\it.png">
+			<img style="width: 275px; height: 185px" src="imagenes\it.png">
 	</div>
 	<br>
 

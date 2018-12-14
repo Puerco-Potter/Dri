@@ -19,18 +19,18 @@
 		</div>
 		<div>
 		<h3 class="text-light">Español:</h3>
-		<a class="btn btn-light btn-lg btn-block" href="Bienve_cast.htm">Árbol genealógico de los Dri</a>
+			<a class="btn btn-light btn-lg btn-block" href="Bienve_cast.htm">Árbol genealógico de los Dri</a>
 		<h3 class="text-light">Italiano:</h3>
-		<a class="btn btn-light btn-lg btn-block" href="benvenuti.htm">L` Albero Genealógico dei Dri</a>
+			<a class="btn btn-light btn-lg btn-block" href="benvenuti.htm">L` Albero Genealógico dei Dri</a>
 		<h3 class="text-light">Português:</h3>
-		<a class="btn btn-light btn-lg btn-block" href="Benvindos.htm">Árvore Genealógica dos Dri</a>
+			<a class="btn btn-light btn-lg btn-block" href="Benvindos.htm">Árvore Genealógica dos Dri</a>
 		<h3 class="text-light">English:</h3>
-		<a class="btn btn-light btn-lg btn-block" href="WELCOME.HTM">Family Tree of the surname Dri</a>
+			<a class="btn btn-light btn-lg btn-block" href="WELCOME.HTM">Family Tree of the surname Dri</a>
 		<br>
 		</div>
 		<div class="d-flex justify-content-around">
-		<a href="dri/" class="btn btn-success btn-lg">Arbol Genealogico Interactivo</a>
-		<a href="100monos/arbol2.php" class="btn btn-danger btn-lg">Arbol Genealogico Interactivo 2.0 Beta</a>
+			<a href="dri/" class="btn btn-success btn-lg">Arbol Genealogico Interactivo</a>
+			<a href="100monos/arbol2.php" class="btn btn-danger btn-lg">Arbol Genealogico Interactivo 2.0 Beta</a>
 		</div>
 		<hr>
 	</div>
