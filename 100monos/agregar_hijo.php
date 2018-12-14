@@ -11,6 +11,10 @@
         
         $sql3 = "SELECT * FROM ubicacion";
         $lugares = $conn->query($sql3);
+        
+        $sql4 = "SELECT * FROM pariente WHERE id=" . $_GET['id'];
+        $pariente1 = $conn->query($sql4);
+        $pariente = mysqli_fetch_assoc($pariente1);
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,19 +35,23 @@
 	<div class="container card">
         <?php
             if (isset($_POST['confirmar'])) {
-                echo "<h2 class='text-muted'>Pariente Creado</h2>";
+                echo "<h2 class='text-muted'>Hijo Creado</h2>";
             }
         ?>
         <div class="form-group">
-			<a class="btn btn-secondary float-right" role="button" href="lista_parientes.php">Volver a la lista</a>
-		</div>
-        <h3>Creacion de Pariente Nuevo</h3>
+            <div class="float-right">
+                <a class="btn btn-secondary " role="button" href="editar_pariente.php?id=<?php echo $pariente["id"]; ?>"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver al padre</a>
+			    <a class="btn btn-secondary " role="button" href="lista_parientes.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver a la lista</a>
+            </div>
+        </div>
+        <h3>Agregar hijo a <?php echo $pariente['nombre'] ?></h3>
         <form method="post">
 			<div class="form-group">
 				<label for="usuario">Nombre:</label>
-		    	<input type="string" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre...">
+		    	<input type="string" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre..." value="">
                 <label for="usuario">Padre:</label>
-                <input list="gente" class="form-control" id="padre" name="padre" type="search" placeholder="Nombre del Padre..." aria-label="Buscar"  autocomplete=off>
+                <br>
+                <input list="gente" readonly class="form-control" id="padre" name="padre" type="search" placeholder="Nombre del Padre..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente["id"]; ?>">
                 <datalist id="gente">
                     <?php
                         while( $persona = mysqli_fetch_assoc( $todos)){
@@ -54,7 +62,7 @@
                     ?>
                 </datalist>
                 <label for="pais">Origen:</label>
-                <input list="paises" class="form-control" id="pais" name="pais" type="search" placeholder="Origen..." aria-label="Buscar"  autocomplete=off>
+                <input list="paises" class="form-control" id="pais" name="pais" type="search" placeholder="Origen..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente['origen_id'] ?>">
                 <datalist id="paises">
                     <?php
                         while( $pais = mysqli_fetch_assoc( $paises)){
@@ -65,7 +73,7 @@
                     ?>
                 </datalist>
                 <label for="lugar">Ubicacion:</label>
-                <input list="lugares" class="form-control" id="lugar" name="lugar" type="search" placeholder="Ubicacion..." aria-label="Buscar"  autocomplete=off>
+                <input list="lugares" class="form-control" id="lugar" name="lugar" type="search" placeholder="Ubicacion..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente['radicado_id'] ?>">
                 <datalist id="lugares">
                     <?php
                         while( $lugar = mysqli_fetch_assoc( $lugares)){
@@ -76,13 +84,13 @@
                     ?>
                 </datalist>
                 <label for="nacimiento">Nacimiento:</label>
-                <textarea class="form-control" id="nacimiento" name="nacimiento" placeholder="Nacimiento..."></textarea>
+                <textarea class="form-control" id="nacimiento" name="nacimiento" placeholder="Nacimiento..."><?php echo $pariente['nacimiento'] ?></textarea>
                 <label for="muerte">Muerte:</label>
-                <textarea class="form-control" id="muerte" name="muerte" placeholder="Muerte..."></textarea>
+                <textarea class="form-control" id="muerte" name="muerte" placeholder="Muerte..."><?php echo $pariente['muerte'] ?></textarea>
                 <label for="comentario">Comentario:</label>
-                <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario..."></textarea>
+                <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario..."><?php echo $pariente['comentario'] ?></textarea>
                 <hr>
-                <button id="confirmar" name="confirmar" type="submit" class="btn btn-success">Crear Pariente</button>
+                <button id="confirmar" name="confirmar" type="submit" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Guardar Cambios al Pariente</button>
             </div>
 		</form>
     </div>
@@ -107,6 +115,7 @@
             $resultado = $conn->query($sql_subida);
         }
 	?>
+
 
 </body>
 </html>

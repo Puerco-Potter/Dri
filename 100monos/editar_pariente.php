@@ -110,6 +110,7 @@
             </thead>
             <tbody>
             <h3>Hijos:</h3>
+            <td><a class='btn btn-primary' href='agregar_hijo.php?id="<?php echo $_GET['id'] ?>"'>Agregar un hijo</i></a>
             <?php
                 while( $hijo = mysqli_fetch_assoc( $hijos)){
                     echo "<tr>";
