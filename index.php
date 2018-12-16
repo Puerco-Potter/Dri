@@ -10,9 +10,11 @@
 		<div>
 			<br>
 		</div>
+		
 		<div class="d-flex justify-content-center">
-			<img style="width: 275px; height: 185px" src="100monos\imagenes\it.png">
+			<img style="width: 500px; height:535px;" src="100monos\imagenes\drimap2.png">
 		</div>
+		<h1 class="bg-light text-center font-weight-bold">&#x1F333; DRI &#x1F333;</h1>
 		<div class="d-flex justify-content-center">
 			<h5 class="text-muted">Proyecto iniciado el 30
         de enero de 2001. Con actualizacion constante desde entonces.</h5>
