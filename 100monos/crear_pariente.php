@@ -54,8 +54,8 @@
                     ?>
                 </datalist>
                 <label for="pais">Origen:</label>
-                <input list="paises" class="form-control" id="pais" name="pais" type="search" placeholder="Origen..." aria-label="Buscar"  autocomplete=off>
-                <datalist id="paises">
+                <Select class="form-control" id="pais" name="pais" type="search" placeholder="Origen..." aria-label="Buscar"  autocomplete=off>
+                
                     <?php
                         while( $pais = mysqli_fetch_assoc( $paises)){
                             echo '<option value="' . $pais["id"] . '">';
@@ -63,10 +63,9 @@
                             echo "</option>";
                         }; 
                     ?>
-                </datalist>
+                </select>
                 <label for="lugar">Ubicacion:</label>
-                <input list="lugares" class="form-control" id="lugar" name="lugar" type="search" placeholder="Ubicacion..." aria-label="Buscar"  autocomplete=off>
-                <datalist id="lugares">
+                <select class="form-control" id="lugar" name="lugar" type="search" placeholder="Ubicacion..." aria-label="Buscar"  autocomplete=off>
                     <?php
                         while( $lugar = mysqli_fetch_assoc( $lugares)){
                             echo '<option value="' . $lugar["id"] . '">';
@@ -74,7 +73,7 @@
                             echo "</option>";
                         }; 
                     ?>
-                </datalist>
+                </select>
                 <label for="nacimiento">Nacimiento:</label>
                 <textarea class="form-control" id="nacimiento" name="nacimiento" placeholder="Nacimiento..."></textarea>
                 <label for="muerte">Muerte:</label>

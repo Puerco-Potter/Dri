@@ -66,27 +66,37 @@
                     ?>
                 </datalist>
                 <label for="pais">Origen:</label>
-                <input list="paises" class="form-control" id="pais" name="pais" type="search" placeholder="Origen..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente['origen_id'] ?>">
-                <datalist id="paises">
+                <select class="form-control" id="pais" name="pais" type="search" placeholder="Origen..." aria-label="Buscar"  autocomplete=off>
+                
                     <?php
                         while( $pais = mysqli_fetch_assoc( $paises)){
-                            echo '<option value="' . $pais["id"] . '">';
+                            if ($pariente['origen_id'] == $pais["id"]){
+                                $selected = " selected ";
+                            }else{
+                                $selected= "222";
+                            }
+                            echo '<option value="' . $pais["id"] . '" ' .  $selected  . ' >';
                                 echo $pais["nombre"];
                             echo "</option>";
                         }; 
                     ?>
-                </datalist>
+                </select>
                 <label for="lugar">Ubicacion:</label>
-                <input list="lugares" class="form-control" id="lugar" name="lugar" type="search" placeholder="Ubicacion..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente['radicado_id'] ?>">
-                <datalist id="lugares">
+                <select class="form-control" id="lugar" name="lugar" type="search" placeholder="Ubicacion..." aria-label="Buscar"  autocomplete=off>
+                
                     <?php
                         while( $lugar = mysqli_fetch_assoc( $lugares)){
-                            echo '<option value="' . $lugar["id"] . '">';
+                            if ($pariente['radicado_id'] == $lugar["id"]){
+                                $selected = " selected ";
+                            }else{
+                                $selected= "222";
+                            }
+                            echo '<option value="' . $lugar["id"] . '" ' .  $selected  . ' >';
                                 echo $lugar["nombre"];
                             echo "</option>";
                         }; 
                     ?>
-                </datalist>
+                </select>
                 <label for="nacimiento">Nacimiento:</label>
                 <textarea class="form-control" id="nacimiento" name="nacimiento" placeholder="Nacimiento..."><?php echo $pariente['nacimiento'] ?></textarea>
                 <label for="muerte">Muerte:</label>

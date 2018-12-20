@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 09-12-2018 a las 21:24:08
--- Versión del servidor: 5.7.23
--- Versión de PHP: 7.2.10
+-- Servidor: localhost:3306
+-- Tiempo de generación: 20-12-2018 a las 06:31:03
+-- Versión del servidor: 5.6.41-84.1
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,14 +28,11 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `ciudad`
 --
 
-DROP TABLE IF EXISTS `ciudad`;
-CREATE TABLE IF NOT EXISTS `ciudad` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ciudad` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL,
-  `provincia_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `provinciafk` (`provincia_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `provincia_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ciudad`
@@ -50,12 +47,10 @@ INSERT INTO `ciudad` (`id`, `nombre`, `provincia_id`) VALUES
 -- Estructura de tabla para la tabla `nivelfecha`
 --
 
-DROP TABLE IF EXISTS `nivelfecha`;
-CREATE TABLE IF NOT EXISTS `nivelfecha` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `formato` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+CREATE TABLE `nivelfecha` (
+  `id` int(11) NOT NULL,
+  `formato` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `nivelfecha`
@@ -73,12 +68,10 @@ INSERT INTO `nivelfecha` (`id`, `formato`) VALUES
 -- Estructura de tabla para la tabla `pais`
 --
 
-DROP TABLE IF EXISTS `pais`;
-CREATE TABLE IF NOT EXISTS `pais` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(150) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+CREATE TABLE `pais` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `pais`
@@ -95,13 +88,11 @@ INSERT INTO `pais` (`id`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `parametro`
 --
 
-DROP TABLE IF EXISTS `parametro`;
-CREATE TABLE IF NOT EXISTS `parametro` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `parametro` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `valor` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `valor` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `parametro`
@@ -116,9 +107,8 @@ INSERT INTO `parametro` (`id`, `nombre`, `valor`) VALUES
 -- Estructura de tabla para la tabla `pariente`
 --
 
-DROP TABLE IF EXISTS `pariente`;
-CREATE TABLE IF NOT EXISTS `pariente` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pariente` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(500) NOT NULL,
   `padre_id` int(11) DEFAULT NULL,
   `origen_id` int(11) DEFAULT NULL,
@@ -130,9 +120,8 @@ CREATE TABLE IF NOT EXISTS `pariente` (
   `orden` int(11) DEFAULT NULL,
   `enlace` varchar(400) NOT NULL,
   `colorfill` varchar(15) DEFAULT NULL,
-  `imagen` varchar(400) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1569 DEFAULT CHARSET=latin1;
+  `imagen` varchar(400) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `pariente`
@@ -528,7 +517,7 @@ INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, 
 (409, 'MoisÃ©s - Zulma', 12, NULL, 1, '', '', 'Se establecieron en Salto, Uruguay. No tuvieron descendencia.', '#00ffff', 1, '', '#00ffff', NULL),
 (410, 'RosalÃ­a Victoria Sara - RamÃ³n Finozzi', 12, NULL, 1, '23/12/1907 ', '1937', '', '#00ffff', 1, '', '#00ffff', NULL),
 (411, 'RamÃ³n Antonio Finozzi Dri (Toty)  - InÃ©s Teresa Tonello', 410, NULL, 1, '2/5/33', '', '', '#00ffff', 1, '', '#00ffff', NULL),
-(412, 'Carlos Alberto Finozzi Tonello', 411, NULL, 1, '', '', 'Aunque es el Ãºnico de este Ã¡rbol que no lleva el apellido Dri, lo incluimos por la gran cantidad de datos y fotos enviados desde FederaciÃ³n, gracias al estudio fotogrÃ¡fico de su padre y a sus mÃºltiples conocidos. Su interÃ©s y colaboraciÃ³n han sido extraordinarios. MUCHAS GRACIAS, Carlitos!!', '#00ffff', 1, '', '#00ffff', NULL),
+(412, ' 		 Carlos Alberto Finozzi Tonello ', 411, NULL, 1, '', '', 'Aunque es el Ãºnico de este Ã¡rbol que no lleva el apellido Dri, lo incluimos por la gran cantidad de datos y fotos enviados desde FederaciÃ³n, gracias al estudio fotogrÃ¡fico de su padre y a sus mÃºltiples conocidos. Su interÃ©s y colaboraciÃ³n han sido extraordinarios. MUCHAS GRACIAS, Carlitos!!', '#00ffff', 1, '', '#00ffff', NULL),
 (413, 'RamÃ³n JesÃºs Finozzi Dri - MarÃ­a Terenzano', 410, NULL, 1, '2/5/33', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (414, 'Bernardo Abraham - Ester Sarli', 12, NULL, 1, '', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (415, 'Roberto- .... Palacios', 414, NULL, 1, '', '', '', '#00ffff', 1, '', '#00ffff', NULL),
@@ -564,9 +553,9 @@ INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, 
 (445, 'LucÃ­a Susana', 49, NULL, NULL, '1949', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (446, 'Rosendo JosÃ©  - Haydee Farinon', 49, NULL, NULL, '1950', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (447, 'Nahuel Norman  - Corina  Rollano ', 446, NULL, NULL, '1971', '', '', '#00ffff', 1, '', '#00ffff', NULL),
-(448, 'Maximiliano', 447, NULL, NULL, '1990', '', '', '#00ffff', 1, '', '#00ffff', NULL),
-(449, 'Ramiro', 447, NULL, NULL, '', '', '', '#00ffff', 1, '', '#00ffff', NULL);
+(448, 'Maximiliano', 447, NULL, NULL, '1990', '', '', '#00ffff', 1, '', '#00ffff', NULL);
 INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, `nacimiento`, `muerte`, `comentario`, `colorlink`, `orden`, `enlace`, `colorfill`, `imagen`) VALUES
+(449, 'Ramiro', 447, NULL, NULL, '', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (450, 'Mauro Ulises â€“ Andrea Tensi  ', 446, NULL, NULL, '1972', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (451, 'Yari Gabriel ', 446, NULL, NULL, '1973', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (452, 'Rosendo PaÃºl', 446, NULL, NULL, '1975', '', '', '#00ffff', 1, '', '#00ffff', NULL),
@@ -829,7 +818,7 @@ INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, 
 (709, 'Ernesto', 15, NULL, NULL, '1890', '1958', '', '#00ffff', 1, '', '#00ffff', NULL),
 (710, 'MarÃ­a - Guillermo Delembert', 15, NULL, NULL, '1891', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (711, 'Elena Delembert Dri', 710, NULL, NULL, '', '', '', '#00ffff', 1, '', '#00ffff', NULL),
-(712, 'Elena Delembert Dri  AgustÃ­n Delembert Dri', 710, NULL, NULL, '', '', '', '#00ffff', 1, '', '#00ffff', NULL),
+(712, '                       	           Elena Delembert Dri  AgustÃ­n Delembert Dri', 710, NULL, NULL, '', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (713, ' Rita Delembert Dri - FÃ©lix Matiazi ', 710, NULL, NULL, '', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (714, 'JosÃ© - MarÃ­a Henner  ', 15, NULL, NULL, '1891', '1960', '', '#00ffff', 1, '', '#00ffff', NULL),
 (715, 'AnÃ­bal - ... Calvo', 714, NULL, NULL, '', '', '', '#00ffff', 1, '', '#00ffff', NULL),
@@ -1024,9 +1013,9 @@ INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, 
 (910, 'CÃ©sar Bracco Dri', 908, NULL, NULL, '', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (911, 'Sonia Bracco Dri', 908, NULL, NULL, '', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (912, 'Mario JosÃ© ', 17, NULL, NULL, 'YeruÃ¡, 1899   ', '1903', '', '#00ffff', 1, '', '#00ffff', NULL),
-(913, 'Josefa Santa (Pepa) -  HÃ©ctor Ãngel Strassera ', 17, NULL, NULL, '1901', '1988', 'Vivieron en la calle Entre RÃ­os de Concordia.', '#00ffff', 1, '', '#00ffff', NULL),
-(914, 'Juan JosÃ© Strassera Dri â€“MarÃ­a Blanca DÃ­az', 913, NULL, NULL, '1925 ', '1968', '', '#00ffff', 1, '', '#00ffff', NULL);
+(913, 'Josefa Santa (Pepa) -  HÃ©ctor Ãngel Strassera ', 17, NULL, NULL, '1901', '1988', 'Vivieron en la calle Entre RÃ­os de Concordia.', '#00ffff', 1, '', '#00ffff', NULL);
 INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, `nacimiento`, `muerte`, `comentario`, `colorlink`, `orden`, `enlace`, `colorfill`, `imagen`) VALUES
+(914, 'Juan JosÃ© Strassera Dri â€“MarÃ­a Blanca DÃ­az', 913, NULL, NULL, '1925 ', '1968', '', '#00ffff', 1, '', '#00ffff', NULL),
 (915, 'HÃ©ctor Ãngel Strassera Dri ', 913, NULL, NULL, '1927', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (916, 'MarÃ­a Josefa Strassera Dri â€“ Jorge P. Larrarte', 913, NULL, NULL, '1929', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (917, 'Hermelinda Hermanda', 17, NULL, NULL, 'YeruÃ¡, 1903 ', '1984', 'Religiosa.  ViviÃ³ en el convento de las Adoratrices en la calle Urquiza de Concordia.', '#00ffff', 1, '', '#00ffff', NULL),
@@ -1074,7 +1063,7 @@ INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, 
 (959, 'Daniel Alejandro Izaguirre Dri', 956, NULL, NULL, '1957', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (960, 'MarÃ­a Amalia Izaguirre Dri ', 956, NULL, NULL, '1958', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (961, 'Omar JosÃ© \"Pirucho\" - Amelia G. Pagliaro \"Pocha\" ', 17, NULL, NULL, '1926 ', '1970', '', '#00ffff', 1, '', '#00ffff', NULL),
-(962, 'Gustavo JosÃ© â€“ Marta B. Rojas', 961, NULL, NULL, '1961', '', '', '#00ffff', 1, '', '#00ffff', NULL),
+(962, '       	        Gustavo JosÃ© â€“ Marta B. Rojas', 961, NULL, NULL, '1961', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (963, 'Gabriel Alejandro ', 962, NULL, NULL, '1996', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (964, 'Florencia', 962, NULL, NULL, '2000', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (965, 'Antonio', 1, NULL, 1, '', '', 'PermaneciÃ³ (rimase) en Porpetto, Udine.', '#ff0000', 1, '', '#000000', NULL),
@@ -1123,7 +1112,7 @@ INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, 
 (1008, 'Pablo MartÃ­n ', 1005, NULL, NULL, '1980', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (1009, 'Eugenia Paola ', 1005, NULL, NULL, '1982', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (1010, 'Angelina Antonella', 1005, NULL, NULL, '1991', '', '', '#00ffff', 1, '', '#00ffff', NULL),
-(1011, 'Liliana del Carmen - HÃ©ctor Vitachi', 1003, NULL, NULL, '30/4/58', '', '', '#00ffff', 1, '', '#00ffff', NULL),
+(1011, ' 		 		Liliana del Carmen - HÃ©ctor Vitachi', 1003, NULL, NULL, '30/4/58', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (1012, 'GermÃ¡n DarÃ­o CÃ©sar ', 1011, NULL, NULL, '26/02/78', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (1013, 'Gabriela', 1011, NULL, NULL, '03/09/79', '', '', '#00ffff', 1, '', '#00ffff', NULL),
 (1014, 'Carina Vitachi Dri - Cristian Ceballos', 1011, NULL, NULL, '18/6/81', '', '', '#00ffff', 1, '', '#00ffff', NULL),
@@ -1239,7 +1228,7 @@ INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, 
 (1127, 'Gertrudis', 1109, NULL, NULL, '', '1975', '', '#00ffff', 6, '', '#00ffff', NULL),
 (1128, 'Antonio VÃ­ctor', 1109, NULL, NULL, '', '', '', '#00ffff', 7, '', '#00ffff', NULL),
 (1129, 'MarÃ­a Eva', 462, NULL, NULL, '08/08/2016', '', '', '#00ffff', 1, '', '#00ffff', NULL),
-(1130, 'Pietro - Anna Pez', NULL, NULL, NULL, 'Porpetto, Udine', '', '', '#ff0000', 2, '', '#ff0000', NULL),
+(1130, 'Pietro - Anna Pez', 1738, NULL, NULL, 'Porpetto, Udine', '', '', '#ff0000', 2, '', '#ff0000', NULL),
 (1131, 'Santiago - MarÃ­a Schiff', 1130, NULL, NULL, '12 / 07/ 1876 ', '01 / 11/ 36', 'Nacidos y criados en Porpetto. Arribaron a Buenos Aires el 25 de noviembre de 1911 con cinco de sus hijos.\r\nVivieron primero en Rosario, Barrio Vila. A fines de 1913  despuÃ©s se trasladaron a JesÃºs MarÃ­a, CÃ³rdoba, donde falleciÃ³ MarÃ­a hasta 1919.\r\nEl perÃ­odo de 1914 al 18 Santiago estuvo en Italia alistado en la Primera Guerra. Luego Santiago y sus hijos pasaron un par de aÃ±os en Saldan,  y finalmente se radicaron en Villa Allende a partir de 1920.', '#00ffff', 1, '', '#00ffff', NULL),
 (1133, 'Ciro Velausto â€“ Andrea Pascual', 1131, NULL, NULL, 'Porpetto, 20 / ', 'CÃ³rdoba, 06 / 10 / 88', 'Radicados en La Paz, CÃ³rdoba, en 1935, donde enviudÃ³ y permaneciÃ³ hasta 1985, en que se trasladÃ³ a CÃ³rdoba.', '#00ffff', 3, '', '#00ffff', NULL),
 (1134, 'Santiago Lucas  â€“ Matilde Brocqua', 1133, NULL, NULL, 'CÃ³rdoba, 20 / 02 / 29', '20 /  02 / 99', 'TranscurriÃ³ su infancia y adolescencia en Villa Allende y el resto de su vida en CÃ³rdoba.', '#00ffff', 1, '', '#00ffff', NULL),
@@ -1475,10 +1464,10 @@ INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, 
 (1364, 'Marli Rizzi Dri - Enio Ricardo Fett    ', 1363, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL),
 (1365, 'Felipe Ricardo', 1364, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL),
 (1366, 'PatrÃ­cia', 1364, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL),
-(1367, 'Dartanhan', 1364, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL),
-(1368, 'Hercules', 1364, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL),
-(1369, 'Maranatha', 1364, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL);
+(1367, 'Dartanhan', 1364, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL);
 INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, `nacimiento`, `muerte`, `comentario`, `colorlink`, `orden`, `enlace`, `colorfill`, `imagen`) VALUES
+(1368, 'Hercules', 1364, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL),
+(1369, 'Maranatha', 1364, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL),
 (1370, 'HermÃ­nia Rizzi Dri - JoÃ£o Batista da Silva ', 1363, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL),
 (1371, 'Cristiano', 1370, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL),
 (1372, 'Sandro Pedro Rizzi Dri - Ana Catarina Kasper', 1363, NULL, NULL, '', '', '', '#00ca00', 1, '', '#00ca00', NULL),
@@ -1674,7 +1663,874 @@ INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, 
 (1565, 'NÃ©stor Gustavo', 1564, NULL, NULL, 'ConcepciÃ³n del Uruguay, 5/06/66', '26/06/2007', '', '#00ffff', 1, '', '#ffffff', NULL),
 (1566, 'Claudio AdriÃ¡n', 1564, NULL, NULL, 'ConcepciÃ³n del Uruguay, ', '', '', '#ffffff', 1, '', '#00ffff', NULL),
 (1567, 'Juan Pablo', 1564, NULL, NULL, 'ConcepciÃ³n del Uruguay,', '', '', '#00ffff', 1, '', '#ffffff', NULL),
-(1568, 'Adolfo Ariel Maximiliano', 1564, NULL, NULL, 'ConcepciÃ³n del Uruguay,', '', '', '#ffffff', 1, '', '#00ffff', NULL);
+(1568, 'Adolfo Ariel Maximiliano', 1564, NULL, NULL, 'ConcepciÃ³n del Uruguay,', '', '', '#ffffff', 1, '', '#00ffff', NULL),
+(1569, 'Matias Alejandro', 2, 1, 2, 'Nacio', 'murio', 'era un buen tipo', NULL, NULL, '', NULL, NULL),
+(1570, 'Hijo De La Luna', 1569, 1, 6, 'que se yo', 'que se yo', 'que se yo', NULL, NULL, '', NULL, NULL),
+(1571, 'Domenico, Porpetto â€“ Elisabetta in Dri', NULL, NULL, NULL, '1590', '1637', '', NULL, NULL, '', NULL, NULL),
+(1572, 'Valentina - Bortolo di Vicenzo', 1571, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1573, 'Battista - Maria Pez', 1571, NULL, NULL, '1616', '', '', NULL, NULL, '', NULL, NULL),
+(1574, 'Juan Pepito', 11, 1, 2, '28/02/1992', '28/02/2002', 'prueba', NULL, NULL, '', NULL, NULL),
+(1575, 'Leonardo - Caterina Trevisan', 1571, NULL, NULL, '1619', '1651', '', NULL, NULL, '', NULL, NULL),
+(1576, 'Giovanni - Giovanna Botton', 1571, NULL, NULL, '1622', '1666', '', NULL, NULL, '', NULL, NULL),
+(1577, 'Giovanni Battista G. - Pasqua in Dri', 1571, NULL, NULL, '1624', '1689', '', NULL, NULL, '', NULL, NULL),
+(1578, 'Caterina G.', 1571, NULL, NULL, '1624', '', '', NULL, NULL, '', NULL, NULL),
+(1579, 'Giacomo ', 1571, NULL, NULL, '1636', '', '', NULL, NULL, '', NULL, NULL),
+(1580, 'Domenico ', 1573, NULL, NULL, '1638', '1650', '', NULL, NULL, '', NULL, NULL),
+(1581, 'Vincenzo - Caterina Bin', 1573, NULL, NULL, '1641', '1693', '', NULL, NULL, '', NULL, NULL),
+(1582, 'Francesco ', 1573, NULL, NULL, '1645', '1649', '', NULL, NULL, '', NULL, NULL),
+(1583, 'Domenica', 1573, NULL, NULL, '1651', '', '', NULL, NULL, '', NULL, NULL),
+(1584, 'Domenica ', 1575, NULL, NULL, '1641', '1646', '', NULL, NULL, '', NULL, NULL),
+(1585, 'Domenico', 1575, NULL, NULL, '1644', '1651', '', NULL, NULL, '', NULL, NULL),
+(1586, 'Giovanni Battista', 1575, NULL, NULL, '1646', '1647', '', NULL, NULL, '', NULL, NULL),
+(1587, 'Giovanna', 1575, NULL, NULL, '1647', '1647', '', NULL, NULL, '', NULL, NULL),
+(1588, 'Angelo', 1575, NULL, NULL, '1650', '1654', '', NULL, NULL, '', NULL, NULL),
+(1589, 'Valentina', 1575, NULL, NULL, '1651', '1651', '', NULL, NULL, '', NULL, NULL),
+(1590, 'Domenico - Pasqua Telon', 1576, NULL, NULL, '1654', '1707', '', NULL, NULL, '', NULL, NULL),
+(1591, 'Angela', 1576, NULL, NULL, '1657', '', '', NULL, NULL, '', NULL, NULL),
+(1592, 'Caterina - Gregorio Gor', 1576, NULL, NULL, '1665', '', '', NULL, NULL, '', NULL, NULL),
+(1593, 'Domenico - Orsola in Dri', 1577, NULL, NULL, '1653', '1714', '', NULL, NULL, '', NULL, NULL),
+(1594, 'Giacoma ', 1577, NULL, NULL, '1654', '', '', NULL, NULL, '', NULL, NULL),
+(1595, 'Maria', 1577, NULL, NULL, '1656', '1657', '', NULL, NULL, '', NULL, NULL),
+(1596, 'Leonardo ', 1577, NULL, NULL, '1666', '', '', NULL, NULL, '', NULL, NULL),
+(1597, 'Maria', 1581, NULL, NULL, '1664', '1670', '', NULL, NULL, '', NULL, NULL),
+(1598, 'Battista - Giuseppa in Dri', 1581, NULL, NULL, '1670', '1743', '', NULL, NULL, '', NULL, NULL),
+(1599, 'Battista - Domenica in Dri', 1581, NULL, NULL, '1670', '1743', '', NULL, NULL, '', NULL, NULL),
+(1600, 'Domenico', 1581, NULL, NULL, '1672', '1692', '', NULL, NULL, '', NULL, NULL),
+(1601, 'Maria ', 1581, NULL, NULL, '1676', '', '', NULL, NULL, '', NULL, NULL),
+(1602, 'Giuseppe - Caterina in Dri', 1581, NULL, NULL, '1685', '1752', '', NULL, NULL, '', NULL, NULL),
+(1603, 'Caterina ', 1598, NULL, NULL, '1695', '1702', '', NULL, NULL, '', NULL, NULL),
+(1604, 'Giacoma ', 1598, NULL, NULL, '1698', '1718', '', NULL, NULL, '', NULL, NULL),
+(1605, 'Giovanna ', 1598, NULL, NULL, '1699', '1701', '', NULL, NULL, '', NULL, NULL),
+(1606, 'Domenico - Giuseppa Zaina', 1598, NULL, NULL, '1701', '1727', '', NULL, NULL, '', NULL, NULL),
+(1607, 'Giovanna -', 1606, NULL, NULL, '1721', '1788', ' Porpetto, Casa 19', NULL, NULL, '', NULL, NULL),
+(1608, 'Giovanni Battista ', 1606, NULL, NULL, '1723', '1727', '', NULL, NULL, '', NULL, NULL),
+(1609, 'Francesco', 1606, NULL, NULL, '1726', '1788', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1610, 'Vincenzo', 1598, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1611, 'Leonardo', 1599, NULL, NULL, '1706', '1708', '', NULL, NULL, '', NULL, NULL),
+(1612, 'Domenico ', 1599, NULL, NULL, '1707', '1707', '', NULL, NULL, '', NULL, NULL),
+(1613, 'Giovanni Domenico', 1599, NULL, NULL, '1708', '1708', '', NULL, NULL, '', NULL, NULL),
+(1614, 'Pasqua - Giacomo Zaina', 1599, NULL, NULL, '1710', '1744', '', NULL, NULL, '', NULL, NULL),
+(1615, 'Francesco ', 1599, NULL, NULL, '1713', '1724', '', NULL, NULL, '', NULL, NULL),
+(1616, 'Caterina', 1599, NULL, NULL, '1719', '1722', '', NULL, NULL, '', NULL, NULL),
+(1617, 'Vincenzo - Angelica Botton', 1599, NULL, NULL, '1721', '1797', '', NULL, NULL, '', NULL, NULL),
+(1618, 'Francesco - Domenica Biassi', 1617, NULL, NULL, '1744', '1805', '', NULL, NULL, '', NULL, NULL),
+(1619, 'Angelica - Valentino Stella', 1618, NULL, NULL, '1744', '1812', '', NULL, NULL, '', NULL, NULL),
+(1620, 'Vincenzo ', 1618, NULL, NULL, '1777', '1778', '', NULL, NULL, '', NULL, NULL),
+(1621, 'Pasqua', 1618, NULL, NULL, '1779', '1780', '', NULL, NULL, '', NULL, NULL),
+(1622, 'Giovanni Battista ', 1618, NULL, NULL, '1782', '', '', NULL, NULL, '', NULL, NULL),
+(1623, 'Giovanni Domenico - Antonia Petruc ', 1617, NULL, NULL, '1745', '', '', NULL, NULL, '', NULL, NULL),
+(1624, 'Domenica - Paolo Paravano ', 1623, NULL, NULL, '1770', '', '', NULL, NULL, '', NULL, NULL),
+(1625, 'Domenica ', 1623, NULL, NULL, '1771', '', '', NULL, NULL, '', NULL, NULL),
+(1626, 'Domenica - Giacomo Cocetta', 1623, NULL, NULL, '1771', '', '', NULL, NULL, '', NULL, NULL),
+(1627, 'Giovanni Battista - Rosa Tilatti', 1623, NULL, NULL, '1773', '1827', '', NULL, NULL, '', NULL, NULL),
+(1628, 'Vincenzino ', 1627, NULL, NULL, '1802', '', '', NULL, NULL, '', NULL, NULL),
+(1629, 'Giovanni Battista', 1627, NULL, NULL, '1804', '', '', NULL, NULL, '', NULL, NULL),
+(1630, 'Giovanni Battista', 1627, NULL, NULL, '1805', '', '', NULL, NULL, '', NULL, NULL),
+(1631, 'Giovanni Giacomo', 1617, NULL, NULL, '1748', '1788', 'Casa 6', NULL, NULL, '', NULL, NULL),
+(1632, 'Giuseppe', 1617, NULL, NULL, '1751', '1772', 'Casa 6', NULL, NULL, '', NULL, NULL),
+(1633, 'Giovanni Pietro - Anna Totis', 1617, NULL, NULL, '1754', '1817', '', NULL, NULL, '', NULL, NULL),
+(1634, 'Giuseppe ', 1633, NULL, NULL, '1782', '1787', '', NULL, NULL, '', NULL, NULL),
+(1635, 'Marco - Pasqua Caterina Pez', 1633, NULL, NULL, '1785', '1851', '', NULL, NULL, '', NULL, NULL),
+(1636, 'Giovanna - Pietro Zaina', 1635, NULL, NULL, '1813', '1884', '', NULL, NULL, '', NULL, NULL),
+(1637, 'Anna Maria', 1635, NULL, NULL, '1817', '1817', '', NULL, NULL, '', NULL, NULL),
+(1638, 'Anna Aurora - Giovanni Domenico Dri', 1635, NULL, NULL, '1819', '1866', '', NULL, NULL, '', NULL, NULL),
+(1639, 'Giovanni Battista', 1635, NULL, NULL, '1821', '1821', '', NULL, NULL, '', NULL, NULL),
+(1640, 'Pietro - Teresa Grop', 1635, NULL, NULL, '1823', '1853', '', NULL, NULL, '', NULL, NULL),
+(1641, 'Marco - Giovanna Zaina', 1640, NULL, NULL, '1852', '1882', '', NULL, NULL, '', NULL, NULL),
+(1642, 'Maria Teresa', 1641, NULL, NULL, '1881', '', '', NULL, NULL, '', NULL, NULL),
+(1643, 'Giovanni Battista', 1635, NULL, NULL, '1822', '1822', '', NULL, NULL, '', NULL, NULL),
+(1644, 'Giuseppa - Francesco Pascoli', 1635, NULL, NULL, '1827', '1859', '', NULL, NULL, '', NULL, NULL),
+(1645, 'Pasqua ', 1635, NULL, NULL, '1830', '', '', NULL, NULL, '', NULL, NULL),
+(1646, 'Maria Giuseppa', 1633, NULL, NULL, '1789', '', '', NULL, NULL, '', NULL, NULL),
+(1647, 'Angelica - Francesco Fedrigo', 1633, NULL, NULL, '1791', '', '', NULL, NULL, '', NULL, NULL),
+(1648, 'Domenica ', 1617, NULL, NULL, '1756', '1758', '', NULL, NULL, '', NULL, NULL),
+(1649, 'Giovanni Battista', 1617, NULL, NULL, '1758', '', '', NULL, NULL, '', NULL, NULL),
+(1650, 'Domenica', 1617, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1651, 'Leonardo - Caterina in Dri', 1602, NULL, NULL, '1714', '', '', NULL, NULL, '', NULL, NULL),
+(1652, 'Domenica ', 1651, NULL, NULL, '1735', '', '', NULL, NULL, '', NULL, NULL),
+(1653, 'Giovanna - Vincenzo Zaina', 1602, NULL, NULL, '1717', '', '', NULL, NULL, '', NULL, NULL),
+(1654, 'Vincenzo', 1602, NULL, NULL, '1719', '1721', '', NULL, NULL, '', NULL, NULL),
+(1655, 'Maria', 1602, NULL, NULL, '1721', '1731', '', NULL, NULL, '', NULL, NULL),
+(1656, 'Domenica', 1602, NULL, NULL, '1724', '', '', NULL, NULL, '', NULL, NULL),
+(1657, 'Giovanna', 1590, NULL, NULL, '1692', '1692', '', NULL, NULL, '', NULL, NULL),
+(1658, 'Giovanna ', 1590, NULL, NULL, '1696', '1697', '', NULL, NULL, '', NULL, NULL),
+(1659, 'Anna Maria - Domenico Meneghin', 1590, NULL, NULL, '1708', '1707', '', NULL, NULL, '', NULL, NULL),
+(1660, 'Francesco ', 1591, NULL, NULL, '1687', '1687', '', NULL, NULL, '', NULL, NULL),
+(1661, 'Giovanni Battista -  Giovanna in Dri', 1593, NULL, NULL, '1677', '1732', '', NULL, NULL, '', NULL, NULL),
+(1662, 'Orsola', 1661, NULL, NULL, '1702', '1717', '', NULL, NULL, '', NULL, NULL),
+(1663, 'Caterina', 1661, NULL, NULL, '1709', '1714', '', NULL, NULL, '', NULL, NULL),
+(1664, 'Francesco', 1661, NULL, NULL, '1710', '1712', '', NULL, NULL, '', NULL, NULL),
+(1665, 'Giacoma', 1661, NULL, NULL, '1711', '1723', '', NULL, NULL, '', NULL, NULL),
+(1666, 'Giacomo - Venere in Dri', 1661, NULL, NULL, '1712', '1781', '', NULL, NULL, '', NULL, NULL),
+(1667, 'Domenica', 1666, NULL, NULL, '1735', '1752', '', NULL, NULL, '', NULL, NULL),
+(1668, 'Caterina', 1666, NULL, NULL, '1738', '', '', NULL, NULL, '', NULL, NULL),
+(1669, 'Giuseppa - Marco Zaina', 1666, NULL, NULL, '1740', '1783', '', NULL, NULL, '', NULL, NULL),
+(1670, 'Anna Maria - Giacomo Pantanali', 1666, NULL, NULL, '1741', '', '', NULL, NULL, '', NULL, NULL),
+(1671, 'Giovanni Battista - Anna Zaina', 1666, NULL, NULL, '1744', '1799', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1672, 'Giovanni Giacomo - Anna Zaina', 1671, NULL, NULL, '1772', '1845', '', NULL, NULL, '', NULL, NULL),
+(1673, 'Giovanni Leonardo - Anna Maria Turchetti', 1671, NULL, NULL, '1774', '1849', '', NULL, NULL, '', NULL, NULL),
+(1674, 'Francesca - Domenico Pez', 1673, NULL, NULL, '1802', '1836', '', NULL, NULL, '', NULL, NULL),
+(1675, 'Domenica', 1673, NULL, NULL, '1806', '1806', '', NULL, NULL, '', NULL, NULL),
+(1676, 'Domenica ', 1673, NULL, NULL, '1806', '1806', '', NULL, NULL, '', NULL, NULL),
+(1677, 'Domenica - Francesco di Luca', 1673, NULL, NULL, '1807', '1877', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1678, 'Anna Maria - Giovanni del Pin', 1673, NULL, NULL, '1809', '1871', '', NULL, NULL, '', NULL, NULL),
+(1679, 'Maria Teresa Giuseppa - Luigi Dri', 1673, NULL, NULL, '1811', '1902', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1680, 'Giuseppe ', 1673, NULL, NULL, '1821', '', '', NULL, NULL, '', NULL, NULL),
+(1681, 'Domenica - Antonio Maran', 1671, NULL, NULL, '1766', '', '', NULL, NULL, '', NULL, NULL),
+(1682, 'Giovanni Francesco - Lucia Turchetti', 1671, NULL, NULL, '1779', '1865', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1683, 'Giovanni Battista', 1682, NULL, NULL, '1806', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1684, 'Giovanni Domenico - Caterina Dri', 1682, NULL, NULL, '1808', '1868', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1685, 'Francesco Giuseppe - Caterina Pascut', 1684, NULL, NULL, '1837', '1892', '', NULL, NULL, '', NULL, NULL),
+(1686, 'Lucia', 1685, NULL, NULL, '8/10/1873', '1880', '', NULL, NULL, '', NULL, NULL),
+(1687, 'Luigi', 1685, NULL, NULL, '6/9/1875', '1876', '', NULL, NULL, '', NULL, NULL),
+(1688, 'Anna - Giuseppe Schiff', 1685, NULL, NULL, '6/1/1877', '1941', '', NULL, NULL, '', NULL, NULL),
+(1689, 'Teresa - Pietro Taverna', 1685, NULL, NULL, '22/11/78', '', '', NULL, NULL, '', NULL, NULL),
+(1690, 'Domenico', 1685, NULL, NULL, '13/11/1880', '1884', '', NULL, NULL, '', NULL, NULL),
+(1691, 'Luigi ', 1685, NULL, NULL, '8/10/1882', '1882', '', NULL, NULL, '', NULL, NULL),
+(1692, 'Giuseppe ', 1685, NULL, NULL, '28/4/1884', '1919', '', NULL, NULL, '', NULL, NULL),
+(1693, 'Lucia - Giovanni Mason', 1685, NULL, NULL, '8/6/1887', '1975', '', NULL, NULL, '', NULL, NULL),
+(1694, 'Domenico', 1685, NULL, NULL, '1890', '1890', '', NULL, NULL, '', NULL, NULL),
+(1695, 'Carlo', 1684, NULL, NULL, '1839', '1839', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1696, 'Lucia Maria Luigia - Natale Bramuzzo', 1684, NULL, NULL, '1841', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1697, 'Domenica - Domenico Dri', 1684, NULL, NULL, '1843', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1698, 'Rosa - Cirillo Pascut', 1684, NULL, NULL, '1846', '1916', '', NULL, NULL, '', NULL, NULL),
+(1699, 'Maria Carolina', 1684, NULL, NULL, '1849', '', '', NULL, NULL, '', NULL, NULL),
+(1700, 'Giovanni Giuseppe - Orsola Bragagnini', 1682, NULL, NULL, '1809', '1865', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1701, 'Leonardo - Maria Domenica Colaon', 1700, NULL, NULL, '1836', '1901', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1702, 'Guglielmo', 1701, NULL, NULL, '1858', '1861', '', NULL, NULL, '', NULL, NULL),
+(1703, 'Erminia', 1701, NULL, NULL, '1870', '1952', '', NULL, NULL, '', NULL, NULL),
+(1704, 'Giacomo', 1701, NULL, NULL, '1872', '', '', NULL, NULL, '', NULL, NULL),
+(1705, 'Clara', 1701, NULL, NULL, '1876', '1950', '', NULL, NULL, '', NULL, NULL),
+(1706, 'Anna Maria Luigia', 1701, NULL, NULL, '1879', '1960', '', NULL, NULL, '', NULL, NULL),
+(1707, 'Maria G.', 1701, NULL, NULL, '1883', '', '', NULL, NULL, '', NULL, NULL),
+(1708, 'Senzanome G. ', 1701, NULL, NULL, '1883', '1883', '', NULL, NULL, '', NULL, NULL),
+(1709, 'Elisa', 1701, NULL, NULL, '1885', '', '', NULL, NULL, '', NULL, NULL),
+(1710, 'Giacomo', 1700, NULL, NULL, '1838', '', '', NULL, NULL, '', NULL, NULL),
+(1711, 'Giovanni Battista - Giacoma Bianchini', 1700, NULL, NULL, '1839', '1908', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1712, 'Maria - Pietro Zaina', 1700, NULL, NULL, '1842', '', '', NULL, NULL, '', NULL, NULL),
+(1713, 'Luigi - Isabella Zaina', 1700, NULL, NULL, '1846', '1926', '', NULL, NULL, '', NULL, NULL),
+(1714, 'Maria ', 1713, NULL, NULL, '1872', '1876', '', NULL, NULL, '', NULL, NULL),
+(1715, 'Giuseppe', 1713, NULL, NULL, '18/11/1873', '1885', '', NULL, NULL, '', NULL, NULL),
+(1716, 'Lucia (Rosa ?)', 1713, NULL, NULL, '20/08/1875', '', '', NULL, NULL, '', NULL, NULL),
+(1717, 'Maria ', 1713, NULL, NULL, '12/09/1877', '', '', NULL, NULL, '', NULL, NULL),
+(1718, 'Antonio - Agostina Bragagnini', 1700, NULL, NULL, '1847', '1925', '', NULL, NULL, '', NULL, NULL),
+(1719, 'Pietro ', 1718, NULL, NULL, '20/12/1874', '', '', NULL, NULL, '', NULL, NULL),
+(1720, 'Anna', 1718, NULL, NULL, '6/02/1876', '1925', '', NULL, NULL, '', NULL, NULL),
+(1721, 'Pietro ', 1718, NULL, NULL, '16/11/1879', '', '', NULL, NULL, '', NULL, NULL),
+(1722, 'Davide', 1718, NULL, NULL, '6/08/1881', '', '', NULL, NULL, '', NULL, NULL),
+(1723, 'Lucia', 1718, NULL, NULL, '7/06/1883', '', '', NULL, NULL, '', NULL, NULL),
+(1724, 'Anna', 1718, NULL, NULL, '1884', '', '', NULL, NULL, '', NULL, NULL),
+(1725, 'Senzanome', 1718, NULL, NULL, '1886', '', '', NULL, NULL, '', NULL, NULL),
+(1726, 'Davide', 1718, NULL, NULL, '27/05/1887', '', '', NULL, NULL, '', NULL, NULL),
+(1727, 'Maria Maddalena - Francesco Giovanni Battista Zaina', 1682, NULL, NULL, '1813', '1907', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1728, 'Giuseppa ', 1682, NULL, NULL, '1816', '', '', NULL, NULL, '', NULL, NULL),
+(1729, 'Leonardo', 1682, NULL, NULL, '1818', '1818', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1730, 'Anna Maria', 1682, NULL, NULL, '1819', '1819', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1731, 'Domenico ', 1682, NULL, NULL, '1827', '', '', NULL, NULL, '', NULL, NULL),
+(1732, 'Giovanni Battista Antonio', 1671, NULL, NULL, '1781', '1785', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1733, 'Giovanni Pietro - Giacoma di Bert', 1671, NULL, NULL, '1783', '1841', '', NULL, NULL, '', NULL, NULL),
+(1734, 'Giovanni Giuseppe', 1733, NULL, NULL, '1809', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1735, 'Maria Caterina', 1733, NULL, NULL, '1810', '1813', '', NULL, NULL, '', NULL, NULL),
+(1736, 'Giuseppa ', 1733, NULL, NULL, '1813', '1813', '', NULL, NULL, '', NULL, NULL),
+(1737, 'Rosa - Giuseppe Luigi Zaina', 1733, NULL, NULL, '1814', '1903', '', NULL, NULL, '', NULL, NULL),
+(1738, 'Giovanni Pietro - Luigia Bragagnini', 1671, NULL, NULL, '1783', '1841', '', NULL, NULL, '', NULL, NULL),
+(1739, 'Giovanni Francesco - Domenica Pez', 1738, NULL, NULL, '1817', '1883', '', NULL, NULL, '', NULL, NULL),
+(1740, 'Policarpo ', 1739, NULL, NULL, '1853', '1853', '', NULL, NULL, '', NULL, NULL),
+(1741, 'Pietro Eliodoro - Maria Dri', 1739, NULL, NULL, '1855', '1930', '', NULL, NULL, '', NULL, NULL),
+(1742, 'Eliodoro ', 1739, NULL, NULL, '1855', '', '', NULL, NULL, '', NULL, NULL),
+(1743, 'Battistina', 1739, NULL, NULL, '1857', '1859', '', NULL, NULL, '', NULL, NULL),
+(1744, 'Battistina', 1739, NULL, NULL, '1860', '1866', '', NULL, NULL, '', NULL, NULL),
+(1745, 'Luisa', 1739, NULL, NULL, '1863', '1864', '', NULL, NULL, '', NULL, NULL),
+(1746, 'Giacomo', 1739, NULL, NULL, '1865', '1865', '', NULL, NULL, '', NULL, NULL),
+(1747, 'Leopoldo - Luisa Culaon', 1738, NULL, NULL, '1819', '1896', '', NULL, NULL, '', NULL, NULL),
+(1748, 'Pietro', 1747, NULL, NULL, '1859', '1860', '', NULL, NULL, '', NULL, NULL),
+(1749, 'Giacomo - Luisa di Bert', 1747, NULL, NULL, '1863', '1934', '', NULL, NULL, '', NULL, NULL),
+(1750, 'Pietro - Luigia G. Zaina', 1749, NULL, NULL, '1890', '', '', NULL, NULL, '', NULL, NULL),
+(1751, 'Egidio ', 1750, NULL, NULL, '1915', '1915', '', NULL, NULL, '', NULL, NULL),
+(1752, 'Leopolda - Evelino Minin', 1750, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1753, 'Vittoria - Giovanni Pez', 1750, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1754, 'Zita - Pietro Tesan', 1750, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1755, 'Adelchi - Caterina Danielis', 1750, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1756, 'Argia - Francesco Drusin', 1750, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1757, 'Ermenegildo - Marianna Mason', 1738, NULL, NULL, '1820', '1896', '', NULL, NULL, '', NULL, NULL),
+(1758, 'Pietro Antonio', 1757, NULL, NULL, '1850', '1851', '', NULL, NULL, '', NULL, NULL),
+(1759, 'Pietro', 1757, NULL, NULL, '1853', '1854', '', NULL, NULL, '', NULL, NULL),
+(1760, 'Beniamino Pietro - Giuseppa Schiff', 1757, NULL, NULL, '1855', '1928', '', NULL, NULL, '', NULL, NULL),
+(1761, 'Senzanome', 1757, NULL, NULL, '1859', '1859', '', NULL, NULL, '', NULL, NULL),
+(1762, 'Antonio ', 1760, NULL, NULL, '1882', '1882', '', NULL, NULL, '', NULL, NULL),
+(1763, 'Gioacchino - Isolina Dosolina Gentile', 1760, NULL, NULL, '1886', '', '', NULL, NULL, '', NULL, NULL),
+(1764, 'Adriano ', 1763, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1765, 'Adele', 1763, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1766, 'Alba', 1763, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1767, 'Zita Maria', 1763, NULL, NULL, '1920', '1921', '', NULL, NULL, '', NULL, NULL),
+(1768, 'Silvano', 1763, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1769, 'Marino', 1763, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1770, 'Maria Adele', 1760, NULL, NULL, '1888', '1890', '', NULL, NULL, '', NULL, NULL),
+(1771, 'Amabile - Giovanni Giacomo Pez ', 1738, NULL, NULL, '1823', '1882', '', NULL, NULL, '', NULL, NULL),
+(1772, 'Caterina - Giovanni Domenico Pez', 1738, NULL, NULL, '1825', '1901', '', NULL, NULL, '', NULL, NULL),
+(1773, 'Giovanna Battistina', 1738, NULL, NULL, '1828', '1844', '', NULL, NULL, '', NULL, NULL),
+(1774, 'Anna Maria - Giuseppe Canciani', 1738, NULL, NULL, '1829', '', '', NULL, NULL, '', NULL, NULL),
+(1775, 'Giacomo - Teresa Malisan', 1738, NULL, NULL, '1832', '1896', '', NULL, NULL, '', NULL, NULL),
+(1776, 'Remigio ', 1775, NULL, NULL, '1855', '', '', NULL, NULL, '', NULL, NULL),
+(1777, 'Luigi - Teresa del Pin', 1775, NULL, NULL, '1857', '', '', NULL, NULL, '', NULL, NULL),
+(1778, 'Gioacchino', 1775, NULL, NULL, '1859', '', '', NULL, NULL, '', NULL, NULL),
+(1779, 'Anselmo', 1775, NULL, NULL, '1861', '', '', NULL, NULL, '', NULL, NULL),
+(1780, 'Pasqua ', 1775, NULL, NULL, '1863', '1864', '', NULL, NULL, '', NULL, NULL),
+(1781, 'Senzanome', 1775, NULL, NULL, '1866', '', '', NULL, NULL, '', NULL, NULL),
+(1782, 'Maria ', 1775, NULL, NULL, '1869', '1871', '', NULL, NULL, '', NULL, NULL),
+(1783, 'Maria', 1775, NULL, NULL, '1872', '1874', '', NULL, NULL, '', NULL, NULL),
+(1784, 'Leonardo  â€“ Domenica Zaina ', 1738, NULL, NULL, '1834', '1914', '', NULL, NULL, '', NULL, NULL),
+(1785, 'Lucia â€“ Antonio Frisan ', 1784, NULL, NULL, '1859', '1913', '', NULL, NULL, '', NULL, NULL),
+(1786, 'Pietro - Teresa Zaina', 1784, NULL, NULL, '1861', '1919', '', NULL, NULL, '', NULL, NULL),
+(1787, 'Maria Giovanna - Giuseppe Francesco Pascut', 1786, NULL, NULL, '1888', '1917', '', NULL, NULL, '', NULL, NULL),
+(1788, 'Attilio', 1786, NULL, NULL, '1891', '', '', NULL, NULL, '', NULL, NULL),
+(1789, 'Massimo', 1786, NULL, NULL, '1893', '1917', '', NULL, NULL, '', NULL, NULL),
+(1790, 'Leonardo - Luisa', 1786, NULL, NULL, '1895', '', '', NULL, NULL, '', NULL, NULL),
+(1791, 'Pietro', 1790, NULL, NULL, '1922', '1922', '', NULL, NULL, '', NULL, NULL),
+(1792, 'Teresa', 1790, NULL, NULL, '1923', '1923', '', NULL, NULL, '', NULL, NULL),
+(1793, 'Cornelio - Gina Taverna', 1790, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1794, 'Massimo ', 1790, NULL, NULL, '1925', '1926', '', NULL, NULL, '', NULL, NULL),
+(1795, 'Anna', 1790, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1796, 'Romolo ', 1790, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1797, 'Adolfo - Italia Maria Schif', 1786, NULL, NULL, '1899', '1967', '', NULL, NULL, '', NULL, NULL),
+(1798, 'Giovanna Teresa', 1797, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1799, 'Carina Melania - Osvaldo Pacioni', 1797, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1800, 'Norvegia Maria - Lorenzo Adriano Zanon', 1797, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1801, 'Alfiero Adolfo - Silvana Domenica Dri', 1797, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1802, 'Sarma Maria Odessa - Antonio Cargnielutti', 1797, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1803, 'Vienna - Isidoro Pietro Sandri', 1784, NULL, NULL, '1863', '', '', NULL, NULL, '', NULL, NULL),
+(1804, 'Giovanni - Teresa Bertossi', 1784, NULL, NULL, '1866', '1938', '', NULL, NULL, '', NULL, NULL),
+(1805, 'Lucia - Aurelio Romeo Pez', 1804, NULL, NULL, '1895', '1924', '', NULL, NULL, '', NULL, NULL),
+(1806, 'Lodovina - Atilio Giovanni Grop', 1804, NULL, NULL, '1901', '', '', NULL, NULL, '', NULL, NULL),
+(1807, 'Eliseo G. ', 1804, NULL, NULL, '1905', '1905', '', NULL, NULL, '', NULL, NULL),
+(1808, 'Zaccaria ', 1804, NULL, NULL, '1905', '1905', '', NULL, NULL, '', NULL, NULL),
+(1809, 'Amelio Giuseppe - Vilma Schif', 1804, NULL, NULL, '1907', '1971', '', NULL, NULL, '', NULL, NULL),
+(1810, 'Taide Nerina Maria - Giuseppe Bollini', 1809, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1811, 'Dorotea Giovanna - Ferruccio Mario Jacuzzo', 1809, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1812, 'Attilia Amelia Giovanna ', 1809, NULL, NULL, '1940', '', '', NULL, NULL, '', NULL, NULL),
+(1813, 'Noemi', 1784, NULL, NULL, '1868', '', '', NULL, NULL, '', NULL, NULL),
+(1814, 'Daniele - Giuseppina Schiff', 1784, NULL, NULL, '1869', '1932', '', NULL, NULL, '', NULL, NULL),
+(1815, 'Antonio Giovanni - Teresa Schiff', 1814, NULL, NULL, '1897', '1935', '', NULL, NULL, '', NULL, NULL),
+(1816, 'Rosolino Antonio - Ines Patriarca', 1815, NULL, NULL, '1922', '2003', '', NULL, NULL, '', NULL, NULL),
+(1817, 'Claudia', 1816, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1818, '', 1816, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1819, 'Giuseppina Maria ', 1815, NULL, NULL, '1926', '1926', '', NULL, NULL, '', NULL, NULL),
+(1820, 'Marino - Annunziata Pez', 1814, NULL, NULL, '1900', '1935', '', NULL, NULL, '', NULL, NULL),
+(1821, 'Daniele Acheronzio - Prima Boemo ', 1820, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1822, 'Renato Belforte - Francesca Capriotti', 1820, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1823, 'Duilio Disma - Emilia Dri', 1814, NULL, NULL, '1902', '1945', '', NULL, NULL, '', NULL, NULL),
+(1824, 'Ampelio Luigi', 1823, NULL, NULL, '1930', '1930', '', NULL, NULL, '', NULL, NULL),
+(1825, 'Ildebrando - Alberta Diletta Pez', 1823, NULL, NULL, '1931', '2014', '', NULL, NULL, '', NULL, NULL),
+(1826, 'Viterbio Nabor - Gioiella Giovanna Bragagnini', 1814, NULL, NULL, '1904', '1960', '', NULL, NULL, '', NULL, NULL),
+(1827, 'Daniele - Ivana Cartarossi', 1826, NULL, NULL, '1932', '1980', '', NULL, NULL, '', NULL, NULL),
+(1828, 'Giuseppina Edda - Renato Zanin', 1826, NULL, NULL, '1934', '1986', '', NULL, NULL, '', NULL, NULL),
+(1829, 'Marina - Pietro Conturella', 1826, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1830, 'Giacinta - Orazio DÂ´Emigno', 1826, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1831, 'Francesco - Anna Tell', 1826, NULL, NULL, '1942', '2001', '', NULL, NULL, '', NULL, NULL),
+(1832, 'Luciano - Lorena Gallo', 1826, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1833, 'Franco - Savina Belloso', 1826, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1834, 'Rosa Maria - Eliseo Plos ', 1814, NULL, NULL, '1907', '', '', NULL, NULL, '', NULL, NULL),
+(1835, 'Elio Giuseppe - Rosa Pestrin ', 1814, NULL, NULL, '1908', '1993', '', NULL, NULL, '', NULL, NULL),
+(1836, 'Marino - Franca Zanin', 1835, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1837, 'Cesarina - Basilio Zucatto', 1835, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1838, 'Laura - Luigi Vida', 1835, NULL, NULL, '1942', '2007', '', NULL, NULL, '', NULL, NULL),
+(1839, 'Duilio - Anna Paravan', 1835, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1840, 'Loredana - Fernando Pitton', 1835, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1841, 'Maria Luisa - Giuseppe Vicentini', 1835, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1842, 'Teresa Elodia - Enrico Sguazzin', 1814, NULL, NULL, '1911', '1984', '', NULL, NULL, '', NULL, NULL),
+(1843, 'Maria Vienna - Evaristo Tibald', 1784, NULL, NULL, '1871', '1903', '', NULL, NULL, '', NULL, NULL),
+(1844, 'Luisa - Angelon Mandolin', 1784, NULL, NULL, '1873', '1946', '', NULL, NULL, '', NULL, NULL),
+(1845, 'Battistina ', 1784, NULL, NULL, '1875', '1877', '', NULL, NULL, '', NULL, NULL),
+(1846, 'Elisabetta - Luigi Leone Candotto', 1784, NULL, NULL, '1878', '', '', NULL, NULL, '', NULL, NULL),
+(1847, 'Pietro - Anna Pez', 1738, NULL, NULL, '1836', '1911', '', NULL, NULL, '', NULL, NULL),
+(1848, 'Luigi - Teresa Botto', 1847, NULL, NULL, '27/05/1868', '', '', NULL, NULL, '', NULL, NULL),
+(1849, 'Pietro Francesco', 1848, NULL, NULL, '2/12/1894', '', '', NULL, NULL, '', NULL, NULL),
+(1850, 'Rosa', 1847, NULL, NULL, '1870', '1872', '', NULL, NULL, '', NULL, NULL),
+(1851, 'Maria - Adamo Grop', 1847, NULL, NULL, '1872', '1949', '', NULL, NULL, '', NULL, NULL),
+(1852, 'Rosa - Alessandro Dri', 1847, NULL, NULL, '1874', '', '', NULL, NULL, '', NULL, NULL),
+(1853, 'Giacomo - Maria Schif', 1847, NULL, NULL, '1876', '', '', NULL, NULL, '', NULL, NULL),
+(1854, 'Senzanome', 1853, NULL, NULL, '1901', '1901', '', NULL, NULL, '', NULL, NULL),
+(1855, 'Ciro Venusto ', 1853, NULL, NULL, '1902', '', '', NULL, NULL, '', NULL, NULL),
+(1856, 'Griselda', 1853, NULL, NULL, '1903', '1904', '', NULL, NULL, '', NULL, NULL),
+(1857, 'Griselda', 1853, NULL, NULL, '1906', '', '', NULL, NULL, '', NULL, NULL),
+(1858, 'Antonio ', 1853, NULL, NULL, '1907', '', '', NULL, NULL, '', NULL, NULL);
+INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, `nacimiento`, `muerte`, `comentario`, `colorlink`, `orden`, `enlace`, `colorfill`, `imagen`) VALUES
+(1859, 'Gelinda', 1853, NULL, NULL, '1909', '1909', '', NULL, NULL, '', NULL, NULL),
+(1860, 'Remigia Gelinda', 1853, NULL, NULL, '1876', '', '', NULL, NULL, '', NULL, NULL),
+(1861, 'Giuseppe - Luisa Sandri', 1847, NULL, NULL, '1878', '1955', '', NULL, NULL, '', NULL, NULL),
+(1862, 'Iginio', 1861, NULL, NULL, '1905', '', '', NULL, NULL, '', NULL, NULL),
+(1863, 'Ermes Antonio', 1861, NULL, NULL, '1907', '1907', '', NULL, NULL, '', NULL, NULL),
+(1864, 'Ilda Maria ', 1861, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1865, 'Zoe Gioconda Rosa - Ado Fabrizio Bragagnini', 1861, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1866, 'Ermo Giuseppe ', 1861, NULL, NULL, '1916', '1919', '', NULL, NULL, '', NULL, NULL),
+(1867, 'Leandro Romolo ', 1861, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1868, 'Adalgisa Lucia - Giovanni Battista Scapinello', 1861, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1869, 'Alfeo Giuseppe - Iole Ida Sandri', 1861, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1870, 'Pasqua - Giovanni Turchetti', 1847, NULL, NULL, '1882', '1957', '', NULL, NULL, '', NULL, NULL),
+(1871, 'Antonia', 1671, NULL, NULL, '1785', '1785', '', NULL, NULL, '', NULL, NULL),
+(1872, '', 1671, NULL, NULL, '1744', '1799', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1873, 'Giuseppe G.', 1671, NULL, NULL, '1786', '1786', '', NULL, NULL, '', NULL, NULL),
+(1874, 'Antonio G.', 1671, NULL, NULL, '1786', '1786', '', NULL, NULL, '', NULL, NULL),
+(1875, 'Vincenzo - Lucia Zaina', 1671, NULL, NULL, '1787', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1876, 'Luigi - Maria Ceccon', 1875, NULL, NULL, '1812', '1892', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1877, 'Vincenzo ', 1876, NULL, NULL, '1819', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1878, 'Giacomo - Cecilia de Monte', 1875, NULL, NULL, '1816', '1861', '', NULL, NULL, '', NULL, NULL),
+(1879, 'Domenico - Maria Maddalena Piazza', 1878, NULL, NULL, '1853', '', '', NULL, NULL, '', NULL, NULL),
+(1880, 'Cecilia - Antonio Paravano', 1879, NULL, NULL, '1875', '', '', NULL, NULL, '', NULL, NULL),
+(1881, 'Lucia', 1879, NULL, NULL, '1877', '1889', '', NULL, NULL, '', NULL, NULL),
+(1882, 'Maria - Achille Grop', 1879, NULL, NULL, '1879', '1953', '', NULL, NULL, '', NULL, NULL),
+(1883, 'Giacomo ', 1879, NULL, NULL, '1881', '1906', '', NULL, NULL, '', NULL, NULL),
+(1884, 'Antonio ', 1879, NULL, NULL, '1883', '', '', NULL, NULL, '', NULL, NULL),
+(1885, 'Luigia', 1879, NULL, NULL, '28/5/85', '', '', NULL, NULL, '', NULL, NULL),
+(1886, 'Luigia - Luigi de Monte', 1879, NULL, NULL, '1887', '1915', '', NULL, NULL, '', NULL, NULL),
+(1887, 'Carlo', 1879, NULL, NULL, '1890', '', '', NULL, NULL, '', NULL, NULL),
+(1888, 'Lucia - Gioacchino Filiputti', 1879, NULL, NULL, '1892', '', '', NULL, NULL, '', NULL, NULL),
+(1889, 'Rosa ', 1879, NULL, NULL, '1895', '1896', '', NULL, NULL, '', NULL, NULL),
+(1890, 'Mario - Giovanna Zaina', 1879, NULL, NULL, '1896', '', '', NULL, NULL, '', NULL, NULL),
+(1891, 'Domenico', 1890, NULL, NULL, '1896', '', '', NULL, NULL, '', NULL, NULL),
+(1892, 'Carlo Lorenzo', 1890, NULL, NULL, '1896', '', '', NULL, NULL, '', NULL, NULL),
+(1893, 'Laurino Luigi', 1890, NULL, NULL, '1896', '', '', NULL, NULL, '', NULL, NULL),
+(1894, 'Giacomo Pietro', 1890, NULL, NULL, '1896', '', '', NULL, NULL, '', NULL, NULL),
+(1895, 'Eugenio Giacomo - Rosa Caterina Cecchini ', 1878, NULL, NULL, '1854', '1921', '', NULL, NULL, '', NULL, NULL),
+(1896, 'Teresa', 1895, NULL, NULL, '1878', '1878', '', NULL, NULL, '', NULL, NULL),
+(1897, 'Virginia', 1895, NULL, NULL, '1879', '1887', '', NULL, NULL, '', NULL, NULL),
+(1898, 'Gioacchino', 1895, NULL, NULL, '1881', '', '', NULL, NULL, '', NULL, NULL),
+(1899, 'Luigi - Emilia del Bianco', 1895, NULL, NULL, '1883', '', '', NULL, NULL, '', NULL, NULL),
+(1900, 'Eugenio ', 1899, NULL, NULL, '1911', '1912', '', NULL, NULL, '', NULL, NULL),
+(1901, 'Maria', 1899, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1902, 'Fiorenzo ', 1899, NULL, NULL, '1913', '1913', '', NULL, NULL, '', NULL, NULL),
+(1903, 'Antonio ', 1899, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1904, 'Fiorenzo Antonio', 1899, NULL, NULL, '1916', '1918', '', NULL, NULL, '', NULL, NULL),
+(1905, 'Margherita', 1899, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1906, 'Eugenio', 1899, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1907, 'Gioacchino', 1899, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1908, 'Lino', 1895, NULL, NULL, '1885', '1892', '', NULL, NULL, '', NULL, NULL),
+(1909, 'Elena Elisabetta', 1895, NULL, NULL, '1887', '1888', '', NULL, NULL, '', NULL, NULL),
+(1910, 'Giuseppa', 1895, NULL, NULL, '1889', '1891', '', NULL, NULL, '', NULL, NULL),
+(1911, 'Angelo ', 1895, NULL, NULL, '1890', '1890', '', NULL, NULL, '', NULL, NULL),
+(1912, 'Fiorina - Santo Menini', 1895, NULL, NULL, '1892', '', '', NULL, NULL, '', NULL, NULL),
+(1913, 'Elena - Domenico Lestani ', 1895, NULL, NULL, '1894', '1921', '', NULL, NULL, '', NULL, NULL),
+(1914, 'Lino -  Gisela Teresa del Pin', 1895, NULL, NULL, '1896', '', '', NULL, NULL, '', NULL, NULL),
+(1915, 'Elmo Eugenio', 1914, NULL, NULL, '1896', '', '', NULL, NULL, '', NULL, NULL),
+(1916, 'Davide', 1895, NULL, NULL, '1899', '1903', '', NULL, NULL, '', NULL, NULL),
+(1917, 'Luisa - Carlo Lestani', 1895, NULL, NULL, '1901', '', '', NULL, NULL, '', NULL, NULL),
+(1918, 'Rodolfo - Angelica del Pin', 1878, NULL, NULL, '1857', '', '', NULL, NULL, '', NULL, NULL),
+(1919, 'isidoro - Maria Chiarotto', 1918, NULL, NULL, '1886', '', '', NULL, NULL, '', NULL, NULL),
+(1920, 'Malvina Regina', 1919, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1921, 'Attilio ', 1919, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1922, 'Francesco', 1919, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1923, 'Adele ', 1919, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1924, 'Giovanna ', 1919, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1925, 'Ida', 1919, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1926, 'Alba', 1919, NULL, NULL, '1921', '1921', '', NULL, NULL, '', NULL, NULL),
+(1927, 'Alba ', 1919, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1928, 'Laura', 1919, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1929, 'Giovanni - Amabile Cargnelutti', 1918, NULL, NULL, '1890', '', '', NULL, NULL, '', NULL, NULL),
+(1930, 'Angela Ludovica', 1929, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1931, 'Giuseppe', 1929, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1932, 'Donato', 1929, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(1933, 'Egidio - Giorgia del Pin', 1918, NULL, NULL, '1893', '', '', NULL, NULL, '', NULL, NULL),
+(1934, 'Vincenzo ', 1918, NULL, NULL, '1894', '', '', NULL, NULL, '', NULL, NULL),
+(1935, 'Francesco Giuseppe ', 1918, NULL, NULL, '1914', '1977', '', NULL, NULL, '', NULL, NULL),
+(1936, 'Carlo', 1878, NULL, NULL, '1860', '', '', NULL, NULL, '', NULL, NULL),
+(1937, 'Anna Maria - Leopoldo del Pin', 1875, NULL, NULL, '1819', '1908', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1938, 'Giacomo - Maria Barbina', 1875, NULL, NULL, '1820', '1873', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1939, 'Antonio - Lucia del Pin', 1875, NULL, NULL, '1821', '1904', '', NULL, NULL, '', NULL, NULL),
+(1940, 'Angela - Giuseppe del Pin', 1875, NULL, NULL, '1823', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1941, 'Angela - Pietro del Bianco', 1875, NULL, NULL, '1823', '', '', NULL, NULL, '', NULL, NULL),
+(1942, 'Domenica Teresa', 1875, NULL, NULL, '1826', '1826', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1943, 'Senzanome', 1875, NULL, NULL, '1829', '1829', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1944, 'Rosa Antonia - Innocente del Pin', 1875, NULL, NULL, '1832', '1907', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1945, 'Giovanni Domenico Luigi', 1671, NULL, NULL, '1789', '', '', NULL, NULL, '', NULL, NULL),
+(1946, 'Giovanni Giuseppe ', 1671, NULL, NULL, '1794', '1794', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1947, 'Giacoma - Giovanni Giuseppe Antonio Pez', 1666, NULL, NULL, '1746', '1777', '', NULL, NULL, '', NULL, NULL),
+(1948, 'Giovanni Battista', 1666, NULL, NULL, '1748', '1757', '', NULL, NULL, '', NULL, NULL),
+(1949, 'Lucia - Giacomo Titton', 1666, NULL, NULL, '1751', '', '', NULL, NULL, '', NULL, NULL),
+(1950, 'Giuseppa ', 1661, NULL, NULL, '1713', '1721', '', NULL, NULL, '', NULL, NULL),
+(1951, 'Giacomo', 1661, NULL, NULL, '1714', '1714', '', NULL, NULL, '', NULL, NULL),
+(1952, 'Lucia - Leonardo Zaina', 1661, NULL, NULL, '1716', '1792', '', NULL, NULL, '', NULL, NULL),
+(1953, 'Giuseppa - Leonardo Ietri', 1661, NULL, NULL, '1717', '1795', '', NULL, NULL, '', NULL, NULL),
+(1954, 'Giovanni Giacomo - Domenica Zaina', 1661, NULL, NULL, '1718', '1791', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1955, 'Domenico ', 1954, NULL, NULL, '1741', '1802', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1956, 'Francesca ', 1954, NULL, NULL, '1744', '1813', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1957, 'Lucia - Pietro Pez', 1954, NULL, NULL, '1747', '1783', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1958, 'Battista Antonio', 1954, NULL, NULL, '1750', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1959, 'Caterina', 1954, NULL, NULL, '1753', '1753', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1960, 'Giuseppe - Lucia Zaina', 1954, NULL, NULL, '1754', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1961, 'Vincenzo Antonio - Anna Maria Zaina', 1960, NULL, NULL, '1787', '', '', NULL, NULL, '', NULL, NULL),
+(1962, 'Lucia Orsola ', 1961, NULL, NULL, '1808', '1808', 'Casa 5', NULL, NULL, '', NULL, NULL),
+(1963, 'Teresa', 1961, NULL, NULL, '1809', '1810', 'casa 5', NULL, NULL, '', NULL, NULL),
+(1964, 'Luigi Giuseppe Antonio ', 1961, NULL, NULL, '1811', '', 'Casa 5', NULL, NULL, '', NULL, NULL),
+(1965, 'Demetrio Giovanni', 1961, NULL, NULL, '1813', '', '', NULL, NULL, '', NULL, NULL),
+(1966, 'Agostina', 1961, NULL, NULL, '1818', '', '', NULL, NULL, '', NULL, NULL),
+(1967, 'Carlo Michele', 1954, NULL, NULL, '1757', '1757', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1968, 'Leonardo - Giacoma in Dri', 1661, NULL, NULL, '1721', '1795', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1969, 'Battista ', 1968, NULL, NULL, '1743', '1743', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1970, 'Anna - Giovanni Leonardo Scolz', 1968, NULL, NULL, '1745', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1971, 'Orsola', 1968, NULL, NULL, '1748', '1749', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1972, 'Leonardo - Pasqua Turchetti', 1661, NULL, NULL, '1721', '', '', NULL, NULL, '', NULL, NULL),
+(1973, 'Giovanni Francesco', 1972, NULL, NULL, '1753', '', '', NULL, NULL, '', NULL, NULL),
+(1974, 'Giovanni Battista - Domenica Pez', 1972, NULL, NULL, '1755', '', '', NULL, NULL, '', NULL, NULL),
+(1975, 'Caterina', 1974, NULL, NULL, '1778', '1779', '', NULL, NULL, '', NULL, NULL),
+(1976, 'Caterina', 1974, NULL, NULL, '1780', '1784', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1977, 'Giovanni Giuseppe Carlo Antonio ', 1974, NULL, NULL, '1781', '1781', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(1978, 'Anna Maria ', 1974, NULL, NULL, '1782', '1782', '', NULL, NULL, '', NULL, NULL),
+(1979, 'Giuseppe Antonio Carlo', 1974, NULL, NULL, '1783', '', '', NULL, NULL, '', NULL, NULL),
+(1980, 'Andrea', 1974, NULL, NULL, '1787', '1861', '', NULL, NULL, '', NULL, NULL),
+(1981, 'Luigi - Caterina Pez', 1974, NULL, NULL, '1789', '1870', '', NULL, NULL, '', NULL, NULL),
+(1982, 'Valentino - Anna Maria Schiff', 1981, NULL, NULL, '1821', '1887', '', NULL, NULL, '', NULL, NULL),
+(1983, 'Luigi', 1982, NULL, NULL, '1859', '1869', '', NULL, NULL, '', NULL, NULL),
+(1984, 'Maria', 1982, NULL, NULL, '1862', '1862', '', NULL, NULL, '', NULL, NULL),
+(1985, 'Alessandro - Rosa Dri', 1982, NULL, NULL, '1866', '', '', NULL, NULL, '', NULL, NULL),
+(1986, 'Giovanni Luigi', 1985, NULL, NULL, '1898', '', '', NULL, NULL, '', NULL, NULL),
+(1987, 'Luigi ', 1982, NULL, NULL, '1870', '1870', '', NULL, NULL, '', NULL, NULL),
+(1988, 'Maddalena', 1982, NULL, NULL, '1871', '1872', '', NULL, NULL, '', NULL, NULL),
+(1989, 'Giovanna ', 1982, NULL, NULL, '1876', '1880', '', NULL, NULL, '', NULL, NULL),
+(1990, 'Giovanni Pietro', 1981, NULL, NULL, '1823', '1824', '', NULL, NULL, '', NULL, NULL),
+(1991, 'Giacoma - Francesco di Luca', 1981, NULL, NULL, '1826', '1895', '', NULL, NULL, '', NULL, NULL),
+(1992, 'Pietro - Maria Teresa Bragagnini', 1981, NULL, NULL, '1829', '1898', '', NULL, NULL, '', NULL, NULL),
+(1993, 'Luisa - Pasquale Zaina', 1992, NULL, NULL, '1862', '1925', '', NULL, NULL, '', NULL, NULL),
+(1994, 'Luisa - Redento Tosorati', 1992, NULL, NULL, '1862', '1925', '', NULL, NULL, '', NULL, NULL),
+(1995, 'Enoc ', 1992, NULL, NULL, '1864', '', '', NULL, NULL, '', NULL, NULL),
+(1996, 'Anna Caterina - Giovanni Battista Anti', 1992, NULL, NULL, '1867', '1943', '', NULL, NULL, '', NULL, NULL),
+(1997, 'Giovanni Battista ', 1992, NULL, NULL, '1869', '1871', '', NULL, NULL, '', NULL, NULL),
+(1998, 'Giovanni Battista ', 1992, NULL, NULL, '1872', '1873', '', NULL, NULL, '', NULL, NULL),
+(1999, 'Maria ', 1992, NULL, NULL, '1875', '1880', '', NULL, NULL, '', NULL, NULL),
+(2000, 'Elia - Enrica Riccarda Giovanna Pez', 1992, NULL, NULL, '1878', '1959', '', NULL, NULL, '', NULL, NULL),
+(2001, 'Pietro Luigi ', 2000, NULL, NULL, '1904', '', '', NULL, NULL, '', NULL, NULL),
+(2002, 'Gelinda - Riccardo Antonio Sandri', 2000, NULL, NULL, '1906', '', '', NULL, NULL, '', NULL, NULL),
+(2003, 'Luigi Emeo - Ninfa Cignola', 2000, NULL, NULL, '1911', '1962', '', NULL, NULL, '', NULL, NULL),
+(2004, 'Marino Odone - Dirce Giugitta Zaina', 2000, NULL, NULL, '1913', '1975', '', NULL, NULL, '', NULL, NULL),
+(2005, 'Teresa Gertrude - Massimiliano Giuseppe Gobessi', 2004, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2006, 'Rina Riccarda Lucia', 2004, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2007, 'Anna - Giovanni Domenico Bragagnini', 1981, NULL, NULL, '1833', '1911', '', NULL, NULL, '', NULL, NULL),
+(2008, 'Giovanni Battista ', 1974, NULL, NULL, '1791', '1794', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2009, 'Giovanni - Maria in Dri', 1972, NULL, NULL, '1756', '1838', '', NULL, NULL, '', NULL, NULL),
+(2010, 'Carlo', 2009, NULL, NULL, '1786', '1864', '', NULL, NULL, '', NULL, NULL),
+(2011, 'Giovanni - Maddalena Zaina', 1972, NULL, NULL, '1756', '1838', '', NULL, NULL, '', NULL, NULL),
+(2012, 'Marco - Michela Pez', 2011, NULL, NULL, '1797', '1867', '', NULL, NULL, '', NULL, NULL),
+(2013, 'Giovanni Battista - Angela Bragagnini', 2012, NULL, NULL, '1823', '1894', '', NULL, NULL, '', NULL, NULL),
+(2014, 'Giuseppe - Pasqua Dri', 2012, NULL, NULL, '1827', '1893', '', NULL, NULL, '', NULL, NULL),
+(2015, 'Luisa - Leonardo Cecotti', 2014, NULL, NULL, '1863', '1951', '', NULL, NULL, '', NULL, NULL),
+(2016, 'Paolino - Maria Teresa Pez', 2014, NULL, NULL, '1866', '1921', '', NULL, NULL, '', NULL, NULL),
+(2017, 'Pasqua - Antonio Bigotto', 2016, NULL, NULL, '1891', '1918', '', NULL, NULL, '', NULL, NULL),
+(2018, 'Ida - Antonio Bigotto', 2016, NULL, NULL, '1893', '', '', NULL, NULL, '', NULL, NULL),
+(2019, 'Giovanna ', 2016, NULL, NULL, '1894', '', '', NULL, NULL, '', NULL, NULL),
+(2020, 'Amalia', 2016, NULL, NULL, '1896', '', '', NULL, NULL, '', NULL, NULL),
+(2021, 'Ivo G. - Teodora Lucia Bragagnini', 2016, NULL, NULL, '1903', '1966', '', NULL, NULL, '', NULL, NULL),
+(2022, 'Erto Paolino - Irma Maria Campaner', 2021, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2023, 'Amedeo - Letizia Ragazzo', 2021, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2024, 'Aldo - Anna Pierina Vecchiato', 2021, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2025, 'Renata Maria - Valentino Antonio Cristin', 2021, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2026, 'Eliseo ', 2016, NULL, NULL, '1903', '1903', '', NULL, NULL, '', NULL, NULL),
+(2027, 'Anna - Celso Filiputti', 2016, NULL, NULL, '1904', '', '', NULL, NULL, '', NULL, NULL),
+(2028, 'Luigi ', 2016, NULL, NULL, '1906', '', '', NULL, NULL, '', NULL, NULL),
+(2029, 'Antonio - Clelia Urban', 2016, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2030, 'Gianfranco', 2029, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2031, 'Maria - Giuseppe Cristian', 2014, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2032, 'Marco - Maria Teresa Zaina', 2014, NULL, NULL, '1870', '1956', '', NULL, NULL, '', NULL, NULL),
+(2033, 'Pietro - Ildegonda Pez', 2014, NULL, NULL, '1872', '1956', '', NULL, NULL, '', NULL, NULL),
+(2034, 'Giovanni - Maria Anna Ganzini', 2033, NULL, NULL, '1900', '', '', NULL, NULL, '', NULL, NULL),
+(2035, 'Luisa Maria - Remigio Grop', 2033, NULL, NULL, '1902', '', '', NULL, NULL, '', NULL, NULL),
+(2036, 'Senzanome', 2033, NULL, NULL, '1904', '1904', '', NULL, NULL, '', NULL, NULL),
+(2037, 'Anna Maria - Virginio Antonio Bragagnini', 2033, NULL, NULL, '1906', '', '', NULL, NULL, '', NULL, NULL),
+(2038, 'Carlo - Elda Sguazzin', 2033, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2039, 'Assunta Maria G. ', 2033, NULL, NULL, '1911', '1911', '', NULL, NULL, '', NULL, NULL),
+(2040, 'Lidia ', 2033, NULL, NULL, '1911', '1912', '', NULL, NULL, '', NULL, NULL),
+(2041, 'Eligio G. ', 2033, NULL, NULL, '1914', '1915', '', NULL, NULL, '', NULL, NULL),
+(2042, 'Lidia G.', 2033, NULL, NULL, '1914', '1914', '', NULL, NULL, '', NULL, NULL),
+(2043, 'Onorio ', 2033, NULL, NULL, '1915', '1916', '', NULL, NULL, '', NULL, NULL),
+(2044, 'Eligio Ottavio ', 2033, NULL, NULL, '1917', '1917', '', NULL, NULL, '', NULL, NULL),
+(2045, 'Maria - Giovanni Cristian', 2014, NULL, NULL, '1875', '', '', NULL, NULL, '', NULL, NULL),
+(2046, 'Remigio ', 2014, NULL, NULL, '1877', '1877', '', NULL, NULL, '', NULL, NULL),
+(2047, 'Remigio ', 2014, NULL, NULL, '1880', '1880', '', NULL, NULL, '', NULL, NULL),
+(2048, 'Maria Luisa - Pietro Sarvognan', 2012, NULL, NULL, '1829', '1856', '', NULL, NULL, '', NULL, NULL),
+(2049, 'Maria Francesca - Paolo Bertossi', 2012, NULL, NULL, '1833', '', '', NULL, NULL, '', NULL, NULL),
+(2050, 'Senzanome', 2012, NULL, NULL, '1834', '1834', '', NULL, NULL, '', NULL, NULL),
+(2051, 'Senzanome', 2012, NULL, NULL, '1836', '1836', '', NULL, NULL, '', NULL, NULL),
+(2052, 'Senzanome', 2012, NULL, NULL, '1836', '1836', '', NULL, NULL, '', NULL, NULL),
+(2053, 'Senzanome', 2012, NULL, NULL, '1838', '1838', '', NULL, NULL, '', NULL, NULL),
+(2054, 'Teresa Filomena ', 2012, NULL, NULL, '1839', '1840', '', NULL, NULL, '', NULL, NULL),
+(2055, 'Giovanni Battista - Teresa Pez', 2011, NULL, NULL, '1799', '1836', '', NULL, NULL, '', NULL, NULL),
+(2056, 'Maria Maddalena - Antonio Budai', 2055, NULL, NULL, '1822', '1908', '', NULL, NULL, '', NULL, NULL),
+(2057, 'Leonardo - Lucia Zaina', 2055, NULL, NULL, '1824', '1872', '', NULL, NULL, '', NULL, NULL),
+(2058, 'Teresa - Marco di Pascoli', 2057, NULL, NULL, '1851', '1924', '', NULL, NULL, '', NULL, NULL),
+(2059, 'Giovanni Battista - Luigia Gigante', 2057, NULL, NULL, '1853', '1921', '', NULL, NULL, '', NULL, NULL),
+(2060, 'Livia - Lauro Pascut', 2059, NULL, NULL, '1882', '1954', '', NULL, NULL, '', NULL, NULL),
+(2061, 'Senzanome', 2059, NULL, NULL, '1884', '1884', '', NULL, NULL, '', NULL, NULL),
+(2062, 'Enea Gionata', 2059, NULL, NULL, '1885', '1888', '', NULL, NULL, '', NULL, NULL),
+(2063, 'Luigi - Luigia di Luca', 2057, NULL, NULL, '1856', '', '', NULL, NULL, '', NULL, NULL),
+(2064, 'Riccardo ', 2063, NULL, NULL, '1882', '', '', NULL, NULL, '', NULL, NULL),
+(2065, 'Dario Raffaele', 2063, NULL, NULL, '1885', '', '', NULL, NULL, '', NULL, NULL),
+(2066, 'Benigna Adele', 2063, NULL, NULL, '1886', '', '', NULL, NULL, '', NULL, NULL),
+(2067, 'Maria Luigia - Giacinto Pez', 2057, NULL, NULL, '1861', '1928', '', NULL, NULL, '', NULL, NULL),
+(2068, 'Giuseppa ', 2055, NULL, NULL, '1827', '1830', '', NULL, NULL, '', NULL, NULL),
+(2069, 'Lucia ', 2055, NULL, NULL, '1828', '1829', '', NULL, NULL, '', NULL, NULL),
+(2070, 'Pietro - Teresa Zaina', 2055, NULL, NULL, '1830', '1879', '', NULL, NULL, '', NULL, NULL),
+(2071, 'Francesco Andrea ', 2070, NULL, NULL, '1861', '1872', '', NULL, NULL, '', NULL, NULL),
+(2072, 'Giovanni', 2070, NULL, NULL, '1864', '1872', '', NULL, NULL, '', NULL, NULL),
+(2073, 'Luigi', 2070, NULL, NULL, '1870', '1872', '', NULL, NULL, '', NULL, NULL),
+(2074, 'Luigia', 2070, NULL, NULL, '1873', '', '', NULL, NULL, '', NULL, NULL),
+(2075, 'Francesco', 2055, NULL, NULL, '1835', '1853', '', NULL, NULL, '', NULL, NULL),
+(2076, 'Vincenzo - Marianna Zamaro', 2011, NULL, NULL, '1801', '1845', '', NULL, NULL, '', NULL, NULL),
+(2077, 'Giovanni - Maria Mason', 2076, NULL, NULL, '183', '', '', NULL, NULL, '', NULL, NULL),
+(2078, 'Letizia ', 2077, NULL, NULL, '1868', '1877', '', NULL, NULL, '', NULL, NULL),
+(2079, 'Luigia ', 2077, NULL, NULL, '1870', '1871', '', NULL, NULL, '', NULL, NULL),
+(2080, 'Vincenzo', 2077, NULL, NULL, '1872', '1873', '', NULL, NULL, '', NULL, NULL),
+(2081, 'Vincenzo - Modesta Budai', 2077, NULL, NULL, '1875', '', '', NULL, NULL, '', NULL, NULL),
+(2082, 'Maria', 2081, NULL, NULL, '1901', '', '', NULL, NULL, '', NULL, NULL),
+(2083, 'Eligio', 2081, NULL, NULL, '1902', '', '', NULL, NULL, '', NULL, NULL),
+(2084, 'Giovanni', 2081, NULL, NULL, '1903', '', '', NULL, NULL, '', NULL, NULL),
+(2085, 'Letizia', 2077, NULL, NULL, '1878', '1880', '', NULL, NULL, '', NULL, NULL),
+(2086, 'Maria', 2077, NULL, NULL, '1880', '1880', '', NULL, NULL, '', NULL, NULL),
+(2087, 'Rosa - Francesco Mason', 2076, NULL, NULL, '1845', '1925', '', NULL, NULL, '', NULL, NULL),
+(2088, 'Giacoma - Giacomo Bratta', 2011, NULL, NULL, '1802', '1893', '', NULL, NULL, '', NULL, NULL),
+(2089, 'Francesco ', 2011, NULL, NULL, '1804', '1806', '', NULL, NULL, '', NULL, NULL),
+(2090, 'Francesco ', 2011, NULL, NULL, '1807', '1807', '', NULL, NULL, '', NULL, NULL),
+(2091, 'Francesco - Maria Cecotti', 2011, NULL, NULL, '1808', '1860', '', NULL, NULL, '', NULL, NULL),
+(2092, 'Luigi - Maria Teresa Giuseppa Dri', 2011, NULL, NULL, '1812', '1907', '', NULL, NULL, '', NULL, NULL),
+(2093, 'Senzanome ', 2092, NULL, NULL, '1839', '1839', '', NULL, NULL, '', NULL, NULL),
+(2094, 'Maria Maddalena', 2092, NULL, NULL, '1840', '1840', '', NULL, NULL, '', NULL, NULL),
+(2095, 'Senzanome', 2092, NULL, NULL, '1841', '1841', '', NULL, NULL, '', NULL, NULL),
+(2096, 'Giovanni Leonardo - Cecilia Tonini', 2092, NULL, NULL, '1843', '1933', '', NULL, NULL, '', NULL, NULL),
+(2097, 'Luigi ', 2096, NULL, NULL, '1874', '1875', '', NULL, NULL, '', NULL, NULL),
+(2098, 'Emilia Erminia - Antonio Bragagnini', 2096, NULL, NULL, '1875', '1920', '', NULL, NULL, '', NULL, NULL),
+(2099, 'Carolina - Antonio di Bert', 2096, NULL, NULL, '1878', '', '', NULL, NULL, '', NULL, NULL),
+(2100, 'Olga - Giuseppe Zaina', 2096, NULL, NULL, '1880', '1905', '', NULL, NULL, '', NULL, NULL),
+(2101, 'Valentino - Adele Maria Zaina', 2096, NULL, NULL, '1884', '1916', '', NULL, NULL, '', NULL, NULL),
+(2102, 'Enea - Teresa Cristian', 2101, NULL, NULL, '1905', '1964', '', NULL, NULL, '', NULL, NULL),
+(2103, 'Assunta Pierina', 2102, NULL, NULL, '1931', '1931', '', NULL, NULL, '', NULL, NULL),
+(2104, 'Valentino Pietro - Luisa Gazziola ', 2102, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2105, 'Santo Leonardo - Graziella Aiza', 2102, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2106, 'Aurelio Adolfo ', 2102, NULL, NULL, '1942', '1942', '', NULL, NULL, '', NULL, NULL),
+(2107, 'Alberto ', 2102, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2108, 'Luciano Adelio', 2102, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2109, 'Olga - Vincenzo Pez', 2101, NULL, NULL, '1907', '1976', '', NULL, NULL, '', NULL, NULL),
+(2110, 'Maggiorino Demetrio', 2101, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2111, 'Anna - Attilio Otellio Toribio Bramuzzo', 2101, NULL, NULL, '', '\r\n', '', NULL, NULL, '', NULL, NULL),
+(2112, 'Ida Evelina ', 2101, NULL, NULL, '1912', '1913', '', NULL, NULL, '', NULL, NULL),
+(2113, 'Evelina Maria - Agellino Sistoli', 2101, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2114, 'Assunta ', 2101, NULL, NULL, '1915', '1918', '', NULL, NULL, '', NULL, NULL),
+(2115, 'Valentino', 2101, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2116, 'Maria - Celestino Bianchini', 2096, NULL, NULL, '1886', '1963', '', NULL, NULL, '', NULL, NULL),
+(2117, 'Giuseppe', 2096, NULL, NULL, '1890', '', '', NULL, NULL, '', NULL, NULL),
+(2118, 'Maria Luigia - Francesco di Bert', 2092, NULL, NULL, '1845', '1893', '', NULL, NULL, '', NULL, NULL),
+(2119, 'Andrea - Piera Pez', 2092, NULL, NULL, '1847', '1930', '', NULL, NULL, '', NULL, NULL),
+(2120, 'Pia - Giacomo Bragagnini', 2119, NULL, NULL, '1869', '1940', '', NULL, NULL, '', NULL, NULL),
+(2121, 'Teresa - Giuseppe Zaina', 2119, NULL, NULL, '1871', '1946', '', NULL, NULL, '', NULL, NULL),
+(2122, 'Giacoma', 2119, NULL, NULL, '1872', '1872', '', NULL, NULL, '', NULL, NULL),
+(2123, 'Luigia - Giacomo Pez', 2119, NULL, NULL, '1873', '1949', '', NULL, NULL, '', NULL, NULL),
+(2124, 'Giacoma - Giacomo Dri', 2119, NULL, NULL, '1875', '', '', NULL, NULL, '', NULL, NULL),
+(2125, 'Francesco - Anna Dri', 2119, NULL, NULL, '1877', '1947', '', NULL, NULL, '', NULL, NULL),
+(2126, 'Edoardo - Luisa Assunta di Marco', 2125, NULL, NULL, '1902', '1955', '', NULL, NULL, '', NULL, NULL),
+(2127, 'Guglielmo Mario - Maria Celestina Tavaris ', 2126, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2128, 'Loretto Luciano - Clementina Musuruana', 2126, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2129, 'Luigi Rodolfo - Anita Burba', 2126, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2130, 'Maria Teresa', 2125, NULL, NULL, '1903', '1904', '', NULL, NULL, '', NULL, NULL),
+(2131, 'Maria Teresa - Guido Cudini', 2125, NULL, NULL, '1905', '', '', NULL, NULL, '', NULL, NULL),
+(2132, 'Andrea Antonio - Giuseppina Bragagnini', 2125, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2133, 'Bruno', 2132, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2134, 'Maria Lucilla', 2132, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2135, 'Ermenegilda - Remigio Antonio Zanini', 2125, NULL, NULL, '1907', '', '', NULL, NULL, '', NULL, NULL),
+(2136, 'Romana - Adelmo Tavian', 2125, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2137, 'Amelio - Rosina Milanopulo', 2125, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2138, 'Luigi - Amalia Dri', 2119, NULL, NULL, '1879', '', '', NULL, NULL, '', NULL, NULL),
+(2139, 'Adriano - Anna Lucia Minighin', 2138, NULL, NULL, '1904', '1973', '', NULL, NULL, '', NULL, NULL),
+(2140, 'Alfredo Luigi', 2139, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2141, 'Emilia - Duiliio Disma Dri', 2138, NULL, NULL, '1905', '1985', '', NULL, NULL, '', NULL, NULL),
+(2142, 'Emilia - Giuseppe Schiatti', 2138, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2143, 'Giacomo - Anna Rosilda Bragagnini', 2138, NULL, NULL, '1907', '', '', NULL, NULL, '', NULL, NULL),
+(2144, 'Donato Luigi', 2143, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2145, 'Amalia Anna', 2143, NULL, NULL, '1937', '1939', '', NULL, NULL, '', NULL, NULL),
+(2146, 'Maria - Abramo Filiputti', 2138, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2147, 'Giovanni - Dionisia Cargnelo', 2138, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2148, 'Germano Albino Luigi', 2147, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2149, 'Onoria ', 2138, NULL, NULL, '1916', '1916', '', NULL, NULL, '', NULL, NULL),
+(2150, 'Gelindo - Adelia Pallich', 2138, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2151, 'Ida - Eliseo Antonio Bragagnini', 2138, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2152, 'Umberto', 2119, NULL, NULL, '1881', '1881', '', NULL, NULL, '', NULL, NULL),
+(2153, 'Umberto - Maria Luigia Pez', 2119, NULL, NULL, '1882', '1953', '', NULL, NULL, '', NULL, NULL),
+(2154, 'Adolfo Rodolfo - Clementina Zaina', 2119, NULL, NULL, '1884', '1940', '', NULL, NULL, '', NULL, NULL),
+(2155, 'Giovanna - Romolo Sandri', 2154, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2156, 'Maiorina Maria', 2154, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2157, 'Iginio ', 2154, NULL, NULL, '912', '1913', '', NULL, NULL, '', NULL, NULL),
+(2158, 'Giacoma', 2154, NULL, NULL, '1913', '1916', '', NULL, NULL, '', NULL, NULL),
+(2159, 'Assunta', 2154, NULL, NULL, '1915', '1916', '', NULL, NULL, '', NULL, NULL),
+(2160, 'Adolfa - Bruno Peressin', 2154, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2161, 'Giovanni ', 2119, NULL, NULL, '1886', '1909', '', NULL, NULL, '', NULL, NULL),
+(2162, 'Venanzio - Elisabetta Schiff', 2119, NULL, NULL, '1888', '', '', NULL, NULL, '', NULL, NULL),
+(2163, 'Rosario ', 2162, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2164, 'Annibale', 2162, NULL, NULL, '1921', '1921', '', NULL, NULL, '', NULL, NULL),
+(2165, 'Giacoma', 2162, NULL, NULL, '1922', '1922', '', NULL, NULL, '', NULL, NULL),
+(2166, 'Marino Pietro', 2162, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2167, 'Annibale', 2119, NULL, NULL, '1890', '', '', NULL, NULL, '', NULL, NULL),
+(2168, 'Francesco ', 2092, NULL, NULL, '1850', '1850', '', NULL, NULL, '', NULL, NULL),
+(2169, 'Giuseppe Francesco', 2092, NULL, NULL, '1851', '1851', '', NULL, NULL, '', NULL, NULL),
+(2170, 'Orsola ', 1972, NULL, NULL, '1760', '1804', '', NULL, NULL, '', NULL, NULL),
+(2171, 'Giovanni Domenico - Sebastiana Francheschinis', 1972, NULL, NULL, '1762', '1828', '', NULL, NULL, '', NULL, NULL),
+(2172, 'Lucia', 2171, NULL, NULL, '1790', '1792', '', NULL, NULL, '', NULL, NULL),
+(2173, 'Anna Maria ', 1972, NULL, NULL, '1768', '1768', '', NULL, NULL, '', NULL, NULL),
+(2174, 'Orsola', 1661, NULL, NULL, '1723', '1724', '', NULL, NULL, '', NULL, NULL),
+(2175, 'Anna', 1661, NULL, NULL, '1725', '1725', '', NULL, NULL, '', NULL, NULL),
+(2176, 'Pasqua ', 1593, NULL, NULL, '1679', '1692', '', NULL, NULL, '', NULL, NULL),
+(2177, 'Leonardo ', 1593, NULL, NULL, '1683', '1692', '', NULL, NULL, '', NULL, NULL),
+(2178, 'Giovanni Giacomo', 1593, NULL, NULL, '1687', '1691', '', NULL, NULL, '', NULL, NULL),
+(2179, 'Vincenzo ', 1593, NULL, NULL, '1690', '1690', '', NULL, NULL, '', NULL, NULL),
+(2180, 'Maddalena', 1593, NULL, NULL, '1690', '1690', '', NULL, NULL, '', NULL, NULL),
+(2181, 'Giovanni', 1593, NULL, NULL, '1692', '1709', '', NULL, NULL, '', NULL, NULL),
+(2182, 'Giovanni Giacomo', 1593, NULL, NULL, '1693', '1707', '', NULL, NULL, '', NULL, NULL),
+(2183, 'Pasqua ', 1593, NULL, NULL, '1695', '1695', '', NULL, NULL, '', NULL, NULL),
+(2184, 'Pasqua', 1593, NULL, NULL, '1699', '1705', '', NULL, NULL, '', NULL, NULL),
+(2185, 'Leonardo - Giacoma Minighin', 1593, NULL, NULL, '1700', '', '', NULL, NULL, '', NULL, NULL),
+(2186, 'Bernardo Leonardo - Pasqua in Dri', 2185, NULL, NULL, '1724', '', '', NULL, NULL, '', NULL, NULL),
+(2187, 'Giacoma - Giovanni Domenico Pez', 2186, NULL, NULL, '1750', '1801', '', NULL, NULL, '', NULL, NULL),
+(2188, 'Agostino - Anna Pez', 2186, NULL, NULL, '1758', '1825', '', NULL, NULL, '', NULL, NULL),
+(2189, 'Giovanna Francesca', 2188, NULL, NULL, '1779', '', '', NULL, NULL, '', NULL, NULL),
+(2190, 'Agostino ', 2188, NULL, NULL, '1781', '1851', '', NULL, NULL, '', NULL, NULL),
+(2191, 'Teresa - Giuseppa Sguazzin', 2188, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2192, 'Caterina - Giovanni Battista Minighini', 2188, NULL, NULL, '1785', '1846', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2193, 'Giuseppe Antonio - Francesca Turchetti', 2188, NULL, NULL, '1786', '1853', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2194, 'Giovanni Domenico - Anna Aurora Dri', 2193, NULL, NULL, '1808', '1879', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2195, 'Maria ', 2194, NULL, NULL, '1845', '1958', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2196, 'Teresa - Giacomo Bragagnini', 2194, NULL, NULL, '1847', '1870', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2197, 'Valentino ', 2194, NULL, NULL, '1848', '1851', '', NULL, NULL, '', NULL, NULL),
+(2198, 'Giacoma ', 2194, NULL, NULL, '1851', '1855', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2199, 'Valentino ', 2194, NULL, NULL, '1852', '1855', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2200, 'Caterina', 2194, NULL, NULL, '1855', '1856', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2201, 'Giacoma - Pietro Giuseppe Zaina', 2194, NULL, NULL, '1857', '1893', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2202, 'Pasqua - Francesco Giuseppe Bragagnini', 2193, NULL, NULL, '1811', '1855', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2203, 'Anna Maria ', 2193, NULL, NULL, '1814', '1819', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2204, 'Giovanni Pietro ', 2193, NULL, NULL, '1818', '1847', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2205, 'Francesco - Maria Teresa Mazzorini', 2193, NULL, NULL, '1820', '', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2206, 'Ottaviano', 2205, NULL, NULL, '1853', '', '', NULL, NULL, '', NULL, NULL),
+(2207, 'Maria Teresa ', 2193, NULL, NULL, '1822', '1823', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2208, 'Luisa - Angelo Bragagnini', 2193, NULL, NULL, '1824', '1880', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2209, 'Giuseppe - Lucia Budai', 2193, NULL, NULL, '1825', '1865', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2210, 'Antonio - Lucia Pez', 2188, NULL, NULL, '1788', '1866', '', NULL, NULL, '', NULL, NULL),
+(2211, 'Valentino ', 2188, NULL, NULL, '1790', '', '', NULL, NULL, '', NULL, NULL),
+(2212, 'Gioanni Battista ', 2188, NULL, NULL, '1791', '1791', '', NULL, NULL, '', NULL, NULL),
+(2213, 'Giuseppa', 2188, NULL, NULL, '1792', '', '', NULL, NULL, '', NULL, NULL),
+(2214, 'Carlo Michele', 2188, NULL, NULL, '1794', '1867', '', NULL, NULL, '', NULL, NULL),
+(2215, 'Domenica Michele Dose', 2188, NULL, NULL, '1796', '', '', NULL, NULL, '', NULL, NULL),
+(2216, 'Orsola ', 2188, NULL, NULL, '1798', '1847', '', NULL, NULL, '', NULL, NULL),
+(2217, 'Giovanni Battista', 2188, NULL, NULL, '1800', '1800', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2218, 'Anna Maria G. ', 2188, NULL, NULL, '1800', '1800', '', NULL, NULL, '', NULL, NULL),
+(2219, 'Anna Maria - Giovanni Domenico Zanel', 2188, NULL, NULL, '1801', '', '', NULL, NULL, '', NULL, NULL),
+(2220, 'Giovanna - Leonardo Regattin', 2188, NULL, NULL, '1802', '', '', NULL, NULL, '', NULL, NULL),
+(2221, 'Pasqua ', 2185, NULL, NULL, '1725', '1745', '', NULL, NULL, '', NULL, NULL),
+(2222, 'Anna Maria - Angelo Bragagnini', 2185, NULL, NULL, '1731', '1803', '', NULL, NULL, '', NULL, NULL),
+(2223, 'Domenico ', 2185, NULL, NULL, '1734', '1734', '', NULL, NULL, '', NULL, NULL),
+(2224, 'Domenico', 2185, NULL, NULL, '1735', '1736', '', NULL, NULL, '', NULL, NULL),
+(2225, 'Leonardo - Angelica in Dri', 1593, NULL, NULL, '1700', '', '', NULL, NULL, '', NULL, NULL),
+(2226, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2227, 'Domenico - Giuseppa di Bert', 2225, NULL, NULL, '1737', '1810', '', NULL, NULL, '', NULL, NULL),
+(2228, 'Leonardo ', 2227, NULL, NULL, '1765', '1765', '', NULL, NULL, '', NULL, NULL),
+(2229, 'Bortolomeo - Anna Manganotti', 2227, NULL, NULL, '1766', '1826', '', NULL, NULL, '', NULL, NULL),
+(2230, 'Anna Maria ', 2229, NULL, NULL, '1788', '1796', 'Casa 11', NULL, NULL, '', NULL, NULL),
+(2231, 'Giuseppa', 2229, NULL, NULL, '1791', '1796', 'Casa 11', NULL, NULL, '', NULL, NULL),
+(2232, 'Giuseppe ', 2229, NULL, NULL, '1793', '1793', '', NULL, NULL, '', NULL, NULL),
+(2233, 'Domenico ', 2229, NULL, NULL, '1794', '', '', NULL, NULL, '', NULL, NULL),
+(2234, 'Giovanni Pietro - Pasqua Tel', 2229, NULL, NULL, '1796', '1859', '', NULL, NULL, '', NULL, NULL),
+(2235, 'Giovanni ', 2234, NULL, NULL, '1819', '1819', '', NULL, NULL, '', NULL, NULL),
+(2236, 'Giacomo - Maria Stella', 2234, NULL, NULL, '1821', '1890', '', NULL, NULL, '', NULL, NULL),
+(2237, 'Antonio - Maddalena Stroppolo', 2236, NULL, NULL, '1846', '1900', '', NULL, NULL, '', NULL, NULL),
+(2238, 'Matilde - Giovanni del Pin', 2237, NULL, NULL, '1873', '', '', NULL, NULL, '', NULL, NULL),
+(2239, 'Maria Virginia - Valentino Campiutti', 2237, NULL, NULL, '1874', '', '', NULL, NULL, '', NULL, NULL),
+(2240, 'Virginia ', 2237, NULL, NULL, '1876', '1879', '', NULL, NULL, '', NULL, NULL),
+(2241, 'Giacomo - Maria Rapetti', 2237, NULL, NULL, '1879', '', '', NULL, NULL, '', NULL, NULL),
+(2242, 'Edoardo Antonio ', 2241, NULL, NULL, '1902', '', '', NULL, NULL, '', NULL, NULL),
+(2243, 'Margherita Maddalena - ', 2241, NULL, NULL, '1903', '', '', NULL, NULL, '', NULL, NULL),
+(2244, 'Virginia - Luigi Tomasin', 2237, NULL, NULL, '1881', '', '', NULL, NULL, '', NULL, NULL),
+(2245, 'Teresa - Luigi Gaspardis', 2237, NULL, NULL, '1883', '', '', NULL, NULL, '', NULL, NULL),
+(2246, 'Egidio Fabiano Ermacora ', 2237, NULL, NULL, '1888', '', '', NULL, NULL, '', NULL, NULL),
+(2247, 'Pietro', 2237, NULL, NULL, '1891', '', '', NULL, NULL, '', NULL, NULL),
+(2248, 'Senzanome ', 2236, NULL, NULL, '1851', '1851', '', NULL, NULL, '', NULL, NULL),
+(2249, 'Giacomo - Maria Pez', 2234, NULL, NULL, '1821', '1890', '', NULL, NULL, '', NULL, NULL),
+(2250, 'Giuditta ', 2249, NULL, NULL, '1858', '1859', '', NULL, NULL, '', NULL, NULL),
+(2251, 'Giuditta - Luigi Bragagnini', 2249, NULL, NULL, '1863', '', '', NULL, NULL, '', NULL, NULL),
+(2252, 'Girolamo ', 2249, NULL, NULL, '1864', '1865', '', NULL, NULL, '', NULL, NULL),
+(2253, 'Alessandro - Lucia del Pin', 2249, NULL, NULL, '1869', '', '', NULL, NULL, '', NULL, NULL),
+(2254, 'Mario Giacomo ', 2253, NULL, NULL, '1896', '', '', NULL, NULL, '', NULL, NULL),
+(2255, 'Aldo', 2253, NULL, NULL, '1900', '', '', NULL, NULL, '', NULL, NULL),
+(2256, 'Ugo', 2253, NULL, NULL, '1902', '', '', NULL, NULL, '', NULL, NULL),
+(2257, 'Amando Leonardo ', 2253, NULL, NULL, '1904', '', '', NULL, NULL, '', NULL, NULL),
+(2258, 'Luigi Umberto', 2253, NULL, NULL, '1906', '', '', NULL, NULL, '', NULL, NULL),
+(2259, 'Luigia - Piettro Pittis', 2249, NULL, NULL, '1871', '', '', NULL, NULL, '', NULL, NULL),
+(2260, 'Giacomo - Maria Montina', 2234, NULL, NULL, '1821', '1890', '', NULL, NULL, '', NULL, NULL),
+(2261, 'Giovanni - Santa di Marco ', 2234, NULL, NULL, '1827', '', '', NULL, NULL, '', NULL, NULL),
+(2262, 'Angelo - Rosa Stella ', 2261, NULL, NULL, '1851', '', '', NULL, NULL, '', NULL, NULL),
+(2263, 'Pietro ', 2261, NULL, NULL, '1853', '', '', NULL, NULL, '', NULL, NULL),
+(2264, 'Maria ', 2261, NULL, NULL, '1856', '1857', '', NULL, NULL, '', NULL, NULL),
+(2265, 'Celestino ', 2261, NULL, NULL, '1858', '', '', NULL, NULL, '', NULL, NULL),
+(2266, 'Maria', 2261, NULL, NULL, '1860', '', '', NULL, NULL, '', NULL, NULL),
+(2267, 'Martino ', 2261, NULL, NULL, '1863', '', '', NULL, NULL, '', NULL, NULL),
+(2268, 'Amadio ', 2261, NULL, NULL, '1867', '', '', NULL, NULL, '', NULL, NULL),
+(2269, 'Giuseppe ', 2261, NULL, NULL, '1870', '', '', NULL, NULL, '', NULL, NULL),
+(2270, 'Teresa - Angelo Giacomo del Pin', 2229, NULL, NULL, '1798', '1828', '', NULL, NULL, '', NULL, NULL),
+(2271, 'Domenico - Teresa Speranza', 2229, NULL, NULL, '1800', '1850', '', NULL, NULL, '', NULL, NULL),
+(2272, 'Vincenzo - Battistina Giuseppa Turolo', 2271, NULL, NULL, '1824', '1869', '', NULL, NULL, '', NULL, NULL),
+(2273, 'Domenico ', 2272, NULL, NULL, '1855', '', '', NULL, NULL, '', NULL, NULL),
+(2274, 'Teresa', 2272, NULL, NULL, '1857', '1858', '', NULL, NULL, '', NULL, NULL),
+(2275, 'Teresa - Raffaello Vincenzo Diotisalvi', 2272, NULL, NULL, '1861', '', '', NULL, NULL, '', NULL, NULL),
+(2276, 'Regina', 2272, NULL, NULL, '1864', '1888', '', NULL, NULL, '', NULL, NULL),
+(2277, 'Maria - Giovanni Battista del Bianco', 2272, NULL, NULL, '1867', '1892', '', NULL, NULL, '', NULL, NULL),
+(2278, 'Bartolomeo', 2271, NULL, NULL, '1836', '1838', '', NULL, NULL, '', NULL, NULL),
+(2279, 'Caterina - Ludovico Macor', 2271, NULL, NULL, '1829', '1899', '', NULL, NULL, '', NULL, NULL),
+(2280, 'Pietro Antonio - Maria Cargnelutti', 2271, NULL, NULL, '1831', '', '', NULL, NULL, '', NULL, NULL),
+(2281, 'Lucia - Amadio Cecchini', 2280, NULL, NULL, '1860', '', '', NULL, NULL, '', NULL, NULL),
+(2282, 'Pietro Antonio - Anna Degano', 2271, NULL, NULL, '1831', '', '', NULL, NULL, '', NULL, NULL),
+(2283, 'Anna Maria - Leonardo Antonio del Pin', 2271, NULL, NULL, '1834', '', '', NULL, NULL, '', NULL, NULL),
+(2284, 'Anna Maria - Pietro di Marco ', 2271, NULL, NULL, '1834', '', '', NULL, NULL, '', NULL, NULL),
+(2285, 'Rosa Maria Giuseppa - Giuseppe Turolo ', 2271, NULL, NULL, '1837', '', '', NULL, NULL, '', NULL, NULL),
+(2286, 'Senzanome', 2271, NULL, NULL, '1842', '1842', '', NULL, NULL, '', NULL, NULL),
+(2287, 'Senzanome ', 2229, NULL, NULL, '1801', '1801', '', NULL, NULL, '', NULL, NULL),
+(2288, 'Marianna - Angelo Linza', 2229, NULL, NULL, '1803', '1869', '', NULL, NULL, '', NULL, NULL),
+(2289, 'Maria ', 2229, NULL, NULL, '1805', '1806', '', NULL, NULL, '', NULL, NULL),
+(2290, 'Anna Maria - Martino Lorenzon', 2229, NULL, NULL, '1807', '1842', '', NULL, NULL, '', NULL, NULL),
+(2291, 'Antonio - Giacoma Zaina', 2229, NULL, NULL, '1809', '1877', '', NULL, NULL, '', NULL, NULL),
+(2292, 'Luigi ', 2291, NULL, NULL, '1838', '1838', '', NULL, NULL, '', NULL, NULL),
+(2293, 'Bartolomeo - Lucia Pez', 2291, NULL, NULL, '1839', '1863', '', NULL, NULL, '', NULL, NULL),
+(2294, 'Giacoma - Pietro Pascut', 2293, NULL, NULL, '1863', '1950', '', NULL, NULL, '', NULL, NULL),
+(2295, 'Luigia ', 2291, NULL, NULL, '1842', '1842', '', NULL, NULL, '', NULL, NULL),
+(2296, 'Giovanni Battista - Lucia Bragagnini', 2291, NULL, NULL, '1843', '1912', '', NULL, NULL, '', NULL, NULL),
+(2297, 'Luigia ', 2296, NULL, NULL, '1874', '', '', NULL, NULL, '', NULL, NULL),
+(2298, 'Senzanome', 2296, NULL, NULL, '1876', '1876', '', NULL, NULL, '', NULL, NULL),
+(2299, 'Virginia ', 2296, NULL, NULL, '1880', '1951', '', NULL, NULL, '', NULL, NULL),
+(2300, 'Faustino ', 2296, NULL, NULL, '1885', '1885', '', NULL, NULL, '', NULL, NULL),
+(2301, 'Elvira', 2296, NULL, NULL, '1888', '1973', '', NULL, NULL, '', NULL, NULL),
+(2302, 'Giuseppe - Maria Zaina', 2291, NULL, NULL, '1846', '', '', NULL, NULL, '', NULL, NULL),
+(2303, 'Maria Teresa ', 2302, NULL, NULL, '1869', '1872', '', NULL, NULL, '', NULL, NULL),
+(2304, 'Bartolomeo - Maria Culosi', 2302, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2305, 'Orlando Giuseppe', 2304, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2306, 'Corinna', 2304, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2307, 'Alba Irene', 2304, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2308, 'Giovanni Battista - Giovanni Ioan', 2304, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2309, 'Decimo Romano - Fiorenza Maria Schif', 2304, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2310, 'Maria Teresa', 2302, NULL, NULL, '1874', '1880', '', NULL, NULL, '', NULL, NULL),
+(2311, 'Virginia ', 2302, NULL, NULL, '1876', '1878', '', NULL, NULL, '', NULL, NULL),
+(2312, 'Maria', 2291, NULL, NULL, '1851', '1851', '', NULL, NULL, '', NULL, NULL),
+(2313, 'Giovanni Giuseppe - Giovanna Grop', 2229, NULL, NULL, '1813', '1867', '', NULL, NULL, '', NULL, NULL),
+(2314, 'Giovanni Giuseppe - Antonia Petrucco', 2229, NULL, NULL, '1813', '1867', '', NULL, NULL, '', NULL, NULL),
+(2315, 'Anna Maria - Giovanni Battista Ciani', 2314, NULL, NULL, '1852', '', '', NULL, NULL, '', NULL, NULL),
+(2316, 'Bartolomeo ', 2314, NULL, NULL, '1854', '', '', NULL, NULL, '', NULL, NULL),
+(2317, 'Giuseppe - Maria Stroppolo', 2314, NULL, NULL, '1856', '', '', NULL, NULL, '', NULL, NULL),
+(2318, 'Bartolomeo ', 2317, NULL, NULL, '1890', '', '', NULL, NULL, '', NULL, NULL),
+(2319, 'Alessandro ', 2317, NULL, NULL, '1891', '1891', '', NULL, NULL, '', NULL, NULL),
+(2320, 'Rosa', 2317, NULL, NULL, '1892', '', '', NULL, NULL, '', NULL, NULL),
+(2321, 'Giovanna ', 2317, NULL, NULL, '1894', '', '', NULL, NULL, '', NULL, NULL),
+(2322, 'Alessandra - Giuseppe del Fabbro', 2317, NULL, NULL, '1897', '', '', NULL, NULL, '', NULL, NULL),
+(2323, 'Anna Angela', 2317, NULL, NULL, '1901', '', '', NULL, NULL, '', NULL, NULL),
+(2324, 'Rinaldo ', 2314, NULL, NULL, '1858', '1859', '', NULL, NULL, '', NULL, NULL),
+(2325, 'Giovanna - Bonaventura Pez', 2314, NULL, NULL, '1861', '', '', NULL, NULL, '', NULL, NULL),
+(2326, 'Valentina', 2314, NULL, NULL, '1861', '1861', '', NULL, NULL, '', NULL, NULL),
+(2327, 'Rinaldo - Antonia Anna Cargnelutti ', 2314, NULL, NULL, '1864', '', '', NULL, NULL, '', NULL, NULL),
+(2328, 'Luigi ', 2327, NULL, NULL, '1890', '', '', NULL, NULL, '', NULL, NULL),
+(2329, 'Francesco - Amabile Bratta', 2327, NULL, NULL, '1892', '', '', NULL, NULL, '', NULL, NULL),
+(2330, 'Maria - Antonio Cudini', 2327, NULL, NULL, '1895', '', '', NULL, NULL, '', NULL, NULL),
+(2331, 'Giuseppe', 2327, NULL, NULL, '1897', '', '', NULL, NULL, '', NULL, NULL),
+(2332, 'Virginio - Anna Maria Bratta', 2327, NULL, NULL, '1900', '', '', NULL, NULL, '', NULL, NULL),
+(2333, 'Luisa', 2332, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2334, 'Giovanni - Ida Bratta', 2327, NULL, NULL, '1902', '', '', NULL, NULL, '', NULL, NULL),
+(2335, 'Luigi Giuseppe - Bice Silvia Mason', 2334, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2336, 'Teresa', 2327, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2337, 'Pietro G. ', 2327, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2338, 'Virginia G.', 2327, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2339, 'Maria - Bernardo Pez', 2227, NULL, NULL, '1768', '1801', '', NULL, NULL, '', NULL, NULL),
+(2340, 'Angela ', 2227, NULL, NULL, '1772', '1773', 'Casa 27', NULL, NULL, '', NULL, NULL),
+(2341, 'Giovanni Pietro - Domenica Cocetta', 2227, NULL, NULL, '1776', '1851', '', NULL, NULL, '', NULL, NULL),
+(2342, 'Giovanni Battista ', 2341, NULL, NULL, '1798', '1830', 'Casa 3', NULL, NULL, '', NULL, NULL),
+(2343, 'Maria Maddalena', 2341, NULL, NULL, '1803', '1807', 'Casa 3', NULL, NULL, '', NULL, NULL),
+(2344, 'Leonardo ', 2341, NULL, NULL, '1804', '1844', 'Casa 23', NULL, NULL, '', NULL, NULL),
+(2345, 'Giuseppa - Pietro Pez', 2341, NULL, NULL, '1806', '1849', 'Casa 23', NULL, NULL, '', NULL, NULL),
+(2346, 'Maddalena - Domenico Minighini', 2341, NULL, NULL, '1809', '1879', '', NULL, NULL, '', NULL, NULL),
+(2347, 'Domenica ', 2227, NULL, NULL, '1778', '', '', NULL, NULL, '', NULL, NULL),
+(2348, 'Santa G. ', 2227, NULL, NULL, '1781', '1782', 'Casa 27', NULL, NULL, '', NULL, NULL),
+(2349, 'Angela - Giacomo Tel', 2227, NULL, NULL, '17381', '1822', '', NULL, NULL, '', NULL, NULL),
+(2350, 'Domenico - Pasqua Pez', 2225, NULL, NULL, '1737', '1810', '', NULL, NULL, '', NULL, NULL),
+(2351, 'Leonardo - Maria Francesca Zaina', 2350, NULL, NULL, '1795', '1866', '', NULL, NULL, '', NULL, NULL),
+(2352, 'Pasqua Caterina ', 2351, NULL, NULL, '1826', '1841', '', NULL, NULL, '', NULL, NULL),
+(2353, 'Pietro ', 2351, NULL, NULL, '1827', '1866', '', NULL, NULL, '', NULL, NULL),
+(2354, 'Domenico Giuseppe', 2351, NULL, NULL, '1829', '', '', NULL, NULL, '', NULL, NULL),
+(2355, 'Lucia - Francesco Pez', 2351, NULL, NULL, '1831', '1885', '', NULL, NULL, '', NULL, NULL),
+(2356, 'Giovanni Battista - Caterina Turchetti', 2351, NULL, NULL, '1832', '1862', '', NULL, NULL, '', NULL, NULL),
+(2357, 'Maria', 2356, NULL, NULL, '1859', '1859', '', NULL, NULL, '', NULL, NULL),
+(2358, 'Maria - Pietro Eliodoro Dri', 2356, NULL, NULL, '1860', '1941', '', NULL, NULL, '', NULL, NULL),
+(2359, 'Battistina ', 2356, NULL, NULL, '1863', '1872', '', NULL, NULL, '', NULL, NULL),
+(2360, 'Lucia ', 2350, NULL, NULL, '1797', '', '', NULL, NULL, '', NULL, NULL),
+(2361, 'Giacomo - Francesca Zaina', 2350, NULL, NULL, '1800', '1883', '', NULL, NULL, '', NULL, NULL),
+(2362, 'Pasqua - Giuseppe', 2361, NULL, NULL, '1839', '1880', '', NULL, NULL, '', NULL, NULL),
+(2363, 'Domenico - Domenica Dri', 2361, NULL, NULL, '1843', '', '', NULL, NULL, '', NULL, NULL),
+(2364, 'Alessandro ', 2363, NULL, NULL, '1868', '1881', '', NULL, NULL, '', NULL, NULL),
+(2365, 'Constantino - Emma Caterina Pez', 2363, NULL, NULL, '1870', '1947', '', NULL, NULL, '', NULL, NULL),
+(2366, 'Alessandro - Lucia Maria Pez', 2365, NULL, NULL, '1895', '', '', NULL, NULL, '', NULL, NULL),
+(2367, 'Maria Assunta', 2366, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2368, 'Marino Vincenzo ', 2366, NULL, NULL, '1922', '1943', '', NULL, NULL, '', NULL, NULL),
+(2369, 'Francesco Rocco - Petronilla Bianchi', 2366, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2370, 'Maria Teresa', 2369, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2371, 'Sergio Antonio', 2366, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2372, 'Isaia Faustino - Assunta di Luca ', 2365, NULL, NULL, '1898', '1969', '', NULL, NULL, '', NULL, NULL),
+(2373, 'Maria Giovanna - Giuseppe Schif', 2372, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2374, 'Amorino Luigi ', 2372, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2375, 'Noemi - Camillo Zaina', 2372, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2376, 'Silvana Domenica - Alfiero Adolfo Dri', 2372, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2377, 'Virgilio Domenico', 2372, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2378, 'Domenico Donato ', 2372, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2379, 'Bruna - Sergio Amadio Zaina', 2372, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2380, 'Giovanna Elisabetta - Gino Giacomo Urban', 2372, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2381, 'Sara - Walter Zuttion', 2372, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2382, 'Emma Maria ', 2372, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2383, 'Cristina Maria - Gelindo di Luca', 2365, NULL, NULL, '1900', '', '', NULL, NULL, '', NULL, NULL),
+(2384, 'Giacomo - Luisa Maria Minighin', 2365, NULL, NULL, '1902', '', '', NULL, NULL, '', NULL, NULL),
+(2385, 'Virgilio', 2365, NULL, NULL, '1904', '1928', '', NULL, NULL, '', NULL, NULL),
+(2386, 'Annunziata Caterina ', 2365, NULL, NULL, '1905', '', '', NULL, NULL, '', NULL, NULL),
+(2387, 'Riccardo ', 2365, NULL, NULL, '1907', '1908', '', NULL, NULL, '', NULL, NULL),
+(2388, 'Riccardo ', 2365, NULL, NULL, '1909', '1909', '', NULL, NULL, '', NULL, NULL),
+(2389, 'Lino ', 2365, NULL, NULL, '1911', '1911', '', NULL, NULL, '', NULL, NULL),
+(2390, 'Francesca Caterina - Fiore Antonio Pascoli', 2365, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2391, 'Giacomo ', 2363, NULL, NULL, '1873', '', '', NULL, NULL, '', NULL, NULL),
+(2392, 'Pio - Rosa Sguazzin', 2363, NULL, NULL, '1875', '1963', '', NULL, NULL, '', NULL, NULL),
+(2393, 'Cristina ', 2363, NULL, NULL, '1877', '1880', '', NULL, NULL, '', NULL, NULL),
+(2394, 'Senzanome', 2363, NULL, NULL, '1880', '1880', '', NULL, NULL, '', NULL, NULL),
+(2395, 'Valerio - Celestina Sandri', 2363, NULL, NULL, '1882', '1975', '', NULL, NULL, '', NULL, NULL),
+(2396, 'Faustino Antonio ', 2395, NULL, NULL, '1906', '1906', '', NULL, NULL, '', NULL, NULL),
+(2397, 'Emidio Edoardo - Santina del Pin', 2395, NULL, NULL, '1907', '', '', NULL, NULL, '', NULL, NULL);
+INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, `nacimiento`, `muerte`, `comentario`, `colorlink`, `orden`, `enlace`, `colorfill`, `imagen`) VALUES
+(2398, 'Remo Vais G. - Cristina Anna Ermert', 2397, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2399, 'Romolo Ramis G.', 2397, NULL, NULL, '1931', '1948', '', NULL, NULL, '', NULL, NULL),
+(2400, 'Emidio Edoardo - Maria Teresa Pascoli', 2395, NULL, NULL, '1907', '', '', NULL, NULL, '', NULL, NULL),
+(2401, 'Silvia Anita - Giorgio Luigi Pellegrini', 2400, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2402, 'Pietro Francesco ', 2400, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2403, 'Valeria Fausta', 2400, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2404, 'Luciano - Argia Gemma Zaina', 2395, NULL, NULL, '1985', '1976', '', NULL, NULL, '', NULL, NULL),
+(2405, 'Giovanni Domenico', 2404, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2406, 'Anna G.', 2404, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2407, 'Maria G. - Giovanni Tavian', 2404, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2408, 'Vanilia Rosa - Giovanni Erminio Pascut', 2395, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2409, 'Orazio - Giovanna Zaina ', 2395, NULL, NULL, '1911', '1971', '', NULL, NULL, '', NULL, NULL),
+(2410, 'Loretta Maria - Beniamino Pascut', 2409, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2411, 'Bruno ', 2409, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2412, 'Luigi - Giovanna Migotti', 2395, NULL, NULL, '1914', '1954', '', NULL, NULL, '', NULL, NULL),
+(2413, 'Mariella Anna Maria ', 2412, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2414, 'Egidio Roberto', 2412, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2415, 'Lorenza Caterina', 2412, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2416, 'Valerio Giacomo - Ofelia Martina Vecchiato ', 2395, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2417, 'Graziella Paola - Sergio Lostuzzi', 2416, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2418, 'Vittorio', 2395, NULL, NULL, '1919', '1919', '', NULL, NULL, '', NULL, NULL),
+(2419, 'Aldo Giuseppe - Nieves Olga Zaina', 2395, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2420, 'Concetta Maria - Giuseppe Arturo Amilcare Tibald', 2395, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2421, 'Bruna Lucia - Bruno di Luca', 2395, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2422, 'Faustino G.', 2363, NULL, NULL, '1884', '1884', '', NULL, NULL, '', NULL, NULL),
+(2423, 'Giavito ', 2363, NULL, NULL, '1884', '1884', '', NULL, NULL, '', NULL, NULL),
+(2424, 'Michele ', 2350, NULL, NULL, '1803', '1807', 'casa 19', NULL, NULL, '', NULL, NULL),
+(2425, 'Teresa - Luigi Pez', 2350, NULL, NULL, '1806', '1862', 'Casa 19', NULL, NULL, '', NULL, NULL),
+(2426, 'Anna Maria ', 2350, NULL, NULL, '1809', '', '', NULL, NULL, '', NULL, NULL),
+(2427, 'Caterina', 2225, NULL, NULL, '1743', '', '', NULL, NULL, '', NULL, NULL),
+(2428, 'Giovanni Antonio - Lucia in Dri', NULL, NULL, NULL, '1596', '1626', '', NULL, NULL, '', NULL, NULL),
+(2429, 'Domenico - Geronima Trevisan ', 2430, NULL, NULL, '1598', '', '', NULL, NULL, '', NULL, NULL),
+(2430, 'Sconosciuto', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2431, 'Domenico  â€“ Elisabetta in Dri', 2430, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2432, 'Giovanni Antonio - Lucia in Dri', 2430, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL),
+(2433, 'Domenico - Geronima Trevisan', 2430, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1682,20 +2538,16 @@ INSERT INTO `pariente` (`id`, `nombre`, `padre_id`, `origen_id`, `radicado_id`, 
 -- Estructura de tabla para la tabla `persona`
 --
 
-DROP TABLE IF EXISTS `persona`;
-CREATE TABLE IF NOT EXISTS `persona` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `persona` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `apellido` varchar(255) NOT NULL,
   `fecha_nacimiento` date DEFAULT NULL,
   `fecha_fallecimiento` date DEFAULT NULL,
   `comentario` text,
   `nivelnac_id` int(11) DEFAULT NULL,
-  `nivelfallec_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `nnacfk` (`nivelnac_id`),
-  KEY `nfallecfk` (`nivelfallec_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `nivelfallec_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `persona`
@@ -1713,14 +2565,11 @@ INSERT INTO `persona` (`id`, `nombre`, `apellido`, `fecha_nacimiento`, `fecha_fa
 -- Estructura de tabla para la tabla `provincia`
 --
 
-DROP TABLE IF EXISTS `provincia`;
-CREATE TABLE IF NOT EXISTS `provincia` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `provincia` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL,
-  `pais_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `paisfk` (`pais_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `pais_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `provincia`
@@ -1735,18 +2584,12 @@ INSERT INTO `provincia` (`id`, `nombre`, `pais_id`) VALUES
 -- Estructura de tabla para la tabla `relacionciudad`
 --
 
-DROP TABLE IF EXISTS `relacionciudad`;
-CREATE TABLE IF NOT EXISTS `relacionciudad` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `relacionciudad` (
+  `id` int(11) NOT NULL,
   `rel_id` int(11) NOT NULL,
   `desde_id` int(11) NOT NULL,
-  `hasta_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `relciudadfk` (`rel_id`,`desde_id`,`hasta_id`),
-  KEY `relcfk` (`rel_id`),
-  KEY `desdecfk` (`desde_id`),
-  KEY `hastacfk` (`hasta_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `hasta_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `relacionciudad`
@@ -1764,17 +2607,11 @@ INSERT INTO `relacionciudad` (`id`, `rel_id`, `desde_id`, `hasta_id`) VALUES
 -- Estructura de tabla para la tabla `relacionpersona`
 --
 
-DROP TABLE IF EXISTS `relacionpersona`;
-CREATE TABLE IF NOT EXISTS `relacionpersona` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `relacionpersona` (
+  `id` int(11) NOT NULL,
   `rel_id` int(11) NOT NULL,
   `desde_id` int(11) NOT NULL,
-  `hasta_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `relacionunq` (`rel_id`,`desde_id`,`hasta_id`),
-  KEY `relfk` (`rel_id`),
-  KEY `desdepfk` (`desde_id`),
-  KEY `hastapfk` (`hasta_id`)
+  `hasta_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1783,12 +2620,10 @@ CREATE TABLE IF NOT EXISTS `relacionpersona` (
 -- Estructura de tabla para la tabla `tiporelciudad`
 --
 
-DROP TABLE IF EXISTS `tiporelciudad`;
-CREATE TABLE IF NOT EXISTS `tiporelciudad` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+CREATE TABLE `tiporelciudad` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tiporelciudad`
@@ -1806,12 +2641,10 @@ INSERT INTO `tiporelciudad` (`id`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `tiporelpersona`
 --
 
-DROP TABLE IF EXISTS `tiporelpersona`;
-CREATE TABLE IF NOT EXISTS `tiporelpersona` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+CREATE TABLE `tiporelpersona` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tiporelpersona`
@@ -1828,13 +2661,11 @@ INSERT INTO `tiporelpersona` (`id`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `ubicacion`
 --
 
-DROP TABLE IF EXISTS `ubicacion`;
-CREATE TABLE IF NOT EXISTS `ubicacion` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ubicacion` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL,
-  `colorlinea` varchar(15) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `colorlinea` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ubicacion`
@@ -1845,6 +2676,170 @@ INSERT INTO `ubicacion` (`id`, `nombre`, `colorlinea`) VALUES
 (2, 'Argentina', ''),
 (6, 'Brasil', ''),
 (7, 'UbicaciÃ³n desconocida', '');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `ciudad`
+--
+ALTER TABLE `ciudad`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `provinciafk` (`provincia_id`);
+
+--
+-- Indices de la tabla `nivelfecha`
+--
+ALTER TABLE `nivelfecha`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pais`
+--
+ALTER TABLE `pais`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `parametro`
+--
+ALTER TABLE `parametro`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pariente`
+--
+ALTER TABLE `pariente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `persona`
+--
+ALTER TABLE `persona`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `nnacfk` (`nivelnac_id`),
+  ADD KEY `nfallecfk` (`nivelfallec_id`);
+
+--
+-- Indices de la tabla `provincia`
+--
+ALTER TABLE `provincia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `paisfk` (`pais_id`);
+
+--
+-- Indices de la tabla `relacionciudad`
+--
+ALTER TABLE `relacionciudad`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `relciudadfk` (`rel_id`,`desde_id`,`hasta_id`),
+  ADD KEY `relcfk` (`rel_id`),
+  ADD KEY `desdecfk` (`desde_id`),
+  ADD KEY `hastacfk` (`hasta_id`);
+
+--
+-- Indices de la tabla `relacionpersona`
+--
+ALTER TABLE `relacionpersona`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `relacionunq` (`rel_id`,`desde_id`,`hasta_id`),
+  ADD KEY `relfk` (`rel_id`),
+  ADD KEY `desdepfk` (`desde_id`),
+  ADD KEY `hastapfk` (`hasta_id`);
+
+--
+-- Indices de la tabla `tiporelciudad`
+--
+ALTER TABLE `tiporelciudad`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tiporelpersona`
+--
+ALTER TABLE `tiporelpersona`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `ubicacion`
+--
+ALTER TABLE `ubicacion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `ciudad`
+--
+ALTER TABLE `ciudad`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `nivelfecha`
+--
+ALTER TABLE `nivelfecha`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `pais`
+--
+ALTER TABLE `pais`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `parametro`
+--
+ALTER TABLE `parametro`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `pariente`
+--
+ALTER TABLE `pariente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2434;
+
+--
+-- AUTO_INCREMENT de la tabla `persona`
+--
+ALTER TABLE `persona`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `provincia`
+--
+ALTER TABLE `provincia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `relacionciudad`
+--
+ALTER TABLE `relacionciudad`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `relacionpersona`
+--
+ALTER TABLE `relacionpersona`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tiporelciudad`
+--
+ALTER TABLE `tiporelciudad`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `tiporelpersona`
+--
+ALTER TABLE `tiporelpersona`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `ubicacion`
+--
+ALTER TABLE `ubicacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
