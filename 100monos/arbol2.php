@@ -180,7 +180,7 @@
 </head>
 <body class="bg-dark">
 	<nav class="navbar fixed-top navbar-light bg-light">
-  		<a class="navbar-brand" href="#">DRI</a>
+  		<a class="navbar-brand" href="../">DRI</a>
   		<div class="form-inline w-75">
     		<input id="selected" list="gente" type="" name="" class="form-control mr-sm-2 w-75 nombreGente" placeholder="Nombre / Nome / Name">
 			<datalist id="gente">
