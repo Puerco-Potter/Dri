@@ -8,6 +8,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<LINK href="bootstrap\css\bootstrap.min.css" rel="stylesheet" type="text/css">
 	<script src="//code.jquery.com/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<script src="mousewheel/jquery.mousewheel.min.js"></script>
 	<script src="panzoom/dist/jquery.panzoom.min.js"></script>
 	<LINK href="fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -22,6 +23,8 @@
 
 		$sql3 = "SELECT * FROM pariente";
 		$todos = $conn->query($sql3);
+
+		$todosmodal = $conn->query($sql3);
 	?>
 
 		<style type="text/css">
@@ -191,7 +194,7 @@
 			?>
 			</datalist>
 			<btn id="boton" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i>
-</btn>
+			</btn>
     		<!-- <span class="btn btn-outline-success my-2 my-sm-0 botonDeBusqueda">Search</span> -->
   		</div>
 	</nav>
@@ -251,9 +254,9 @@
 			    if ($root) {
 					echo "<div class='entry'>";
 					
-			    	echo '<span class="label" id="pariente' . $root["pequeno"] . '">';
+			    	echo '<span class="label" id="pariente' . $root["pequeno"] . '"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
 			        echo  "" .$root["nombre"] . "<br> (" .  $root["nacimiento"] . ")";
-					echo "</span>";
+					echo "</a></span>";
 					
 
 			        if (array_key_exists("children", $root)) { 
@@ -270,6 +273,36 @@
 
 
 		?>
+
+		<?php
+			while( $persona = mysqli_fetch_assoc( $todosmodal)){
+				?>
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal<?php echo $persona["id"]  ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog text-dark" role="document">
+							<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel"><?php echo $persona["nombre"] ?></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p><b>Nacimiento: </b><?php echo $persona["nacimiento"] ?></p>
+								<p><b>Muerte: </b><?php echo $persona["muerte"] ?></p>
+								<p><b>Comentario: </b></p>
+								<p><?php echo $persona["comentario"] ?></p>
+								</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+							</div>
+							</div>
+						</div>
+					</div>
+				<?php
+			} 
+		?>
+	
 </body>
 
 
