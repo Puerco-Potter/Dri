@@ -1,7 +1,7 @@
 <?php
 		require('conexion.php');
 
-		$sql = "SELECT * FROM pariente p1 ORDER BY nombre";
+		$sql = "SELECT * FROM ubicacion p1 ORDER BY nombre";
 		$result = $conn->query($sql);
 
 		require('redireccion.php');	
@@ -25,8 +25,8 @@
 	<br>
 	<div class="container card">
 		<div class="form-group">
-			<a class="btn btn-info float-right" role="button" href="crear_pariente.php">Crear un Pariente Nuevo</a>
-			<a class="btn btn-warning float-right" role="button" href="lista_lugares.php">Lugares</a>
+        <a class="btn btn-secondary " role="button" href="lista_parientes.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver a la Lista de Parientes</a>
+			<a class="btn btn-warning float-right" role="button" href="crear_lugar.php">Crear Lugar</a>
 		</div>
 		<table class="table" data-filtering="true" data-sorting="true" data-empty="Sin Parientes" data-paging-count-format="{CP} de {TP}"
             data-paging="true" data-paging-size="20" data-filter-placeholder="Buscar">
@@ -34,9 +34,8 @@
 				<tr>
 					<th>ID</th>
 					<th>Nombre</th>
-					<th>Padre</th>
-					<th>Nacimiento</th>
-					<th>Acciones</th>
+                    <th>Color</th>
+                    <th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -45,10 +44,8 @@
 				    	echo '<tr>';
 				    		echo '<td>' . $row['id'] . '</td>';
 				    		echo '<td>' . $row['nombre'] . '</td>';
-				    		echo '<td>'. '<a class="btn btn-primary" href="editar_pariente.php?id='. $row['padre_id'] .'" ><i class="fa fa-search" aria-hidden="true"></i></a> ' . $row['padre_id'] . '</td>';
-				    		echo '<td>' . $row['nacimiento'] . '</td>';
-							echo '<td><a class="btn btn-primary" href="editar_pariente.php?id='. $row['id'] .'" ><i class="fa fa-eye" aria-hidden="true"></i> / <i class="fa fa-pencil" aria-hidden="true"></i></a>';
-							echo '<a class="btn btn-danger" href="borrar_pariente.php?id='. $row['id'] .'" ><i class="fa fa-trash" aria-hidden="true"></i></a></td>';
+				    		echo '<td style="background-color:' . $row['colorlinea'] . '"</td>';
+				    		echo '<td><a class="btn btn-primary" href="editar_lugar.php?id='. $row['id'] .'" ><i class="fa fa-eye" aria-hidden="true"></i> / <i class="fa fa-pencil" aria-hidden="true"></i></a></td>';
 				    	echo '</tr>';
 					}
 				?>
