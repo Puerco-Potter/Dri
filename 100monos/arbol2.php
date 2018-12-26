@@ -49,7 +49,7 @@
 
 		.branch {
 		position: relative;
-		margin-left: 600px;
+		margin-left: 900px;
 		}
 		
 		#wrapper >.entry::before {
@@ -116,7 +116,7 @@
 
 		.entry {
 		position: relative;
-		min-height: 60px;
+		min-height: 40px;
 		}
 		
 		.entry:only-child:before {
@@ -131,7 +131,7 @@
 
 		.label {
 		display: block;
-		min-width: 500px;
+		min-width: 800px;
 		padding: 5px 10px;
 		line-height: 20px;
 		text-align: center;
@@ -255,7 +255,7 @@
 					echo "<div class='entry'>";
 					
 			    	echo '<span class="label" id="pariente' . $root["pequeno"] . '"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
-			        echo  "" .$root["nombre"] . "<br> (" .  $root["nacimiento"] . ")";
+			        echo  "" .$root["nombre"] . " (" .  $root["nacimiento"] . ")";
 					echo "</a></span>";
 					
 
