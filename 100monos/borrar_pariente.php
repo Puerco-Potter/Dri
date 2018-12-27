@@ -69,6 +69,10 @@
 
     <?php
         if (isset($_POST['confirmar'])) {
+            $sql_quitarpadre = "UPDATE `pariente` SET 
+            `padre_id`= null
+            WHERE padre_id=" . $_GET['id'];
+            $resultado_quitarpadre = $conn->query($sql_quitarpadre);
 
             $sql_subida = "DELETE FROM `pariente` 
             WHERE id=" . $_GET['id'];
