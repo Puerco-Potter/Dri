@@ -6,7 +6,7 @@
         $sql1 = "SELECT * FROM pariente";
         $todos = $conn->query($sql1);
         
-        $sql2 = "SELECT * FROM pais";
+        $sql2 = "SELECT * FROM ubicacion";
         $paises = $conn->query($sql2);
         
         $sql3 = "SELECT * FROM ubicacion";
@@ -93,11 +93,11 @@
                     ?>
                 </select>
                 <label for="nacimiento">Nacimiento:</label>
-                <textarea class="form-control" id="nacimiento" name="nacimiento" placeholder="Nacimiento..."><?php echo $pariente['nacimiento'] ?></textarea>
+                <textarea class="form-control" id="nacimiento" name="nacimiento" placeholder="Nacimiento..."></textarea>
                 <label for="muerte">Muerte:</label>
-                <textarea class="form-control" id="muerte" name="muerte" placeholder="Muerte..."><?php echo $pariente['muerte'] ?></textarea>
+                <textarea class="form-control" id="muerte" name="muerte" placeholder="Muerte..."></textarea>
                 <label for="comentario">Comentario:</label>
-                <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario..."><?php echo $pariente['comentario'] ?></textarea>
+                <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario..."></textarea>
                 <hr>
                 <button id="confirmar" name="confirmar" type="submit" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Guardar Cambios al Pariente</button>
             </div>

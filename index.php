@@ -6,6 +6,7 @@
 	<LINK href="100monos\bootstrap\css\bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <body class="bg-dark">
+<h1 class="bg-light text-center font-weight-bold" style="padding-bottom:5px;">&#x1F333; DRI &#x1F333;</h1>
 	<div class="container d-flex flex-column">
 		<div>
 			<br>
@@ -14,7 +15,7 @@
 		<div class="d-flex justify-content-center">
 			<img style="width: 500px; height:535px;" src="100monos\imagenes\drimap2.png">
 		</div>
-		<h1 class="bg-light text-center font-weight-bold">&#x1F333; DRI &#x1F333;</h1>
+		
 		<div class="d-flex justify-content-center">
 			<h5 class="text-muted">Proyecto iniciado el 30
         de enero de 2001. Con actualizacion constante desde entonces.</h5>

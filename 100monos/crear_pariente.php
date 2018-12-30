@@ -6,7 +6,7 @@
         $sql1 = "SELECT * FROM pariente";
         $todos = $conn->query($sql1);
         
-        $sql2 = "SELECT * FROM pais";
+        $sql2 = "SELECT * FROM ubicacion";
         $paises = $conn->query($sql2);
         
         $sql3 = "SELECT * FROM ubicacion";
