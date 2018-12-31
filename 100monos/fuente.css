@@ -34,6 +34,20 @@ body {
 }
 a {
 color: #007bff;}
+.vert li p{
+		       width: 960px;
+               height:auto;	
+		       border:1px solid #343a40;
+			   background-color: #6c757d;
+			   display:inline-block;
+			   text-align:left;
+				padding-left:2em;
+				line-height: 50px;
+				color:#fff;
+				margin-bottom:0px;
+				margin-top:0px;
+			   }
+			   	
 :root {
     --blue: #007bff;
     --indigo: #6610f2;
