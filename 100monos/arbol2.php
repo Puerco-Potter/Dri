@@ -49,7 +49,9 @@
 
 		.branch {
 		position: relative;
-		margin-left: 900px;
+		margin-left: 1500px;
+		padding-bottom: 30px;
+		padding-top: 30px;
 		}
 		
 		#wrapper >.entry::before {
@@ -61,10 +63,10 @@
 
 		.branch:before{
 			content: "";
-			width: 50px;
-			border-top: 5px solid white;
+			width: 350px;
+			border-top: 15px solid white;
 			position: absolute;
-			left: -100px;
+			left: -700px;
 			top: 50%;
 			margin-top: 1px;
 		}
@@ -72,17 +74,17 @@
 		.entry:before {
 			content: "";
 			height: 100%;
-			border-left: 5px solid white;
+			border-left: 20px solid white;
 			position: absolute;
-			left: -50px;
+			left: -350px;
 		}
 		
 		.entry:after {
 			content: "";
-			width: 50px;
-			border-top: 5px solid white;
+			width: 350px;
+			border-top: 15px solid white;
 			position: absolute;
-			left: -50px;
+			left: -350px;
 			top: 50%;
 			margin-top: 1px;
 		}
@@ -109,7 +111,7 @@
 		.entry:last-child:after {
 		height: 10px;
 		border-top: none;
-		border-bottom: 5px solid white;
+		border-bottom: 15px solid white;
 		border-radius: 0 0 0 10px;
 		margin-top: -9px;
 		}
@@ -123,7 +125,7 @@
 		display: none !important;
 		}
 		.entry:only-child:after {
-		width: 50px;
+		width: 350px;
 		height: 0;
 		margin-top: 1px;
 		border-radius: 0;
