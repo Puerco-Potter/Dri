@@ -32,8 +32,8 @@
 		<br>
 		</div>
 		<div class="d-flex justify-content-around">
-			<a href="dri/" class="btn btn-success btn-lg">Arbol Genealogico Interactivo</a>
-			<a href="100monos/arbol2.php" class="btn btn-danger btn-lg">Arbol Genealogico Interactivo 2.0 Beta</a>
+			<!-- <a href="dri/" class="btn btn-success btn-lg">Arbol Genealogico Interactivo</a>
+			<a href="100monos/arbol2.php" class="btn btn-danger btn-lg">Arbol Genealogico Interactivo 2.0 Beta</a> -->
 		</div>
 		<hr>
 	</div>

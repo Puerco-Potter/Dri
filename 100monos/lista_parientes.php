@@ -27,6 +27,8 @@
 		<div class="form-group">
 			<a class="btn btn-info float-right" role="button" href="crear_pariente.php">Crear un Pariente Nuevo</a>
 			<a class="btn btn-warning float-right" role="button" href="lista_lugares.php">Lugares</a>
+			<a href="../dri/" class="btn btn-success btn-lg">Arbol Genealogico Interactivo</a>
+			<a href="arbol2.php" class="btn btn-danger btn-lg">Arbol Genealogico Interactivo 2.0 Beta</a>
 		</div>
 		<table class="table" data-filtering="true" data-sorting="true" data-empty="Sin Parientes" data-paging-count-format="{CP} de {TP}"
             data-paging="true" data-paging-size="20" data-filter-placeholder="Buscar">
