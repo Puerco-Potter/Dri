@@ -1,5 +1,7 @@
 <?php
 		require('conexion.php');
+		require('redireccion.php');
+        
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,14 +46,14 @@
 
 		#wrapper {
 		position: relative;
-		width:1000%;
+		width:100000%;
 		}
 
 		.branch {
 		position: relative;
-		margin-left: 1500px;
-		padding-bottom: 30px;
-		padding-top: 30px;
+		margin-left: 4800px;
+		padding-bottom: 40px;
+		padding-top: 40px;
 		}
 		
 		#wrapper >.entry::before {
@@ -63,10 +65,10 @@
 
 		.branch:before{
 			content: "";
-			width: 350px;
-			border-top: 15px solid white;
+			width: 2000px;
+			border-top: 35px solid lightgrey;
 			position: absolute;
-			left: -700px;
+			left: -4000px;
 			top: 50%;
 			margin-top: 1px;
 		}
@@ -74,17 +76,17 @@
 		.entry:before {
 			content: "";
 			height: 100%;
-			border-left: 20px solid white;
+			border-left: 70px solid lightgrey;
 			position: absolute;
-			left: -350px;
+			left: -2000px;
 		}
 		
 		.entry:after {
 			content: "";
-			width: 350px;
-			border-top: 15px solid white;
+			width: 2000px;
+			border-top: 35px solid lightgrey;
 			position: absolute;
-			left: -350px;
+			left: -2000px;
 			top: 50%;
 			margin-top: 1px;
 		}
@@ -111,21 +113,21 @@
 		.entry:last-child:after {
 		height: 10px;
 		border-top: none;
-		border-bottom: 15px solid white;
+		border-bottom: 35px solid lightgrey;
 		border-radius: 0 0 0 10px;
 		margin-top: -9px;
 		}
 
 		.entry {
 		position: relative;
-		min-height: 40px;
+		min-height: 80px;
 		}
 		
 		.entry:only-child:before {
 		display: none !important;
 		}
 		.entry:only-child:after {
-		width: 350px;
+		width: 2000px;
 		height: 0;
 		margin-top: 1px;
 		border-radius: 0;
@@ -257,7 +259,7 @@
 					echo "<div class='entry'>";
 					
 			    	echo '<span class="label" id="pariente' . $root["pequeno"] . '"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
-			        echo  "" .$root["nombre"] . " (" .  $root["nacimiento"] . ")";
+			        echo  "<h2>" .$root["nombre"] . " (" .  $root["nacimiento"] . ")</h2>";
 					echo "</a></span>";
 					
 
@@ -349,7 +351,7 @@
         (function() {
           var $panzoom = $(".panzoom-elements").panzoom();
 		  $panzoom.panzoom("option", {
-			minScale: 0.05,
+			minScale: 0.005,
 			});
           $panzoom.parent().on('mousewheel.focal', function( e ) {
             e.preventDefault();
