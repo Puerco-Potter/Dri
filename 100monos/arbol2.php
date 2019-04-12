@@ -17,7 +17,8 @@
 	
 
 	<?php
-		$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.nombre FROM pariente p1 INNER JOIN pariente p2 ON p1.id = p2.padre_id ORDER BY p1.id";
+		//$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.nombre FROM pariente p1 INNER JOIN pariente p2 ON p1.id = p2.padre_id ORDER BY p1.id";
+		$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.origen_id, u.colorlinea FROM pariente p1 INNER JOIN (pariente p2 left JOIN ubicacion u ON p2.origen_id = u.id) ON p1.id = p2.padre_id ORDER BY p1.id";
 		$result = $conn->query($sql);
 
 		$sql2 = "SELECT p1.id, p1.nombre, p1.nacimiento, p1.padre_id, p1.id as pequeno FROM pariente p1 WHERE p1.padre_id IS NULL ORDER BY p1.id";
@@ -25,6 +26,9 @@
 
 		$sql3 = "SELECT * FROM pariente";
 		$todos = $conn->query($sql3);
+
+		$sql3 = "SELECT * FROM lugares";
+		$lugares = $conn->query($sql3);
 
 		$todosmodal = $conn->query($sql3);
 	?>
@@ -257,8 +261,12 @@
 			function preorder2(&$root) {
 			    if ($root) {
 					echo "<div class='entry'>";
-					
-			    	echo '<span class="label" id="pariente' . $root["pequeno"] . '"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
+						if (isset($root["colorlinea"])){
+							$colorlinea = $root["colorlinea"];
+						}else{
+						$colorlinea = "darkblue";
+						}
+			    	echo '<span style="background-color:' . $colorlinea  . ';" class="label" id="pariente' . $root["pequeno"] . '"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
 			        echo  "<h2>" .$root["nombre"] . " (" .  $root["nacimiento"] . ")</h2>";
 					echo "</a></span>";
 					
