@@ -27,8 +27,8 @@
 		$sql3 = "SELECT * FROM pariente";
 		$todos = $conn->query($sql3);
 
-		$sql3 = "SELECT * FROM lugares";
-		$lugares = $conn->query($sql3);
+		$sql4 = "SELECT * FROM lugares";
+		$lugares = $conn->query($sql4);
 
 		$todosmodal = $conn->query($sql3);
 	?>
