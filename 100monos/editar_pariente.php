@@ -114,20 +114,21 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Nacimiento</th>
-                <!-- <th scope="col">Orden</th> -->
+                <th scope="col">Orden</th>
                 <th scope="col">Editar</th>
                 </tr>
             </thead>
             <tbody>
             <h3>Hijos:</h3>
-            <td><a class='btn btn-primary' href='agregar_hijo.php?id="<?php echo $_GET['id'] ?>"'>Agregar un hijo</i></a>
+            <td><a class='btn btn-primary' href='agregar_hijo.php?id="<?php echo $_GET['id'] ?>"'>Agregar un hijo</i></a></td>
+            <td><a class='btn btn-primary' href='editar_orden.php?id="<?php echo $_GET['id'] ?>"'>Editar el orden de los hijos</i></a></td>
             <?php
                 while( $hijo = mysqli_fetch_assoc( $hijos)){
                     echo "<tr>";
                     echo "<td>". $hijo["id"]. "</td>";
                     echo "<td>". $hijo["nombre"]. "</td>";
                     echo "<td>". $hijo["nacimiento"]. "</td>";
-                   /*  echo "<td>". $hijo["orden"]. "</td>"; */
+                    echo "<td>". $hijo["orden"]. "</td>";
                     echo "<td><a class='btn btn-primary' href='editar_pariente.php?id=". $hijo["id"] ."'><i class='fa fa-eye' aria-hidden='true'></i> / <i class='fa fa-pencil' aria-hidden='true'></i></a></td>";
                     echo "</tr>"; 
                 };
