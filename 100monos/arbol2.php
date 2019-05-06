@@ -18,10 +18,10 @@
 
 	<?php
 		//$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.nombre FROM pariente p1 INNER JOIN pariente p2 ON p1.id = p2.padre_id ORDER BY p1.id";
-		$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.orden , p2.origen_id, u.colorlinea FROM pariente p1 INNER JOIN (pariente p2 left JOIN ubicacion u ON p2.origen_id = u.id) ON p1.id = p2.padre_id ORDER BY p1.id, p2.orden";
+		$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.orden , p2.origen_id, u.colorlinea, p2.tamano FROM pariente p1 INNER JOIN (pariente p2 left JOIN ubicacion u ON p2.origen_id = u.id) ON p1.id = p2.padre_id ORDER BY p1.id, p2.orden";
 		$result = $conn->query($sql);
 
-		$sql2 = "SELECT p1.id, p1.nombre, p1.nacimiento, p1.padre_id, p1.id as pequeno, u.colorlinea FROM pariente p1 left JOIN ubicacion u ON p1.origen_id = u.id WHERE p1.padre_id IS NULL ORDER BY p1.id";
+		$sql2 = "SELECT p1.id, p1.nombre, p1.nacimiento, p1.padre_id, p1.id as pequeno, u.colorlinea, p1.tamano FROM pariente p1 left JOIN ubicacion u ON p1.origen_id = u.id WHERE p1.padre_id IS NULL ORDER BY p1.id";
 		$raices = $conn->query($sql2);
 
 		$sql3 = "SELECT * FROM pariente";
@@ -29,6 +29,11 @@
 
 		$sql4 = "SELECT * FROM lugares";
 		$lugares = $conn->query($sql4);
+
+		$sql5 = "SELECT * FROM personalizacion";
+		$personalizacion = $conn->query($sql5);
+		$colores = mysqli_fetch_assoc($personalizacion);
+		$colorcuadro = $colores["cuadro"];
 
 		$todosmodal = $conn->query($sql3);
 	?>
@@ -38,14 +43,24 @@
 		body {
 		min-width: 100%;
 		margin: 0;
-		color: white;
+		color: <?php echo $colores["texto"]; ?>;
 		font: 16px Verdana, sans-serif;
-		background: black;
+		background: <?php echo $colores["fondo"]; ?>;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
 		overflow: hidden;
+		}
+
+		.h2Grande {
+			font-size: 600%;
+			font-weight: bold;
+			font-family: serif;
+		}
+		
+		.EntryGrande {
+			min-height: 300px !important;
 		}
 
 		#wrapper {
@@ -70,7 +85,7 @@
 		.branch:before{
 			content: "";
 			width: 2000px;
-			border-top: 35px solid lightgrey;
+			border-top: 35px solid <?php echo $colores["lineas"]; ?>;
 			position: absolute;
 			left: -4000px;
 			top: 50%;
@@ -80,7 +95,7 @@
 		.entry:before {
 			content: "";
 			height: 100%;
-			border-left: 70px solid lightgrey;
+			border-left: 70px solid <?php echo $colores["lineas"]; ?>;
 			position: absolute;
 			left: -2000px;
 		}
@@ -88,7 +103,7 @@
 		.entry:after {
 			content: "";
 			width: 2000px;
-			border-top: 35px solid lightgrey;
+			border-top: 35px solid <?php echo $colores["lineas"]; ?>;
 			position: absolute;
 			left: -2000px;
 			top: 50%;
@@ -117,7 +132,7 @@
 		.entry:last-child:after {
 		height: 10px;
 		border-top: none;
-		border-bottom: 35px solid lightgrey;
+		border-bottom: 35px solid <?php echo $colores["lineas"]; ?>;
 		border-radius: 0 0 0 10px;
 		margin-top: -9px;
 		}
@@ -143,13 +158,13 @@
 		padding: 5px 10px;
 		line-height: 20px;
 		text-align: center;
-		border: 2px solid white;
+		border: 2px solid <?php echo $colores["lineas"]; ?>;
 		border-radius: 5px;
 		position: absolute;
 		left: 0;
 		top: 50%;
 		margin-top: -15px;
-		background-color: darkblue;
+		background-color: <?php echo $colores["cuadro"]; ?>;
 		z-index:2;
 		}
 
@@ -186,7 +201,7 @@
 			</style>
 
 </head>
-<body class="bg-dark">
+<body>
 	<nav class="navbar fixed-top navbar-light bg-light">
   		<a class="navbar-brand" href="../">DRI</a>
   		<div class="form-inline w-75">
@@ -259,15 +274,24 @@
 			}
 
 			function preorder2(&$root) {
+					global $colorcuadro;
 			    if ($root) {
-					echo "<div class='entry'>";
+						if (isset($root["tamano"]) and $root["tamano"]==1){
+							$clase= "h2Grande";
+							$entry= "EntryGrande";
+						}else{
+							$clase = "";
+							$entry= "";
+						}
+					echo "<div class='entry " . $entry . "'>";
 						if (isset($root["colorlinea"])){
 							$colorlinea = $root["colorlinea"];
 						}else{
-						$colorlinea = "darkblue";
+						$colorlinea = $colorcuadro;
 						}
+
 			    	echo '<span style="background-color:' . $colorlinea  . ';" class="label" id="pariente' . $root["pequeno"] . '"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
-			        echo  "<h2>" .$root["nombre"] . " (" .  $root["nacimiento"] . ")</h2>";
+			        echo  "<h2 class='" . $clase . "'>" .$root["nombre"] . " (" .  $root["nacimiento"] . ")</h2>";
 					echo "</a></span>";
 					
 

@@ -103,6 +103,27 @@
                 <textarea class="form-control" id="muerte" name="muerte" placeholder="Muerte..."><?php echo $pariente['muerte'] ?></textarea>
                 <label for="comentario">Comentario:</label>
                 <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario..."><?php echo $pariente['comentario'] ?></textarea>
+                <label for="comentario">Tamaño:</label>
+                <select class="form-control" id="tamano" name="tamano" aria-label="Buscar"  autocomplete=off>
+                    <?php
+                        if ($pariente['tamano'] == 1){
+                            echo '<option value="1"  selected>';
+                                echo "Grande";
+                            echo "</option>";
+                            echo '<option value="0">';
+                                echo "Normal";
+                            echo "</option>";
+                        }else{
+                            echo '<option value="1">';
+                                echo "Grande";
+                            echo "</option>";
+                            echo '<option value="0"  selected>';
+                                echo "Normal";
+                            echo "</option>";
+                        }
+                        
+                    ?>
+                </select>
                 <hr>
                 <button id="confirmar" name="confirmar" type="submit" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Guardar Cambios al Pariente</button>
             </div>
@@ -143,13 +164,13 @@
     <?php
         if (isset($_POST['confirmar'])) {
 
-            if ($_POST['padre'] == ''){
+            if (empty($_POST['padre'] )){
                 $_POST['padre'] = 'NULL';
             }
-            if ($_POST['pais'] == ''){
+            if (empty($_POST['pais'] )){
                 $_POST['pais'] = 'NULL';
             }
-            if ($_POST['lugar'] == ''){
+            if (empty($_POST['lugar'] )){
                 $_POST['lugar'] = 'NULL';
             }
 
@@ -161,6 +182,7 @@
             `nacimiento`='" . $_POST['nacimiento'] ."',
             `muerte`='" . $_POST['muerte'] ."',
             `comentario`='" . $_POST['comentario'] ."',
+            `tamano`='" . $_POST['tamano'] ."',
             `enlace`=''
             WHERE id=" . $_GET['id'];
             $resultado = $conn->query($sql_subida);

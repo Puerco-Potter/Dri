@@ -1,16 +1,16 @@
 <?php
 		require('conexion.php');       
 		$mensaje="";
-			if (isset($_SESSION["usuario"])) {
-				if (strtoupper($_SESSION["usuario"]) == $usuario AND $_SESSION["pass"] == $contrasena ) {
+			if (isset($_SESSION["uname"])) {
+				if (strtoupper($_SESSION["uname"]) == $usuario AND $_SESSION["pass"] == $contrasena ) {
 					header('Location: lista_parientes.php');
 		    	}	
 		    }	
 
 			if (isset($_POST['confirmar'])) {
-		        if (strtoupper($_POST["usuario"]) == $usuario AND $_POST['pass'] == $contrasena) {
+		        if (strtoupper($_POST["uname"]) == $usuario AND $_POST['pass'] == $contrasena) {
 		        	$_SESSION["pass"] = $_POST['pass'];
-					$_SESSION["usuario"] = strtoupper($_POST["usuario"]);	
+					$_SESSION["uname"] = strtoupper($_POST["uname"]);	
 		        header("Refresh:0");
 		        } else {
 		        	$mensaje="Usuario y/o Contraseña Incorrectos";
@@ -39,7 +39,7 @@
 		<form method="post">
 			<div class="form-group">
 				<label for="usuario">Usuario</label>
-		    	<input type="string" class="form-control" id="usuario" name="usuario" placeholder="Ingrese Usuario">
+		    	<input type="text" class="form-control" id="usuario" name="uname" placeholder="Ingrese Usuario">
 			</div>
 			<div class="form-group">
 		    	<label for="pass">Contraseña</label>
