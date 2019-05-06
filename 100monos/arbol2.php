@@ -54,9 +54,8 @@
 		}
 
 		.h2Grande {
-			font-size: 600%;
-			font-weight: bold;
-			font-family: serif;
+			font-size: 620%;
+			font-family: Impact, Charcoal, sans-serif;
 		}
 		
 		.EntryGrande {
