@@ -35,6 +35,7 @@
 					<th>ID</th>
 					<th>Nombre</th>
                     <th>Color</th>
+					<th>Texto</th>
                     <th></th>
 				</tr>
 			</thead>
@@ -44,8 +45,9 @@
 				    	echo '<tr>';
 				    		echo '<td>' . $row['id'] . '</td>';
 				    		echo '<td>' . $row['nombre'] . '</td>';
-				    		echo '<td style="background-color:' . $row['colorlinea'] . '"</td>';
-				    		echo '<td><a class="btn btn-primary" href="editar_lugar.php?id='. $row['id'] .'" ><i class="fa fa-eye" aria-hidden="true"></i> / <i class="fa fa-pencil" aria-hidden="true"></i></a></td>';
+							echo '<td style="background-color:' . $row['colorlinea'] . '"</td>';
+							echo '<td style="background-color:' . $row['texto'] . '"</td>';
+							echo '<td><a class="btn btn-primary" href="editar_lugar.php?id='. $row['id'] .'" ><i class="fa fa-eye" aria-hidden="true"></i> / <i class="fa fa-pencil" aria-hidden="true"></i></a> <a class="btn btn-danger" href="borrar_lugar.php?id='. $row['id'] .'" ><i class="fa fa-trash" aria-hidden="true"></i></a></td>';
 				    	echo '</tr>';
 					}
 				?>

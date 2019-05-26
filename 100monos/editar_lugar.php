@@ -40,6 +40,8 @@
 		    	<input type="string" class="form-control" id="nombre" name="nombre" value="<?php echo $ubicacion['nombre'] ?>">
                 <label for="color">Color de los parientes:</label>
 		    	<input type="color" class="form-control" id="color" name="color" value="<?php echo $ubicacion['colorlinea'] ?>">
+                <label for="color">Color de texto:</label>
+		    	<input type="color" class="form-control" id="texto" name="texto" value="<?php echo $ubicacion['texto'] ?>">
                 <button id="confirmar" name="confirmar" type="submit" class="btn btn-success">Guardar Cambios</button>
                 
             </div>
@@ -50,7 +52,8 @@
         if (isset($_POST['confirmar'])) {
             $sql_subida = "UPDATE `ubicacion` SET 
             `nombre`='" . $_POST['nombre'] ."',
-            `colorlinea`='" . $_POST['color'] ."' 
+            `colorlinea`='" . $_POST['color'] ."',
+            `texto`='" . $_POST['texto'] ."' 
             WHERE id=" . $_GET['id'];
             $resultado = $conn->query($sql_subida);
         }

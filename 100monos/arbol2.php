@@ -18,10 +18,10 @@
 
 	<?php
 		//$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.nombre FROM pariente p1 INNER JOIN pariente p2 ON p1.id = p2.padre_id ORDER BY p1.id";
-		$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.orden , p2.origen_id, u.colorlinea, p2.tamano FROM pariente p1 INNER JOIN (pariente p2 left JOIN ubicacion u ON p2.origen_id = u.id) ON p1.id = p2.padre_id ORDER BY p1.id, p2.orden";
+		$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.orden , p2.origen_id, u.colorlinea, p2.tamano, u.texto FROM pariente p1 INNER JOIN (pariente p2 left JOIN ubicacion u ON p2.origen_id = u.id) ON p1.id = p2.padre_id ORDER BY p1.id, p2.orden";
 		$result = $conn->query($sql);
 
-		$sql2 = "SELECT p1.id, p1.nombre, p1.nacimiento, p1.padre_id, p1.id as pequeno, u.colorlinea, p1.tamano FROM pariente p1 left JOIN ubicacion u ON p1.origen_id = u.id WHERE p1.padre_id IS NULL ORDER BY p1.id";
+		$sql2 = "SELECT p1.id, p1.nombre, p1.nacimiento, p1.padre_id, p1.id as pequeno, u.colorlinea, p1.tamano, u.texto FROM pariente p1 left JOIN ubicacion u ON p1.origen_id = u.id WHERE p1.padre_id IS NULL ORDER BY p1.id";
 		$raices = $conn->query($sql2);
 
 		$sql3 = "SELECT * FROM pariente";
@@ -34,8 +34,10 @@
 		$personalizacion = $conn->query($sql5);
 		$colores = mysqli_fetch_assoc($personalizacion);
 		$colorcuadro = $colores["cuadro"];
-
-		$todosmodal = $conn->query($sql3);
+		$colortexto = $colores["texto"];
+		
+		$sql6 = "SELECT p.id, p.nombre, p.nacimiento, p.muerte, p.comentario, o.nombre as origen, r.nombre as ubicacion FROM (pariente p left join ubicacion o ON o.id = origen_id) left join ubicacion r ON r.id = origen_id";
+		$todosmodal = $conn->query($sql6);
 	?>
 
 		<style type="text/css">
@@ -54,13 +56,18 @@
 		}
 
 		.h2Grande {
-			font-size: 620%;
+			font-size: 1000%;
 			font-family: Impact, Charcoal, sans-serif;
 		}
 		
 		.EntryGrande {
 			min-height: 300px !important;
 		}
+
+		.EntryGrande .spanGrande {
+			margin-top: -85px !important;
+		}
+
 
 		#wrapper {
 		position: relative;
@@ -274,22 +281,27 @@
 
 			function preorder2(&$root) {
 					global $colorcuadro;
+					global $colortexto;
 			    if ($root) {
 						if (isset($root["tamano"]) and $root["tamano"]==1){
 							$clase= "h2Grande";
 							$entry= "EntryGrande";
+							$span= "spanGrande";
 						}else{
 							$clase = "";
 							$entry= "";
+							$span= "";
 						}
 					echo "<div class='entry " . $entry . "'>";
 						if (isset($root["colorlinea"])){
 							$colorlinea = $root["colorlinea"];
+							$texto = $root["texto"];
 						}else{
 						$colorlinea = $colorcuadro;
+						$texto = $colortexto;
 						}
 
-			    	echo '<span style="background-color:' . $colorlinea  . ';" class="label" id="pariente' . $root["pequeno"] . '"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
+			    	echo '<span style="background-color:' . $colorlinea  . ';color:' . $texto .'" class="label ' . $span .  '" id="pariente' . $root["pequeno"] . '"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
 			        echo  "<h2 class='" . $clase . "'>" .$root["nombre"] . " (" .  $root["nacimiento"] . ")</h2>";
 					echo "</a></span>";
 					
@@ -325,6 +337,8 @@
 							<div class="modal-body">
 								<p><b>Nacimiento: </b><?php echo $persona["nacimiento"] ?></p>
 								<p><b>Muerte: </b><?php echo $persona["muerte"] ?></p>
+								<p><b>Origen: </b><?php echo $persona["origen"] ?></p>
+								<p><b>Ubicación Final: </b><?php echo $persona["ubicacion"] ?></p>
 								<p><b>Comentario: </b></p>
 								<p><?php echo $persona["comentario"] ?></p>
 								</div>
