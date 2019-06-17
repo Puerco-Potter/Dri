@@ -56,8 +56,12 @@
 		}
 
 		.h2Grande {
-			font-size: 1000%;
+			font-size: 2000%;
 			font-family: Impact, Charcoal, sans-serif;
+		}
+
+		h2{
+			font-size: 6rem;
 		}
 		
 		.EntryGrande {
@@ -145,7 +149,7 @@
 
 		.entry {
 		position: relative;
-		min-height: 80px;
+		min-height: 150px;
 		}
 		
 		.entry:only-child:before {
@@ -302,7 +306,7 @@
 						}
 
 			    	echo '<span style="background-color:' . $colorlinea  . ';color:' . $texto .'" class="label ' . $span .  '" id="pariente' . $root["pequeno"] . '"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
-			        echo  "<h2 class='" . $clase . "'>" .$root["nombre"] . " (" .  $root["nacimiento"] . ")</h2>";
+			        echo  "<h2 class='" . $clase . "'>" .$root["nombre"] . " (" .  $root["nacimiento"] . ") <br /> Segunda Linea</h2>";
 					echo "</a></span>";
 					
 
