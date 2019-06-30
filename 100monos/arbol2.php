@@ -72,7 +72,7 @@
         }
 		
 		.cajitaNombre{
-            width: 2200px;
+            width: 3000px;
 			align-items: center !important;
             justify-content: flex-start !important;
             display: flex !important;
@@ -334,6 +334,22 @@
   </div>
 </div>
 
+<div class="modal fade" id="NoExiste" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content alert-danger">
+	<div class="modal-header alert-danger">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-dark text-center alert-danger">
+	  	<img src="noExiste.png" class="img-fluid" alt="Responsive image">
+		<h2>Pariente No Encontrado</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
 
@@ -371,13 +387,22 @@
 	    		$("#wrapper").panzoom("setMatrix", [ 1, 0, 0, 1, -x, -y ])
 			}, 2500);
 			var $el = document.getElementById(anclajs);
-			$el.classList.add("cambio");
-			setTimeout(function () { 
-				$('#Buscando').modal('hide');
-			}, 2500);
-			setTimeout(function () { 
-			    $el.classList.remove("cambio");
-			}, 6000);
+			if (!$el) {
+				setTimeout(function () { 
+					$('#Buscando').modal('hide');
+					$('#NoExiste').modal({});
+				}, 2500);
+				
+			}else{
+				$el.classList.add("cambio");
+				setTimeout(function () { 
+					$('#Buscando').modal('hide');
+				}, 2500);
+				setTimeout(function () { 
+					$el.classList.remove("cambio");
+				}, 6000);
+			}
+			
 	    	
 		});
 	});
