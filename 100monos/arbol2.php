@@ -3,10 +3,11 @@
 		require('redireccion.php');
         
 ?>
+
 <!DOCTYPE html>
-<html>
+<html class="h-100">
 <head>
-	<title>DRI</title>
+<title>DRI</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<LINK href="bootstrap\css\bootstrap.min.css" rel="stylesheet" type="text/css">
 	<script src="//code.jquery.com/jquery.min.js"></script>
@@ -39,20 +40,18 @@
 		$sql6 = "SELECT p.id, p.nombre, p.nacimiento, p.muerte, p.comentario, o.nombre as origen, r.nombre as ubicacion FROM (pariente p left join ubicacion o ON o.id = origen_id) left join ubicacion r ON r.id = origen_id";
 		$todosmodal = $conn->query($sql6);
 	?>
+    <style>
+        body{
+            width: 100vw !important;
+            height: 100vh !important;
+			color: <?php echo $colores["texto"]; ?>;
+			background: <?php echo $colores["fondo"]; ?>;
+			overflow-x: hidden;
+    		overflow-y: hidden;
+        }
 
-		<style type="text/css">
-
-		body {
-		min-width: 100%;
-		margin: 0;
-		color: <?php echo $colores["texto"]; ?>;
-		font: 16px Verdana, sans-serif;
-		background: <?php echo $colores["fondo"]; ?>;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-		overflow: hidden;
+        #wrapper {
+		width:1000%;
 		}
 
 		.h2Grande {
@@ -60,128 +59,92 @@
 			font-family: Impact, Charcoal, sans-serif;
 		}
 
-		h2{
-			font-size: 6rem;
-		}
+        .hijos{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .nombre{
+            border: 3px solid black;
+            margin-top:5px;
+            margin-bottom:5px;
+            background-color: <?php echo $colores["cuadro"]; ?>;
+        }
 		
-		.EntryGrande {
-			min-height: 300px !important;
-		}
+		.cajitaNombre{
+            width: 2200px;
+			align-items: center !important;
+            justify-content: flex-start !important;
+            display: flex !important;
+			flex-shrink: 0;
+        }
 
-		.EntryGrande .spanGrande {
-			margin-top: -85px !important;
-		}
+        .cajon::before{
+            height: 15px;
+            content: "";
+			width: 200px;
+            border-bottom: 15px solid <?php echo $colores["lineas"]; ?>;
+            top:0;
+            bottom:0;
+            left:0;
+        }
 
+        
 
-		#wrapper {
-		position: relative;
-		width:100000%;
-		}
+        .hijos > .cajon:first-child{
+            border-left: 15px solid <?php echo $colores["lineas"]; ?>;
+            border-image: linear-gradient(to top, <?php echo $colores["lineas"]; ?> 50%,rgba(1,1,1,0) 50%);
+            border-image-slice: 1;
+            overflow-x: auto;
+        }
 
-		.branch {
-		position: relative;
-		margin-left: 4800px;
-		padding-bottom: 40px;
-		padding-top: 40px;
-		}
-		
-		#wrapper >.entry::before {
-		display: none;
-		}
-		#wrapper >.entry::after {
-		display: none;
-		}
+        .hijos > .cajon:last-child{
+            border-left: 15px solid <?php echo $colores["lineas"]; ?>;
+            border-image: linear-gradient(to bottom, <?php echo $colores["lineas"]; ?> 50%,rgba(1,1,1,0) 50%);
+            border-image-slice: 1;
+            overflow-x: auto;
+        }
 
-		.branch:before{
-			content: "";
-			width: 2000px;
-			border-top: 35px solid <?php echo $colores["lineas"]; ?>;
-			position: absolute;
-			left: -4000px;
-			top: 50%;
-			margin-top: 1px;
-		}
-		
-		.entry:before {
-			content: "";
-			height: 100%;
-			border-left: 70px solid <?php echo $colores["lineas"]; ?>;
-			position: absolute;
-			left: -2000px;
-		}
-		
-		.entry:after {
-			content: "";
-			width: 2000px;
-			border-top: 35px solid <?php echo $colores["lineas"]; ?>;
-			position: absolute;
-			left: -2000px;
-			top: 50%;
-			margin-top: 1px;
-		}
+        .hijos > .cajon:only-child{
+            border-left: none;
+            border-image: none;
+        }
 
-		.entry:first-child:before {
-			width: 10px;
-			height: 50%;
-			top: 50%;
-			margin-top: 2px;
-			border-radius: 10px 0 0 0;
-		}
+        .hijos > .cajon:only-child::before{
+			width: 215px;
+        }
 
-		.entry:first-child:after {
-			height: 10px;
-			border-radius: 10px 0 0 0;
-			}
+        .delante{
+            min-width: 200px;
+            border-bottom: 15px solid <?php echo $colores["lineas"]; ?>;
+			flex-grow: 1;
+        }
 
-		.entry:last-child:before {
-			width: 10px;
-			height: 50%;
-			border-radius: 0 0 0 10px;
-		}
+        .cajon{
+            flex-basis:1;
+            flex-grow: 1;
+            border-left: 15px solid <?php echo $colores["lineas"]; ?>;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            display: flex !important;
+        }
 
-		.entry:last-child:after {
-		height: 10px;
-		border-top: none;
-		border-bottom: 35px solid <?php echo $colores["lineas"]; ?>;
-		border-radius: 0 0 0 10px;
-		margin-top: -9px;
-		}
+        .cajitaNombre:last-child > .delante{
+            width: 0 !important;
+            min-width: 0 !important;
+            flex-grow: 0 !important;
+        }
 
-		.entry {
-		position: relative;
-		min-height: 150px;
-		}
-		
-		.entry:only-child:before {
-		display: none !important;
-		}
-		.entry:only-child:after {
-		width: 2000px;
-		height: 0;
-		margin-top: 1px;
-		border-radius: 0;
-		}
+        .raiz > .cajon::before{
+			width: 0px;
+        }
 
-		.label {
-		display: block;
-		min-width: 800px;
-		padding: 5px 10px;
-		line-height: 20px;
-		text-align: center;
-		border: 2px solid <?php echo $colores["lineas"]; ?>;
-		border-radius: 5px;
-		position: absolute;
-		left: 0;
-		top: 50%;
-		margin-top: -15px;
-		background-color: <?php echo $colores["cuadro"]; ?>;
-		z-index:2;
-		}
+        .raiz > .cajon{
+            border-left: none;
+            border-image: none;
+        }
 
-		/*Thats all. I hope you enjoyed it.
-		Thanks :)*/
-		
-		 /* The animation code */
+         /* The animation code */
 		@keyframes example {
 			0%   {background-color: darkblue; font-size:large;}
 			5%   {background-color: green;}
@@ -205,14 +168,16 @@
 		    animation-name: example;
 		    animation-duration: 3s;
 		} 
-		
-		
-		
-			</style>
 
+    </style>
 </head>
+
+
+
 <body>
-	<nav class="navbar fixed-top navbar-light bg-light">
+
+    <!-- Aca empieza en serio -->
+    <nav class="navbar fixed-top navbar-light bg-light">
   		<a class="navbar-brand" href="../">DRI</a>
   		<div class="form-inline w-75">
     		<input id="selected" list="gente" type="" name="" class="form-control mr-sm-2 w-75 nombreGente" placeholder="Nombre / Nome / Name">
@@ -231,14 +196,8 @@
     		<!-- <span class="btn btn-outline-success my-2 my-sm-0 botonDeBusqueda">Search</span> -->
   		</div>
 	</nav>
-	<div>
-		
-	<div>
 
-	<div>
-		<div style="height: 100px;"></div>
-
-<div id="wrapper" class="panzoom-elements">
+    <div id="wrapper" class="panzoom-elements">
 
 	<?php
 
@@ -247,13 +206,15 @@
 	}
 
 	while( $raiz = mysqli_fetch_assoc( $raices)){
-    	$tree = hacer_arbol($resguardo, $raiz);
-		preorder2($tree);
+        $tree = hacer_arbol($resguardo, $raiz);
+        echo '<div class="raiz">';
+        preorder2($tree);
+        echo '</div>';
 	} 
 	?>
-</div>
+    </div>
 
-		<?php
+    <?php
 			
 			function hacer_arbol($resguardo, $raiz){
 				$tree = [];
@@ -287,31 +248,30 @@
 					global $colorcuadro;
 					global $colortexto;
 			    if ($root) {
-						if (isset($root["tamano"]) and $root["tamano"]==1){
-							$clase= "h2Grande";
-							$entry= "EntryGrande";
-							$span= "spanGrande";
-						}else{
-							$clase = "";
-							$entry= "";
-							$span= "";
-						}
-					echo "<div class='entry " . $entry . "'>";
-						if (isset($root["colorlinea"])){
-							$colorlinea = $root["colorlinea"];
-							$texto = $root["texto"];
-						}else{
-						$colorlinea = $colorcuadro;
-						$texto = $colortexto;
-						}
+					if (isset($root["tamano"]) and $root["tamano"]==1){
+						$clase= "h2Grande";
+					}else{
+						$clase = "";
+					}
+					if (isset($root["colorlinea"])){
+						$colorlinea = $root["colorlinea"];
+						$texto = $root["texto"];
+					}else{
+					$colorlinea = $colorcuadro;
+					$texto = $colortexto;
+					}
 
-			    	echo '<span style="background-color:' . $colorlinea  . ';color:' . $texto .'" class="label ' . $span .  '" id="pariente' . $root["pequeno"] . '"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
-			        echo  "<h2 class='" . $clase . "'>" .$root["nombre"] . " (" .  $root["nacimiento"] . ") <br /> Segunda Linea</h2>";
-					echo "</a></span>";
+					echo "<div class='cajon'>";
+					echo "<div class='cajitaNombre'>";
+					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
+			        echo  "<h2 class='". $clase . "'>" .$root["nombre"] . " (" .  $root["nacimiento"] . ")</h2>";
+                    echo "</a></div>";
+					echo '<div class="delante"></div>';
+					echo "</div>";
 					
 
 			        if (array_key_exists("children", $root)) { 
-			            echo "<div class='branch'>";
+			            echo "<div class='hijos'>";
 			            foreach ($root["children"] as $c) {
 							preorder2($c);
 			            }
@@ -323,9 +283,10 @@
 			}
 
 
-		?>
+        ?>
+        
 
-		<?php
+        <?php
 			while( $persona = mysqli_fetch_assoc( $todosmodal)){
 				?>
 					<!-- Modal -->
@@ -345,6 +306,7 @@
 								<p><b>Ubicación Final: </b><?php echo $persona["ubicacion"] ?></p>
 								<p><b>Comentario: </b></p>
 								<p><?php echo $persona["comentario"] ?></p>
+								<p><b>Numero Interno: </b><?php echo $persona["id"] ?></p>
 								</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -355,7 +317,23 @@
 				<?php
 			} 
 		?>
-	
+
+
+		<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="Buscando" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-dark text-center">
+	  	<img src="lupa.gif" class="img-fluid" alt="Responsive image">
+		<h2>Buscando Pariente</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
 
@@ -372,7 +350,12 @@
 
 	    $('#boton').click(function()
 	    {	
+			$('#Buscando').modal({
+				backdrop: 'static',
+				keyboard: false
+			});
 	    	$("#wrapper").panzoom("reset");
+			//Agregar cartelito de buscando
 	        var value = $('#selected').val();
 	        var valor = "" + $('#gente [value="' + value + '"]').data('value');
 	        var ancla = "#pariente" + valor;
@@ -382,12 +365,16 @@
 	    	//}, 1000);
 	    	
 	    	setTimeout(function () { 
-			    var y = $(ancla).offset().top -100;
-	    		var x = $(ancla).offset().left -100;
+                console.log($(ancla).offset().top);
+			    var y = $(ancla).offset().top - 100;
+	    		var x = $(ancla).offset().left;
 	    		$("#wrapper").panzoom("setMatrix", [ 1, 0, 0, 1, -x, -y ])
-			}, 1000);
+			}, 2500);
 			var $el = document.getElementById(anclajs);
 			$el.classList.add("cambio");
+			setTimeout(function () { 
+				$('#Buscando').modal('hide');
+			}, 2500);
 			setTimeout(function () { 
 			    $el.classList.remove("cambio");
 			}, 6000);
@@ -414,4 +401,5 @@
           });
         })();
       </script>
+
 </html>
