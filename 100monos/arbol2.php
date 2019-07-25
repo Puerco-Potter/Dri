@@ -36,7 +36,6 @@
 		$colores = mysqli_fetch_assoc($personalizacion);
 		$colorcuadro = $colores["cuadro"];
 		$colortexto = $colores["texto"];
-		$largo_linea= $colores["largo_linea"] * 100;
 		
 		$sql6 = "SELECT p.id, p.nombre, p.nacimiento, p.muerte, p.comentario, o.nombre as origen, r.nombre as ubicacion FROM (pariente p left join ubicacion o ON o.id = origen_id) left join ubicacion r ON r.id = origen_id";
 		$todosmodal = $conn->query($sql6);
@@ -55,20 +54,9 @@
 		width:1000%;
 		}
 
-		.h2Grande p {
-			font-size: 10rem;
-		}
-		.h2Grande h1 {
-			font-size: 24rem;
-		}
-		.h2Grande h2 {
-			font-size: 20rem;
-		}
-		.h2Grande h3 {
-			font-size: 17.5rem;
-		}
 		.h2Grande {
-			font-size: 10rem;
+			font-size: 2000%;
+			font-family: Impact, Charcoal, sans-serif;
 		}
 
         .hijos{
@@ -84,7 +72,7 @@
         }
 		
 		.cajitaNombre{
-            width: <?php echo $largo_linea ?>px;
+            width: 3000px;
 			align-items: center !important;
             justify-content: flex-start !important;
             display: flex !important;
@@ -105,14 +93,14 @@
 
         .hijos > .cajon:first-child{
             border-left: 15px solid <?php echo $colores["lineas"]; ?>;
-            border-image: linear-gradient(to top, <?php echo $colores["lineas"]; ?> calc(50% + 7.5px),rgba(1,1,1,0) calc(50% + 7.5px));
+            border-image: linear-gradient(to top, <?php echo $colores["lineas"]; ?> 50%,rgba(1,1,1,0) 50%);
             border-image-slice: 1;
             overflow-x: auto;
         }
 
         .hijos > .cajon:last-child{
             border-left: 15px solid <?php echo $colores["lineas"]; ?>;
-            border-image: linear-gradient(to bottom, <?php echo $colores["lineas"]; ?> calc(50% + 7.5px),rgba(1,1,1,0) calc(50% + 7.5px));
+            border-image: linear-gradient(to bottom, <?php echo $colores["lineas"]; ?> 50%,rgba(1,1,1,0) 50%);
             border-image-slice: 1;
             overflow-x: auto;
         }
@@ -156,7 +144,6 @@
             border-image: none;
         }
 
-
          /* The animation code */
 		@keyframes example {
 			0%   {background-color: darkblue; font-size:large;}
@@ -199,12 +186,7 @@
 			<?php
 				while( $persona = mysqli_fetch_assoc( $todos)){
 					echo '<option data-value="' . $persona["id"] . '" value="';
-					if ($persona["nacimiento"] == ""){
-						$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r"), '', $persona["nombre"])));
-					}else{
-						$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r"), '', $persona["nombre"] . "(" . $persona["nacimiento"] . ")")));
-					}
-					echo $linea_nombre;
+						echo $persona["nombre"] . "(" . $persona["nacimiento"] . ")";
 					echo '"></option>';
 				} 
 			?>
@@ -279,16 +261,10 @@
 					$texto = $colortexto;
 					}
 
-					if ($root["nacimiento"] == ""){
-						$linea_nombre = $root["nombre"];
-					}else{
-						$linea_nombre = str_replace ("</p> <ano>", ' ', $root["nombre"] . "<ano>(" . $root["nacimiento"] . ")</p>");
-					}
-
 					echo "<div class='cajon'>";
 					echo "<div class='cajitaNombre'>";
 					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
-			        echo  "<x class='". $clase . "'>" . $linea_nombre . "</x>";
+			        echo  "<h2 class='". $clase . "'>" .$root["nombre"] . " (" .  $root["nacimiento"] . ")</h2>";
                     echo "</a></div>";
 					echo '<div class="delante"></div>';
 					echo "</div>";
@@ -318,7 +294,7 @@
 						<div class="modal-dialog text-dark" role="document">
 							<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><div><?php echo $persona["nombre"] ?></div></h5>
+								<h5 class="modal-title" id="exampleModalLabel"><?php echo $persona["nombre"] ?></h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 								</button>
