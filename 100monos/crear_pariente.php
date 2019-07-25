@@ -21,6 +21,7 @@
 	<script src="//code.jquery.com/jquery.min.js"></script>
 	<LINK href="footable\css\footable.standalone.min.css" rel="stylesheet" type="text/css">
 	<LINK href="fontawesome\css\font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 
 </head>
 <body class="bg-dark">
@@ -41,7 +42,15 @@
         <form method="post">
 			<div class="form-group">
 				<label for="usuario">Nombre:</label>
-		    	<input type="string" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre...">
+		    	<textarea type="string" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre..."></textarea>
+                <script>
+                        CKEDITOR.on( 'instanceReady', function( ev )
+                            {
+                                // Ends self closing tags the HTML4 way, like <br>.
+                                ev.editor.dataProcessor.writer.lineBreakChars = ' ';
+                            });
+                        CKEDITOR.replace( 'nombre' );
+                </script>
                 <label for="usuario">Padre:</label>
                 <input list="gente" class="form-control" id="padre" name="padre" type="search" placeholder="Nombre del Padre..." aria-label="Buscar"  autocomplete=off>
                 <datalist id="gente">
