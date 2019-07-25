@@ -60,11 +60,6 @@
 				    		echo '<td style="background-color:' . $row['texto'] . '"</td>';
 				    		echo '<td><a class="btn btn-primary" href="editar_color.php?codigo=texto" ><i class="fa fa-eye" aria-hidden="true"></i> / <i class="fa fa-pencil" aria-hidden="true"></i></a></td>';
 						echo '</tr>';
-						echo '<tr>';
-				    		echo '<td>Longitud de linea <p class="text-muted">(Se recomienda dejarlo en 30)</p></td>';
-				    		echo '<td>' . $row['largo_linea'] . '</td>';
-				    		echo '<td><a class="btn btn-primary" href="editar_largo_linea.php?" ><i class="fa fa-eye" aria-hidden="true"></i> / <i class="fa fa-pencil" aria-hidden="true"></i></a></td>';
-						echo '</tr>';
 				?>
 			</tbody>
 		</table>
