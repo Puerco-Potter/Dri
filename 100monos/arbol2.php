@@ -59,32 +59,32 @@
 			font-size: 10rem;
 		}
 		.h2Grande h1 {
-			font-size: 24rem;
+			font-size: 19rem;
 		}
 		.h2Grande h2 {
-			font-size: 20rem;
+			font-size: 16rem;
 		}
 		.h2Grande h3 {
-			font-size: 17.5rem;
+			font-size: 13.5rem;
 		}
 		.h2Grande {
 			font-size: 10rem;
 		}
 
 		x {
-			font-size: 3rem;
+			font-size: 4rem;
 		}
 		x p{
-			font-size: 3rem;
+			font-size: 4rem;
 		}
 		x h1{
-			font-size: 7.2rem;
+			font-size: 10rem;
 		}
 		x h2{
-			font-size: 6rem;
+			font-size: 8rem;
 		}
 		x h3{
-			font-size: 5.25rem;
+			font-size: 6rem;
 		}
 
         .hijos{
