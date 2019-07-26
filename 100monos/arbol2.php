@@ -71,6 +71,22 @@
 			font-size: 10rem;
 		}
 
+		x {
+			font-size: 3rem;
+		}
+		x p{
+			font-size: 3rem;
+		}
+		x h1{
+			font-size: 7.2rem;
+		}
+		x h2{
+			font-size: 6rem;
+		}
+		x h3{
+			font-size: 5.25rem;
+		}
+
         .hijos{
             display: flex;
             flex-direction: column;
