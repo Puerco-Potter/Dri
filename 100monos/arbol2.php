@@ -57,34 +57,44 @@
 
 		.h2Grande p {
 			font-size: 10rem;
+			font-weight: 400 !important;
 		}
 		.h2Grande h1 {
 			font-size: 19rem;
+			font-weight: 400 !important;
 		}
 		.h2Grande h2 {
 			font-size: 16rem;
+			font-weight: 400 !important;
 		}
 		.h2Grande h3 {
 			font-size: 13.5rem;
+			font-weight: 400 !important;
 		}
 		.h2Grande {
 			font-size: 10rem;
+			font-weight: 400 !important;
 		}
 
 		x {
 			font-size: 4rem;
+			font-weight: 400 !important;
 		}
 		x p{
 			font-size: 4rem;
+			font-weight: 400 !important;
 		}
 		x h1{
 			font-size: 10rem;
+			font-weight: 400 !important;
 		}
 		x h2{
 			font-size: 8rem;
+			font-weight: 400 !important;
 		}
 		x h3{
 			font-size: 6rem;
+			font-weight: 400 !important;
 		}
 
         .hijos{
@@ -298,7 +308,15 @@
 					if ($root["nacimiento"] == ""){
 						$linea_nombre = $root["nombre"];
 					}else{
-						$linea_nombre = str_replace ("</p> <ano>", ' ', $root["nombre"] . "<ano>(" . $root["nacimiento"] . ")</p>");
+						if (substr($root["nombre"], -3)== "p> "){
+							$linea_nombre = str_replace ("</p> <ano>", ' ', $root["nombre"] . "<ano>(" . $root["nacimiento"] . ")</p>");
+						}else if (substr($root["nombre"], -2)== "> ")
+						{
+							$linea_nombre = $root["nombre"] . "<p>(" . $root["nacimiento"] . ")</p>";
+						}else{
+							$linea_nombre =  $root["nombre"] . " (" . $root["nacimiento"] . ")";
+						}
+						
 					}
 
 					echo "<div class='cajon'>";
