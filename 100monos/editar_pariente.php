@@ -112,6 +112,8 @@
                 <textarea class="form-control" id="muerte" name="muerte" placeholder="Muerte..."><?php echo $pariente['muerte'] ?></textarea>
                 <label for="comentario">Comentario:</label>
                 <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario..."><?php echo $pariente['comentario'] ?></textarea>
+                <label for="lugar">Galeria:</label>
+                <input type="text" class="form-control" id="galeria" name="galeria" value="<?php echo $pariente['galeria'] ?>" placeholder="https://photos.app.goo.gl/xxxxxxxxxxxxxxx">
                 <label for="comentario">Tamaño:</label>
                 <select class="form-control" id="tamano" name="tamano" aria-label="Buscar"  autocomplete=off>
                     <?php
@@ -192,6 +194,7 @@
             `muerte`='" . $_POST['muerte'] ."',
             `comentario`='" . $_POST['comentario'] ."',
             `tamano`='" . $_POST['tamano'] ."',
+            `galeria`='" . $_POST['galeria'] ."',
             `enlace`=''
             WHERE id=" . $_GET['id'];
             $resultado = $conn->query($sql_subida);

@@ -358,14 +358,24 @@
 								</button>
 							</div>
 							<div class="modal-body">
+								<?php if ($persona["nacimiento"]){ ?>
 								<p><b>Nacimiento: </b><?php echo $persona["nacimiento"] ?></p>
+								<?php } ?>
+								<?php if ($persona["muerte"]){ ?>
 								<p><b>Muerte: </b><?php echo $persona["muerte"] ?></p>
+								<?php } ?>
 								<p><b>Origen: </b><?php echo $persona["origen"] ?></p>
 								<p><b>Ubicación Final: </b><?php echo $persona["ubicacion"] ?></p>
+								<?php if ($persona["comentario"]){ ?>
 								<p><b>Comentario: </b></p>
 								<p><?php echo $persona["comentario"] ?></p>
+								<?php } ?>
 								<p><b>Numero Interno: </b><?php echo $persona["id"] ?></p>
-                                <p><b>Galeria de Fotos: </b><a href="<?php echo $persona["galeria"] ?>">galeria</a></p>
+								<?php if ($persona["galeria"]){ ?>
+                                <p><b>Galeria de Fotos: </b>
+									<a target="_blank" rel="noopener noreferrer" class="btn btn-success" href="<?php echo $persona["galeria"] ?>">Abrir Galeria</a>
+								</p>
+								<?php } ?>
 								</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
