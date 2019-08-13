@@ -322,7 +322,7 @@
 					echo "<div class='cajon'>";
 					echo "<div class='cajitaNombre'>";
 					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
-			        echo  "<x class='". $clase . "'>" . $linea_nombre . "</x>";
+			        echo  "<span class='". $clase . "'>" . $linea_nombre . "</span>";
                     echo "</a></div>";
 					echo '<div class="delante"></div>';
 					echo "</div>";
