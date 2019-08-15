@@ -3,13 +3,12 @@
 		require('redireccion.php');
         
 ?>
-
 <!DOCTYPE html>
-<html class="h-100">
+<html class="h-100" lang="es">
 <head>
 <title>DRI</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<LINK href="bootstrap\css\bootstrap.min.css" rel="stylesheet" type="text/css">
+	<LINK href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<script src="//code.jquery.com/jquery.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<script src="mousewheel/jquery.mousewheel.min.js"></script>
@@ -76,23 +75,23 @@
 			font-weight: 400 !important;
 		}
 
-		x {
+		.x {
 			font-size: 4rem;
 			font-weight: 400 !important;
 		}
-		x p{
+		.x p{
 			font-size: 4rem;
 			font-weight: 400 !important;
 		}
-		x h1{
+		.x h1{
 			font-size: 10rem;
 			font-weight: 400 !important;
 		}
-		x h2{
+		.x h2{
 			font-size: 8rem;
 			font-weight: 400 !important;
 		}
-		x h3{
+		.x h3{
 			font-size: 6rem;
 			font-weight: 400 !important;
 		}
@@ -159,7 +158,7 @@
         }
 
         .cajon{
-            flex-basis:1;
+            /*flex-basis:1;*/
             flex-grow: 1;
             border-left: 15px solid <?php echo $colores["lineas"]; ?>;
             align-items: center !important;
@@ -219,24 +218,24 @@
     <nav class="navbar fixed-top navbar-light bg-light">
   		<a class="navbar-brand" href="../">DRI</a>
   		<div class="form-inline w-75">
-    		<input id="selected" list="gente" type="" name="" class="form-control mr-sm-2 w-75 nombreGente" placeholder="Nombre / Nome / Name">
+    		<input id="selected" list="gente" type="text" name="busqueda" class="form-control mr-sm-2 w-75 nombreGente" placeholder="Nombre / Nome / Name">
 			<datalist id="gente">
 
 			<?php
 				while( $persona = mysqli_fetch_assoc( $todos)){
 					echo '<option data-value="' . $persona["id"] . '" value="';
 					if ($persona["nacimiento"] == ""){
-						$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r"), '', $persona["nombre"])));
+						$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r", "\""), '', $persona["nombre"])));
 					}else{
-						$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r"), '', $persona["nombre"] . "(" . $persona["nacimiento"] . ")")));
+						$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r", "\""), '', $persona["nombre"] . "(" . $persona["nacimiento"] . ")")));
 					}
 					echo $linea_nombre;
 					echo '"></option>';
 				} 
 			?>
 			</datalist>
-			<btn id="boton" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i>
-			</btn>
+			<button id="boton" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i>
+			</button>
     		<!-- <span class="btn btn-outline-success my-2 my-sm-0 botonDeBusqueda">Search</span> -->
   		</div>
 	</nav>
@@ -299,9 +298,12 @@
 					}
 					if (isset($root["colorlinea"])){
 						$colorlinea = $root["colorlinea"];
-						$texto = $root["texto"];
 					}else{
 					$colorlinea = $colorcuadro;
+					}
+					if (isset($root["texto"]) and $root["texto"]!=""){
+						$texto = $root["texto"];
+					}else{
 					$texto = $colortexto;
 					}
 
@@ -322,7 +324,7 @@
 					echo "<div class='cajon'>";
 					echo "<div class='cajitaNombre'>";
 					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
-			        echo  "<span class='". $clase . "'>" . $linea_nombre . "</span>";
+			        echo  "<div class='x ". $clase . "'>" . $linea_nombre . "</div>";
                     echo "</a></div>";
 					echo '<div class="delante"></div>';
 					echo "</div>";
@@ -348,11 +350,11 @@
 			while( $persona = mysqli_fetch_assoc( $todosmodal)){
 				?>
 					<!-- Modal -->
-					<div class="modal fade" id="exampleModal<?php echo $persona["id"]  ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal fade" id="exampleModal<?php echo $persona["id"]  ?>" tabindex="-1" role="dialog" aria-hidden="true">
 						<div class="modal-dialog text-dark" role="document">
 							<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><div><?php echo $persona["nombre"] ?></div></h5>
+								<div class="modal-title"><?php echo $persona["nombre"] ?></div>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 								</button>
@@ -392,7 +394,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="Buscando" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Buscando" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body text-dark text-center">
@@ -403,7 +405,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="NoExiste" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="NoExiste" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content alert-danger">
 	<div class="modal-header alert-danger">
