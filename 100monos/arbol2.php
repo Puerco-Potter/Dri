@@ -8,12 +8,13 @@
 <head>
 <title>DRI</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<LINK href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<script src="//code.jquery.com/jquery.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script src="mousewheel/jquery.mousewheel.min.js"></script>
 	<script src="panzoom/dist/jquery.panzoom.min.js"></script>
-	<LINK href="fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	
 
 	<?php
@@ -40,7 +41,9 @@
 		$sql6 = "SELECT p.id, p.nombre, p.nacimiento, p.muerte, p.comentario, o.nombre as origen, r.nombre as ubicacion, p.galeria FROM (pariente p left join ubicacion o ON o.id = origen_id) left join ubicacion r ON r.id = origen_id";
 		$todosmodal = $conn->query($sql6);
 	?>
+
     <style>
+		
         body{
             width: 100vw !important;
             height: 100vh !important;
@@ -62,6 +65,7 @@
 			font-size: 19rem;
 			font-weight: 400 !important;
 		}
+		
 		.h2Grande h2 {
 			font-size: 16rem;
 			font-weight: 400 !important;
@@ -83,6 +87,7 @@
 			font-size: 4rem;
 			font-weight: 400 !important;
 		}
+		
 		.x h1{
 			font-size: 10rem;
 			font-weight: 400 !important;
@@ -91,16 +96,18 @@
 			font-size: 8rem;
 			font-weight: 400 !important;
 		}
+		
 		.x h3{
 			font-size: 6rem;
 			font-weight: 400 !important;
 		}
-
+		/*
         .hijos{
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
+		*/
         .nombre{
             border: 3px solid black;
             margin-top:5px;
@@ -156,7 +163,7 @@
             border-bottom: 15px solid <?php echo $colores["lineas"]; ?>;
 			flex-grow: 1;
         }
-
+		
         .cajon{
             /*flex-basis:1;*/
             flex-grow: 1;
@@ -208,6 +215,7 @@
 		} 
 
     </style>
+	
 </head>
 
 
