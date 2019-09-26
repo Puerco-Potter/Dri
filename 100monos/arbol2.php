@@ -7,6 +7,7 @@
 <html class="h-100" lang="es">
 <head>
 <title>DRI</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -52,6 +53,10 @@
 			overflow-x: hidden;
     		overflow-y: hidden;
         }
+
+		#padreDePanzoom{
+			height: 100vh !important;
+		}
 
         #wrapper {
 		width:1000%;
@@ -213,6 +218,32 @@
 		    animation-name: example;
 		    animation-duration: 3s;
 		} 
+		/* configuracion para celular  */
+		
+		.navbar-brand{
+			font-size: 16px;
+		}
+
+		.fixed-top, .nav-mas{
+			right: inherit;
+		}
+
+		.nav-menos{
+			left: inherit;
+		}
+
+		#selected{
+			
+			font-size: 16px;
+			
+		}
+		#boton, #botonmas, #botonmenos{
+			font-size: 16px;
+		}
+
+		a{
+			z-index: 99999999;
+		}
 
     </style>
 	
@@ -225,7 +256,7 @@
     <!-- Aca empieza en serio -->
     <nav class="navbar fixed-top navbar-light bg-light">
   		<a class="navbar-brand" href="../">DRI</a>
-  		<div class="form-inline w-75">
+  		<div class="form-inline">
     		<input id="selected" list="gente" type="text" name="busqueda" class="form-control mr-sm-2 w-75 nombreGente" placeholder="Nombre / Nome / Name">
 			<datalist id="gente">
 
@@ -237,6 +268,27 @@
 					}else{
 						$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r", "\""), '', $persona["nombre"] . "(" . $persona["nacimiento"] . ")")));
 					}
+					$linea_nombre = str_replace ('á','a',$linea_nombre);
+					$linea_nombre = str_replace ('é','e',$linea_nombre);
+					$linea_nombre = str_replace ('í','i',$linea_nombre);
+					$linea_nombre = str_replace ('ó','o',$linea_nombre);
+					$linea_nombre = str_replace ('ú','u',$linea_nombre);
+					$linea_nombre = str_replace ('Á','A',$linea_nombre);
+					$linea_nombre = str_replace ('É','E',$linea_nombre);
+					$linea_nombre = str_replace ('Í','I',$linea_nombre);
+					$linea_nombre = str_replace ('Ó','O',$linea_nombre);
+					$linea_nombre = str_replace ('Ú','U',$linea_nombre);
+					$linea_nombre = str_replace ('&aacute;','a',$linea_nombre);
+					$linea_nombre = str_replace ('&eacute;','e',$linea_nombre);
+					$linea_nombre = str_replace ('&iacute;','i',$linea_nombre);
+					$linea_nombre = str_replace ('&oacute;','o',$linea_nombre);
+					$linea_nombre = str_replace ('&uacute;','u',$linea_nombre);
+					$linea_nombre = str_replace ('&Aacute;','A',$linea_nombre);
+					$linea_nombre = str_replace ('&Eacute;','E',$linea_nombre);
+					$linea_nombre = str_replace ('&Iacute;','I',$linea_nombre);
+					$linea_nombre = str_replace ('&Oacute;','O',$linea_nombre);
+					$linea_nombre = str_replace ('&Uacute;','U',$linea_nombre);
+					
 					echo $linea_nombre;
 					echo '"></option>';
 				} 
@@ -248,6 +300,14 @@
   		</div>
 	</nav>
 
+	<nav class="navbar fixed-bottom nav-mas navbar-light bg-light">
+		<button id="botonmas" class="btn btn-danger"><i class="fa fa-plus" aria-hidden="true"></i>
+	</nav>
+
+	<nav class="navbar fixed-bottom nav-menos navbar-light bg-light">
+		<button id="botonmenos" class="btn btn-primary zoom-in"><i class="fa fa-minus" aria-hidden="true"></i>
+	</nav>
+	<div id="padreDePanzoom" class="w-100">
     <div id="wrapper" class="panzoom-elements">
 
 	<?php
@@ -331,7 +391,7 @@
 
 					echo "<div class='cajon'>";
 					echo "<div class='cajitaNombre'>";
-					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
+					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a class="enlace" onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
 			        echo  "<div class='x ". $clase . "'>" . $linea_nombre . "</div>";
                     echo "</a></div>";
 					echo '<div class="delante"></div>';
@@ -352,7 +412,7 @@
 
 
         ?>
-        
+        </div>
 
         <?php
 			while( $persona = mysqli_fetch_assoc( $todosmodal)){
@@ -484,6 +544,33 @@
 			
 	    	
 		});
+
+		$('#botonmenos').click(function(){
+			var $panzoom = $(".panzoom-elements").panzoom();
+            $panzoom.panzoom('zoom', true, {
+              increment: 0.1,
+              animate: false,
+              focal: {
+				clientX: 0,
+				clientY: 0
+				}
+            });
+		});
+
+		$('#botonmas').click(function(){
+			var $panzoom = $(".panzoom-elements").panzoom();
+			var horizontalCenter = Math.floor(window.innerWidth/2);
+			var verticalCener = Math.floor(window.innerHeight/2);
+            $panzoom.panzoom('zoom', false, {
+              increment: 0.1,
+              animate: false,
+              focal: {
+				clientX: horizontalCenter,
+				clientY: verticalCener
+				}
+            });
+		});
+
 	});
     
 </script>
@@ -492,6 +579,7 @@
           var $panzoom = $(".panzoom-elements").panzoom();
 		  $panzoom.panzoom("option", {
 			minScale: 0.005,
+			increment: 0.03
 			});
           $panzoom.parent().on('mousewheel.focal', function( e ) {
             e.preventDefault();
@@ -502,8 +590,42 @@
               animate: false,
               focal: e
             });
+			console.log(e);
           });
         })();
-      </script>
+
+
+		$('.enlace').on('mousedown touchstart', function( e ) {
+            e.stopImmediatePropagation();
+          });
+	  </script>
+	  
+	  <script>
+		  //eliminar acentos del datalist
+	  $('#selected').keypress(function(event){
+        var str = $('#selected').val(); 
+
+        if(String.fromCharCode(event.which) == 'á'){
+			event.preventDefault()
+			$('#selected').val(str + 'a'); 
+		}
+		if(String.fromCharCode(event.which) == 'é'){
+			event.preventDefault()
+			$('#selected').val(str + 'e'); 
+		}
+		if(String.fromCharCode(event.which) == 'í'){
+			event.preventDefault()
+			$('#selected').val(str + 'i'); 
+		}
+		if(String.fromCharCode(event.which) == 'ó'){
+			event.preventDefault()
+			$('#selected').val(str + 'o'); 
+		}
+		if(String.fromCharCode(event.which) == 'ú'){
+			event.preventDefault()
+			$('#selected').val(str + 'u'); 
+		}
+	});
+	</script>
 
 </html>
