@@ -46,7 +46,7 @@
     <style>
 		
         body{
-            width: 100vw !important;
+            /*width: 100vw !important;*/
             height: 100vh !important;
 			color: <?php echo $colores["texto"]; ?>;
 			background: <?php echo $colores["fondo"]; ?>;
@@ -224,7 +224,7 @@
 			font-size: 16px;
 		}
 
-		.fixed-top, .nav-mas{
+		.nav-mas{
 			right: inherit;
 		}
 
@@ -256,7 +256,7 @@
     <!-- Aca empieza en serio -->
     <nav class="navbar fixed-top navbar-light bg-light">
   		<a class="navbar-brand" href="../">DRI</a>
-  		<div class="form-inline">
+  		<div class="form-inline w-75">
     		<input id="selected" list="gente" type="text" name="busqueda" class="form-control mr-sm-2 w-75 nombreGente" placeholder="Nombre / Nome / Name">
 			<datalist id="gente">
 
