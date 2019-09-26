@@ -550,7 +550,7 @@
 			var horizontalCenter = Math.floor(window.innerWidth/2);
 			var verticalCener = Math.floor(window.innerHeight/2);
             $panzoom.panzoom('zoom', true, {
-              increment: 0.1,
+              increment: 0.3,
               animate: false,
               focal: {
 				clientX: horizontalCenter,
@@ -564,7 +564,7 @@
 			var horizontalCenter = Math.floor(window.innerWidth/2);
 			var verticalCener = Math.floor(window.innerHeight/2);
             $panzoom.panzoom('zoom', false, {
-              increment: 0.1,
+              increment: 0.3,
               animate: false,
               focal: {
 				clientX: horizontalCenter,
