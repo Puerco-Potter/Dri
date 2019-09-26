@@ -547,12 +547,14 @@
 
 		$('#botonmenos').click(function(){
 			var $panzoom = $(".panzoom-elements").panzoom();
+			var horizontalCenter = Math.floor(window.innerWidth/2);
+			var verticalCener = Math.floor(window.innerHeight/2);
             $panzoom.panzoom('zoom', true, {
               increment: 0.1,
               animate: false,
               focal: {
-				clientX: 0,
-				clientY: 0
+				clientX: horizontalCenter,
+				clientY: verticalCener
 				}
             });
 		});
