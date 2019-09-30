@@ -54,10 +54,6 @@
     		overflow-y: hidden;
         }
 
-		#padreDePanzoom{
-			height: 100vh !important;
-		}
-
         #wrapper {
 		width:1000%;
 		}
@@ -245,6 +241,16 @@
 			z-index: 99999999;
 		}
 
+		.madre{
+			font-size: 4rem;
+			font-weight: 400 !important;
+		}
+
+		.intermedio{
+            width: 200px;
+            border-bottom: 15px solid <?php echo $colores["lineas"]; ?>;
+        }
+
     </style>
 	
 </head>
@@ -309,6 +315,7 @@
 	</nav>
 	<div id="padreDePanzoom" class="w-100">
     <div id="wrapper" class="panzoom-elements">
+	<div style="height:900px;"></div>
 
 	<?php
 
@@ -391,6 +398,8 @@
 
 					echo "<div class='cajon'>";
 					echo "<div class='cajitaNombre'>";
+					//echo '<div class="nombre"><div class="madre">Madre</div></div>';
+					//echo '<div class="intermedio"></div>';
 					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a class="enlace" onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
 			        echo  "<div class='x ". $clase . "'>" . $linea_nombre . "</div>";
                     echo "</a></div>";
@@ -627,7 +636,46 @@
 			event.preventDefault()
 			$('#selected').val(str + 'u'); 
 		}
+
+		if(String.fromCharCode(event.which) == 'Á'){
+			event.preventDefault()
+			$('#selected').val(str + 'A'); 
+		}
+		if(String.fromCharCode(event.which) == 'É'){
+			event.preventDefault()
+			$('#selected').val(str + 'E'); 
+		}
+		if(String.fromCharCode(event.which) == 'Í'){
+			event.preventDefault()
+			$('#selected').val(str + 'I'); 
+		}
+		if(String.fromCharCode(event.which) == 'Ó'){
+			event.preventDefault()
+			$('#selected').val(str + 'O'); 
+		}
+		if(String.fromCharCode(event.which) == 'Ú'){
+			event.preventDefault()
+			$('#selected').val(str + 'U'); 
+		}
 	});
+
+	$("#selected").bind("paste", function(event){
+		// access the clipboard using the api
+		var str = $('#selected').val();
+		var pastedData = event.originalEvent.clipboardData.getData('text');
+		event.preventDefault();
+		pastedData = pastedData.replace("á", "a");
+		pastedData = pastedData.replace("é", "e");
+		pastedData = pastedData.replace("í", "i");
+		pastedData = pastedData.replace("ó", "o");
+		pastedData = pastedData.replace("ú", "u");
+		pastedData = pastedData.replace("Á", "A");
+		pastedData = pastedData.replace("É", "E");
+		pastedData = pastedData.replace("Í", "I");
+		pastedData = pastedData.replace("Ó", "O");
+		pastedData = pastedData.replace("Ú", "U");
+		$('#selected').val(str + pastedData);
+	} );
 	</script>
 
 </html>

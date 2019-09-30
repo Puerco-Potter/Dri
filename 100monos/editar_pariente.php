@@ -18,6 +18,9 @@
 
         $sql5 = "SELECT * FROM pariente WHERE padre_id=" . $_GET['id'];
         $hijos = $conn->query($sql5);
+
+        $sql6 = "SELECT * FROM madre WHERE esposo=" . $_GET['id'];
+        $esposas = $conn->query($sql6);
 ?>
 <!DOCTYPE html>
 <html>
@@ -140,8 +143,39 @@
             </div>
 		</form>
         <div>
-        <table class="table">
+        <table class="table table-primary">
             <thead>
+            <td><a class='btn btn-warning' href='agregar_esposa.php?id="<?php echo $_GET['id'] ?>"'>Agregar una persona</i></a></td>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+            <h3>Personas con las que tuvo hijos:</h3>
+            <?php
+                while( $esposa = mysqli_fetch_assoc($esposas)){
+                    echo "<tr>";
+                    echo "<td>". $esposa["id"]. "</td>";
+                    echo "<td>". $esposa["nombre"]. "</td>";
+                    echo "<td><a class='btn btn-warning' href='editar_esposa.php?id=". $esposa["id"] ."'><i class='fa fa-pencil' aria-hidden='true'></i></a></td>";
+                    echo "<td><a class='btn btn-danger' href='borrar_esposa.php?id=". $esposa["id"] ."'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
+                    echo "</tr>"; 
+                };
+                
+            ?>
+            </tbody>
+        </table>
+        
+        <h3>Hijos:</h3>
+        <table class="table table-info">
+            <thead>
+            <tr>
+            <td><a class='btn btn-primary' href='agregar_hijo.php?id="<?php echo $_GET['id'] ?>"'>Agregar un hijo</i></a></td>
+            <td><a class='btn btn-primary' href='editar_orden.php?id="<?php echo $_GET['id'] ?>"'>Editar el orden de los hijos</i></a></td>
+            </tr>
                 <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
@@ -151,9 +185,7 @@
                 </tr>
             </thead>
             <tbody>
-            <h3>Hijos:</h3>
-            <td><a class='btn btn-primary' href='agregar_hijo.php?id="<?php echo $_GET['id'] ?>"'>Agregar un hijo</i></a></td>
-            <td><a class='btn btn-primary' href='editar_orden.php?id="<?php echo $_GET['id'] ?>"'>Editar el orden de los hijos</i></a></td>
+            
             <?php
                 while( $hijo = mysqli_fetch_assoc( $hijos)){
                     echo "<tr>";
@@ -168,6 +200,7 @@
             ?>
             </tbody>
         </table>
+        
         
         </div>
     </div>
