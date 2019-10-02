@@ -175,6 +175,7 @@
             <tr>
             <td><a class='btn btn-primary' href='agregar_hijo.php?id="<?php echo $_GET['id'] ?>"'>Agregar un hijo</i></a></td>
             <td><a class='btn btn-primary' href='editar_orden.php?id="<?php echo $_GET['id'] ?>"'>Editar el orden de los hijos</i></a></td>
+            <td><a class='btn btn-primary' href='editar_madre.php?id="<?php echo $_GET['id'] ?>"'>Editar Madres</i></a></td>
             </tr>
                 <tr>
                 <th scope="col">ID</th>
