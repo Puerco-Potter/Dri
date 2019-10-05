@@ -41,7 +41,7 @@
 	<div class="container card">
         <?php
             if (isset($_POST['confirmar'])) {
-                echo "<h2 class='text-muted'>Pariente Editado</h2>";
+                echo "<h2 class='text-muted'>Parientes Editados</h2>";
             }
         ?>
         <div class="form-group">
@@ -58,13 +58,13 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Nacimiento</th>
-                <th scope="col">Orden</th>
+                <th scope="col">Madre</th>
                 </tr>
             </thead>
             <tbody>
             <h3>Hijos:</h3>
             <form method="post">
-                <td><button id="confirmar" name="confirmar" type="submit" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Guardar Cambios al Orden de los Hijos</button></td>
+                <td><button id="confirmar" name="confirmar" type="submit" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Guardar Cambios al segundo progenitor de los Hijos</button></td>
                 <?php
                     while( $hijo = mysqli_fetch_assoc( $hijos)){
                         echo "<tr>";
@@ -72,9 +72,14 @@
                         echo "<td>". $hijo["nombre"]. "</td>";
                         echo "<td>". $hijo["nacimiento"]. "</td>";
                         $esposas = $conn->query($sql6);
-                        echo "<td><select name='carlist' form='carform'>";
+                        echo "<td><select name='". $hijo["id"]. "' id='". $hijo["id"]. "'>";
+                        echo "<option value='NULL'>Ninguno</option>";
                         while( $madre = mysqli_fetch_assoc( $esposas)){
-                        echo "<option value='" . $madre["id"]. "'>" . $madre["nombre"]. "</option>";
+                        echo "<option";
+                        if ($madre["id"] == $hijo["madre"]){
+                            echo " selected";
+                        }
+                        echo " value='" . $madre["id"]. "'>" . $madre["nombre"]. "</option>";
                         };
                         echo "</select></td>";
                         echo "</tr>"; 
@@ -93,9 +98,8 @@
 
             foreach($_POST as $id => $orden)
             {
-
                 $sql_subida = "UPDATE `pariente` SET 
-                `madre`='" . $orden ."'
+                `madre`=" . $orden ."
                 WHERE id=" . $id;
                 $resultado = $conn->query($sql_subida);
             }

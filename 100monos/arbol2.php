@@ -20,10 +20,11 @@
 
 	<?php
 		//$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.nombre FROM pariente p1 INNER JOIN pariente p2 ON p1.id = p2.padre_id ORDER BY p1.id";
-		$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.orden , p2.origen_id, u.colorlinea, p2.tamano, u.texto, p2.galeria FROM pariente p1 INNER JOIN (pariente p2 left JOIN ubicacion u ON p2.origen_id = u.id) ON p1.id = p2.padre_id ORDER BY p1.id, p2.orden";
+		$sql = "SELECT p1.id, p2.nombre, p2.nacimiento, p2.id as pequeno, p2.orden , p2.origen_id, u.colorlinea, p2.tamano, u.texto, p2.galeria, p2.madre, m.nombre as momname FROM pariente p1 INNER JOIN (pariente p2 left JOIN ubicacion u ON p2.origen_id = u.id) ON p1.id = p2.padre_id left join madre m on m.id = p2.madre  
+		ORDER BY `m`.`nombre`  DESC";
 		$result = $conn->query($sql);
 
-		$sql2 = "SELECT p1.id, p1.nombre, p1.nacimiento, p1.padre_id, p1.id as pequeno, u.colorlinea, p1.tamano, u.texto, p1.galeria FROM pariente p1 left JOIN ubicacion u ON p1.origen_id = u.id WHERE p1.padre_id IS NULL ORDER BY p1.id";
+		$sql2 = "SELECT p1.id, p1.nombre, p1.nacimiento, p1.padre_id, p1.id as pequeno, u.colorlinea, p1.tamano, u.texto, p1.galeria, p1.madre FROM pariente p1 left JOIN ubicacion u ON p1.origen_id = u.id WHERE p1.padre_id IS NULL ORDER BY p1.id";
 		$raices = $conn->query($sql2);
 
 		$sql3 = "SELECT * FROM pariente";
@@ -246,6 +247,15 @@
 			font-weight: 400 !important;
 		}
 
+		.nombremadre{
+            border: 3px solid black;
+            margin-top:5px;
+            margin-bottom:5px;
+            background-color: yellow;
+			color: black;
+			border-radius: 30px;
+        }
+
 		.intermedio{
             width: 200px;
             border-bottom: 15px solid <?php echo $colores["lineas"]; ?>;
@@ -398,8 +408,10 @@
 
 					echo "<div class='cajon'>";
 					echo "<div class='cajitaNombre'>";
-					//echo '<div class="nombre"><div class="madre">Madre</div></div>';
-					//echo '<div class="intermedio"></div>';
+					if ($root["madre"]) {
+						echo '<div class="nombremadre"><div class="madre">'.$root["momname"].'</div></div>';
+						echo '<div class="intermedio"></div>';
+					}
 					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a class="enlace" onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
 			        echo  "<div class='x ". $clase . "'>" . $linea_nombre . "</div>";
                     echo "</a></div>";

@@ -63,15 +63,11 @@
 
     <?php
         if (isset($_POST['confirmar'])) {
-            // $sql_quitarorigen = "UPDATE `pariente` SET 
-            // `origen_id`= null
-            // WHERE origen_id=" . $_GET['id'];
-            // $resultado_quitarorigen = $conn->query($sql_quitarorigen);
-            
-            // $sql_quitarubicacion = "UPDATE `pariente` SET 
-            // `radicado_id`= null
-            // WHERE radicado_id=" . $_GET['id'];
-            // $resultado_quitarubicacion = $conn->query($sql_quitarubicacion);
+
+            $sql_quitarmadre = "UPDATE `pariente` SET 
+            `madre`= null
+            WHERE madre=" . $_GET['id'];
+            $resultado_quitarpadre = $conn->query($sql_quitarmadre);
 
             $sql_subida = "DELETE FROM `madre` 
             WHERE id=" . $_GET['id'];
