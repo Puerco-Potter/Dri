@@ -50,14 +50,6 @@
 			<div class="form-group">
 				<label for="usuario">Nombre:</label>
 		    	<textarea type="string" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre..." value=""></textarea>
-                <script>
-                        CKEDITOR.on( 'instanceReady', function( ev )
-                            {
-                                // Ends self closing tags the HTML4 way, like <br>.
-                                ev.editor.dataProcessor.writer.lineBreakChars = ' ';
-                            });
-                        CKEDITOR.replace( 'nombre' );
-                </script>
                 <label for="usuario">Pariente del que es pareja:</label>
                 <br>
                 <input list="gente" readonly class="form-control" id="esposo" name="esposo" type="search" placeholder="Nombre del esposo..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente["id"]; ?>">
