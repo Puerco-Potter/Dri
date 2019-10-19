@@ -325,7 +325,9 @@
 	</nav>
 	<div id="padreDePanzoom" class="w-100">
     <div id="wrapper" class="panzoom-elements">
-	<div style="height:900px;"></div>
+	<div style="height:100px;"></div>
+	<p class="ml-5" style="font-size: 250px;"><b>DRI</b></p>
+	<div style="height:400px;"></div>
 
 	<?php
 
