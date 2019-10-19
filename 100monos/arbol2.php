@@ -457,7 +457,7 @@
 								<?php if ($persona["muerte"]){ ?>
 								<p><b>Muerte: </b><?php echo $persona["muerte"] ?></p>
 								<?php } ?>
-								<p><b>Origen: </b><?php echo $persona["origen"] ?></p>
+								<!--<p><b>Origen: </b><?php echo $persona["origen"] ?></p>-->
 								<p><b>Ubicación Final: </b><?php echo $persona["ubicacion"] ?></p>
 								<?php if ($persona["comentario"]){ ?>
 								<p><b>Comentario: </b></p>
