@@ -251,7 +251,7 @@
             border: 3px solid black;
             margin-top:5px;
             margin-bottom:5px;
-            background-color: yellow;
+            background-color: lightblue;
 			color: black;
 			border-radius: 30px;
         }
