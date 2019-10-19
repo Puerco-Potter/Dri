@@ -251,7 +251,7 @@
             border: 3px solid black;
             margin-top:5px;
             margin-bottom:5px;
-            background-color: lightblue;
+            background-color: <?php echo $colores["cuadro"]; ?>;
 			color: black;
 			border-radius: 30px;
         }
@@ -411,7 +411,7 @@
 					echo "<div class='cajon'>";
 					echo "<div class='cajitaNombre'>";
 					if ($root["madre"]) {
-						echo '<div class="nombremadre"><div class="madre">'.$root["momname"].'</div></div>';
+						echo '<div class="nombremadre" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><div class="madre">'.$root["momname"].'</div></div>';
 						echo '<div class="intermedio"></div>';
 					}
 					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a class="enlace" onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
