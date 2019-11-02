@@ -469,7 +469,7 @@
 								$esposas = $conn->query($sqlEsposas);
 								?>
 								<?php if ($esposas->num_rows > 0){ ?>
-								<p><b>Personas con las que tuve hijos: </b></p>
+								<p><b>Personas con las que tuvo hijos: </b></p>
 								<div class="accordion" id="accordionExample">
 								<?php
 								while( $esposa = mysqli_fetch_assoc( $esposas)){
