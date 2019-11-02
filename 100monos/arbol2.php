@@ -464,6 +464,45 @@
 								<p><?php echo $persona["comentario"] ?></p>
 								<?php } ?>
 								<p><b>Numero Interno: </b><?php echo $persona["id"] ?></p>
+								<?php
+								$sqlEsposas = "SELECT e.id, e.nombre, e.nacimiento, e.muerte, e.comentario, e.esposo FROM madre e where e.esposo = " . $persona["id"];
+								$esposas = $conn->query($sqlEsposas);
+								?>
+								<?php if ($esposas->num_rows > 0){ ?>
+								<p><b>Personas con las que tuve hijos: </b></p>
+								<div class="accordion" id="accordionExample">
+								<?php
+								while( $esposa = mysqli_fetch_assoc( $esposas)){
+									?>
+									<div class="card">
+										<div class="card-header" id="headingOne">
+										<h2 class="mb-0">
+											<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $esposa['id']; ?>" aria-expanded="true" aria-controls="collapse<?php echo $esposa['id']; ?>">
+											<?php echo $esposa["nombre"]; ?>
+											</button>
+										</h2>
+										</div>
+
+										<div id="collapse<?php echo $esposa['id']; ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+											<div class="card-body">
+												<?php if ($esposa["nacimiento"]){ ?>
+												<p><b>Nacimiento: </b><?php echo $esposa["nacimiento"] ?></p>
+												<?php } ?>
+												<?php if ($esposa["muerte"]){ ?>
+												<p><b>Muerte: </b><?php echo $esposa["muerte"] ?></p>
+												<?php } ?>
+												<?php if ($esposa["comentario"]){ ?>
+												<p><b>Comentario: </b></p>
+												<p><?php echo $esposa["comentario"] ?></p>
+												<?php } ?>
+											</div>
+										</div>
+									</div>
+									<?php
+								};
+								?>
+								</div>
+								<?php } ?>
 								<?php if ($persona["galeria"]){ ?>
                                 <p><b>Galeria de Fotos: </b>
 									<a target="_blank" rel="noopener noreferrer" class="btn btn-success" href="<?php echo $persona["galeria"] ?>">Abrir Galeria</a>

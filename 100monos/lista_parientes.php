@@ -47,7 +47,31 @@
 					while( $row = mysqli_fetch_assoc($result)){
 				    	echo '<tr>';
 				    		echo '<td>' . $row['id'] . '</td>';
-				    		echo '<td>' . $row['nombre'] . '</td>';
+							//echo '<td>' . $row['nombre'] . '</td>';
+							$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r", "\""), '', $row["nombre"])));
+							$linea_nombre = str_replace ('á','a',$linea_nombre);
+							$linea_nombre = str_replace ('é','e',$linea_nombre);
+							$linea_nombre = str_replace ('í','i',$linea_nombre);
+							$linea_nombre = str_replace ('ó','o',$linea_nombre);
+							$linea_nombre = str_replace ('ú','u',$linea_nombre);
+							$linea_nombre = str_replace ('Á','A',$linea_nombre);
+							$linea_nombre = str_replace ('É','E',$linea_nombre);
+							$linea_nombre = str_replace ('Í','I',$linea_nombre);
+							$linea_nombre = str_replace ('Ó','O',$linea_nombre);
+							$linea_nombre = str_replace ('Ú','U',$linea_nombre);
+							$linea_nombre = str_replace ('&aacute;','a',$linea_nombre);
+							$linea_nombre = str_replace ('&eacute;','e',$linea_nombre);
+							$linea_nombre = str_replace ('&iacute;','i',$linea_nombre);
+							$linea_nombre = str_replace ('&oacute;','o',$linea_nombre);
+							$linea_nombre = str_replace ('&uacute;','u',$linea_nombre);
+							$linea_nombre = str_replace ('&Aacute;','A',$linea_nombre);
+							$linea_nombre = str_replace ('&Eacute;','E',$linea_nombre);
+							$linea_nombre = str_replace ('&Iacute;','I',$linea_nombre);
+							$linea_nombre = str_replace ('&Oacute;','O',$linea_nombre);
+							$linea_nombre = str_replace ('&Uacute;','U',$linea_nombre);
+							
+							echo '<td>' .$linea_nombre . '</td>';
+
 				    		echo '<td>'. '<a class="btn btn-primary" href="editar_pariente.php?id='. $row['padre_id'] .'" ><i class="fa fa-search" aria-hidden="true"></i></a> ' . $row['padre_id'] . '</td>';
 				    		echo '<td>' . $row['nacimiento'] . '</td>';
 							echo '<td><a class="btn btn-primary" href="editar_pariente.php?id='. $row['id'] .'" ><i class="fa fa-eye" aria-hidden="true"></i> / <i class="fa fa-pencil" aria-hidden="true"></i></a>';
@@ -63,6 +87,73 @@
 		jQuery(function($){
 			$('.table').footable();
 		});
+	</script>
+
+<script>
+		  //eliminar acentos del datalist
+	jQuery(document ).on( "keypress", ".form-control", function(event){
+        var str = $('.form-control').val(); 
+
+        if(String.fromCharCode(event.which) == 'á'){
+			event.preventDefault()
+			$('.form-control').val(str + 'a'); 
+		}
+		if(String.fromCharCode(event.which) == 'é'){
+			event.preventDefault()
+			$('.form-control').val(str + 'e'); 
+		}
+		if(String.fromCharCode(event.which) == 'í'){
+			event.preventDefault()
+			$('.form-control').val(str + 'i'); 
+		}
+		if(String.fromCharCode(event.which) == 'ó'){
+			event.preventDefault()
+			$('.form-control').val(str + 'o'); 
+		}
+		if(String.fromCharCode(event.which) == 'ú'){
+			event.preventDefault()
+			$('.form-control').val(str + 'u'); 
+		}
+
+		if(String.fromCharCode(event.which) == 'Á'){
+			event.preventDefault()
+			$('.form-control').val(str + 'A'); 
+		}
+		if(String.fromCharCode(event.which) == 'É'){
+			event.preventDefault()
+			$('.form-control').val(str + 'E'); 
+		}
+		if(String.fromCharCode(event.which) == 'Í'){
+			event.preventDefault()
+			$('.form-control').val(str + 'I'); 
+		}
+		if(String.fromCharCode(event.which) == 'Ó'){
+			event.preventDefault()
+			$('.form-control').val(str + 'O'); 
+		}
+		if(String.fromCharCode(event.which) == 'Ú'){
+			event.preventDefault()
+			$('.form-control').val(str + 'U'); 
+		}
+	});
+
+	jQuery(document ).on( "paste", ".form-control", function(event){
+		// access the clipboard using the api
+		var str = $('.form-control').val();
+		var pastedData = event.originalEvent.clipboardData.getData('text');
+		event.preventDefault();
+		pastedData = pastedData.replace("á", "a");
+		pastedData = pastedData.replace("é", "e");
+		pastedData = pastedData.replace("í", "i");
+		pastedData = pastedData.replace("ó", "o");
+		pastedData = pastedData.replace("ú", "u");
+		pastedData = pastedData.replace("Á", "A");
+		pastedData = pastedData.replace("É", "E");
+		pastedData = pastedData.replace("Í", "I");
+		pastedData = pastedData.replace("Ó", "O");
+		pastedData = pastedData.replace("Ú", "U");
+		$('.form-control').val(str + pastedData);
+	} );
 	</script>
 
 </html>

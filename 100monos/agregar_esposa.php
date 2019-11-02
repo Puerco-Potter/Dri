@@ -50,6 +50,20 @@
 			<div class="form-group">
 				<label for="usuario">Nombre:</label>
 		    	<textarea type="string" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre..." value=""></textarea>
+                <script>
+                        CKEDITOR.on( 'instanceReady', function( ev )
+                            {
+                                // Ends self closing tags the HTML4 way, like <br>.
+                                ev.editor.dataProcessor.writer.lineBreakChars = ' ';
+                            });
+                        CKEDITOR.replace( 'nombre' );
+                </script>
+                <label for="usuario">Nacimiento:</label>
+		    	<textarea type="string" class="form-control" id="nacimiento" name="nacimiento" placeholder="Ingrese información sobre nacimiento..." value=""></textarea>
+                <label for="usuario">Muerte:</label>
+		    	<textarea type="string" class="form-control" id="muerte" name="muerte" placeholder="Ingrese información sobre muerte..." value=""></textarea>
+                <label for="usuario">Comentario:</label>
+		    	<textarea type="string" class="form-control" id="comentario" name="comentario" placeholder="Ingrese Comentario..." value=""></textarea>
                 <label for="usuario">Pariente del que es pareja:</label>
                 <br>
                 <input list="gente" readonly class="form-control" id="esposo" name="esposo" type="search" placeholder="Nombre del esposo..." aria-label="Buscar"  autocomplete=off value="<?php echo $pariente["id"]; ?>">
@@ -76,9 +90,9 @@
             }
 
             $sql_subida = "INSERT INTO `madre`
-            (`nombre`, `esposo`)
+            (`nombre`, `esposo`, `nacimiento`, `muerte`, `comentario`)
              VALUES 
-             ('" . $_POST['nombre'] ."',". $_POST['esposo'] . ")";
+             ('" . $_POST['nombre'] ."',". $_POST['esposo'] .",'". $_POST['nacimiento'] ."','". $_POST['muerte'] ."','". $_POST['comentario'] . "')";
             $resultado = $conn->query($sql_subida);
         }
 	?>

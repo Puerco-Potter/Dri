@@ -18,6 +18,7 @@
 	<script src="//code.jquery.com/jquery.min.js"></script>
 	<LINK href="footable\css\footable.standalone.min.css" rel="stylesheet" type="text/css">
 	<LINK href="fontawesome\css\font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 
 </head>
 <body class="bg-dark">
@@ -50,6 +51,12 @@
                             });
                         CKEDITOR.replace( 'nombre' );
                 </script>
+                <label for="usuario">Nacimiento:</label>
+		    	<textarea type="string" class="form-control" id="nacimiento" name="nacimiento" placeholder="Ingrese información sobre nacimiento..." value=""><?php echo $esposa['nacimiento'] ?></textarea>
+                <label for="usuario">Muerte:</label>
+		    	<textarea type="string" class="form-control" id="muerte" name="muerte" placeholder="Ingrese información sobre muerte..." value=""><?php echo $esposa['muerte'] ?></textarea>
+                <label for="usuario">Comentario:</label>
+		    	<textarea type="string" class="form-control" id="comentario" name="comentario" placeholder="Ingrese Comentario..." value=""><?php echo $esposa['comentario'] ?></textarea>
                 <button id="confirmar" name="confirmar" type="submit" class="btn btn-success">Guardar Cambios</button>
                 
             </div>
@@ -59,7 +66,10 @@
     <?php
         if (isset($_POST['confirmar'])) {
             $sql_subida = "UPDATE `madre` SET 
-            `nombre`='" . $_POST["nombre"] ."'
+            `nombre`='" . $_POST["nombre"] ."',
+            `nacimiento`='" . $_POST["nacimiento"] ."',
+            `muerte`='" . $_POST["muerte"] ."',
+            `comentario`='" . $_POST["comentario"] ."'
             WHERE id=" .  $id_esposa;
             $resultado = $conn->query($sql_subida);
         }
