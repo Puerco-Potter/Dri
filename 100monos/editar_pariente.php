@@ -154,7 +154,7 @@
                 </tr>
             </thead>
             <tbody>
-            <h3>Personas con las que tuvo hijos:</h3>
+            <h3>Parejas:</h3>
             <?php
                 while( $esposa = mysqli_fetch_assoc($esposas)){
                     echo "<tr>";
