@@ -40,6 +40,9 @@
 		$colortexto = $colores["texto"];
 		$largo_linea= $colores["largo_linea"] * 100;
 		
+		$sql7 = "SELECT * FROM madre";
+		$lugares = $conn->query($sql7);
+
 		$sql6 = "SELECT p.id, p.nombre, p.nacimiento, p.muerte, p.comentario, o.nombre as origen, r.nombre as ubicacion, p.galeria FROM (pariente p left join ubicacion o ON o.id = origen_id) left join ubicacion r ON r.id = origen_id";
 		$todosmodal = $conn->query($sql6);
 	?>
@@ -278,12 +281,40 @@
 
 			<?php
 				while( $persona = mysqli_fetch_assoc( $todos)){
-					echo '<option data-value="' . $persona["id"] . '" value="';
+					echo '<option data-value="pariente' . $persona["id"] . '" value="';
 					if ($persona["nacimiento"] == ""){
 						$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r", "\""), '', $persona["nombre"])));
 					}else{
 						$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r", "\""), '', $persona["nombre"] . "(" . $persona["nacimiento"] . ")")));
 					}
+					$linea_nombre = str_replace ('á','a',$linea_nombre);
+					$linea_nombre = str_replace ('é','e',$linea_nombre);
+					$linea_nombre = str_replace ('í','i',$linea_nombre);
+					$linea_nombre = str_replace ('ó','o',$linea_nombre);
+					$linea_nombre = str_replace ('ú','u',$linea_nombre);
+					$linea_nombre = str_replace ('Á','A',$linea_nombre);
+					$linea_nombre = str_replace ('É','E',$linea_nombre);
+					$linea_nombre = str_replace ('Í','I',$linea_nombre);
+					$linea_nombre = str_replace ('Ó','O',$linea_nombre);
+					$linea_nombre = str_replace ('Ú','U',$linea_nombre);
+					$linea_nombre = str_replace ('&aacute;','a',$linea_nombre);
+					$linea_nombre = str_replace ('&eacute;','e',$linea_nombre);
+					$linea_nombre = str_replace ('&iacute;','i',$linea_nombre);
+					$linea_nombre = str_replace ('&oacute;','o',$linea_nombre);
+					$linea_nombre = str_replace ('&uacute;','u',$linea_nombre);
+					$linea_nombre = str_replace ('&Aacute;','A',$linea_nombre);
+					$linea_nombre = str_replace ('&Eacute;','E',$linea_nombre);
+					$linea_nombre = str_replace ('&Iacute;','I',$linea_nombre);
+					$linea_nombre = str_replace ('&Oacute;','O',$linea_nombre);
+					$linea_nombre = str_replace ('&Uacute;','U',$linea_nombre);
+					
+					echo $linea_nombre;
+					echo '"></option>';
+				}
+				while( $persona = mysqli_fetch_assoc( $madre)){
+					echo '<option data-value="madre' . $persona["id"] . '" value="';
+					$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r", "\""), '', $persona["nombre"])));
+
 					$linea_nombre = str_replace ('á','a',$linea_nombre);
 					$linea_nombre = str_replace ('é','e',$linea_nombre);
 					$linea_nombre = str_replace ('í','i',$linea_nombre);
@@ -326,7 +357,7 @@
 	<div id="padreDePanzoom" class="w-100">
     <div id="wrapper" class="panzoom-elements">
 	<div style="height:100px;"></div>
-	<p class="ml-5" style="font-size: 250px;"><b>DRI</b></p>
+	<p class="ml-5" style="font-size: 250px; color: darkslategrey;"><b>DRI</b></p>
 	<div style="height:400px;"></div>
 
 	<?php
@@ -411,7 +442,7 @@
 					echo "<div class='cajon'>";
 					echo "<div class='cajitaNombre'>";
 					if ($root["madre"]) {
-						echo '<div class="nombremadre" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><div class="madre">'.$root["momname"].'</div></div>';
+						echo '<div id="madre'.$root["madre"].'" class="nombremadre" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><div class="madre">'.$root["momname"].'</div></div>';
 						echo '<div class="intermedio"></div>';
 					}
 					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a class="enlace" onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
@@ -504,7 +535,7 @@
 								</div>
 								<?php } ?>
 								<?php if ($persona["galeria"]){ ?>
-                                <p><b>Galeria de Fotos: </b>
+                                <p><b>Fotos/Photos/<i class="fa fa-camera" aria-hidden="true"></i>: </b>
 									<a target="_blank" rel="noopener noreferrer" class="btn btn-success" href="<?php echo $persona["galeria"] ?>">Abrir Galeria</a>
 								</p>
 								<?php } ?>
@@ -575,8 +606,8 @@
 			//Agregar cartelito de buscando
 	        var value = $('#selected').val();
 	        var valor = "" + $('#gente [value="' + value + '"]').data('value');
-	        var ancla = "#pariente" + valor;
-	        var anclajs = "pariente" + valor;
+	        var ancla = "#" + valor;
+	        var anclajs = "" + valor;
 	        //$('html, body').animate({
     		//	scrollTop: $(ancla).offset().top -100
 	    	//}, 1000);
