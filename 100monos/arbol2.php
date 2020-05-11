@@ -41,7 +41,7 @@
 		$largo_linea= $colores["largo_linea"] * 100;
 		
 		$sql7 = "SELECT * FROM madre";
-		$lugares = $conn->query($sql7);
+		$madres = $conn->query($sql7);
 
 		$sql6 = "SELECT p.id, p.nombre, p.nacimiento, p.muerte, p.comentario, o.nombre as origen, r.nombre as ubicacion, p.galeria FROM (pariente p left join ubicacion o ON o.id = origen_id) left join ubicacion r ON r.id = origen_id";
 		$todosmodal = $conn->query($sql6);
@@ -276,7 +276,7 @@
     <nav class="navbar fixed-top navbar-light bg-light">
   		<a class="navbar-brand" href="../">DRI</a>
   		<div class="form-inline w-75">
-    		<input id="selected" list="gente" type="text" name="busqueda" class="form-control mr-sm-2 w-75 nombreGente" placeholder="Nombre / Nome / Name">
+    		<input id="selected" list="gente" type="text" name="busqueda" class="form-control mr-sm-2 w-75 nombreGente" placeholder="Nombre / Nome / Name / Prénom">
 			<datalist id="gente">
 
 			<?php
@@ -311,8 +311,8 @@
 					echo $linea_nombre;
 					echo '"></option>';
 				}
-				while( $persona = mysqli_fetch_assoc( $madre)){
-					echo '<option data-value="madre' . $persona["id"] . '" value="';
+				while( $persona = mysqli_fetch_assoc( $madres)){
+					echo '<option data-value="pariente' . $persona["esposo"] . '" value="';
 					$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r", "\""), '', $persona["nombre"])));
 
 					$linea_nombre = str_replace ('á','a',$linea_nombre);
@@ -408,6 +408,7 @@
 			function preorder2(&$root) {
 					global $colorcuadro;
 					global $colortexto;
+					global $conn;
 			    if ($root) {
 					if (isset($root["tamano"]) and $root["tamano"]==1){
 						$clase= "h2Grande";
@@ -442,12 +443,30 @@
 					echo "<div class='cajon'>";
 					echo "<div class='cajitaNombre'>";
 					if ($root["madre"]) {
-						echo '<div id="madre'.$root["madre"].'" class="nombremadre" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><div class="madre">'.$root["momname"].'</div></div>';
+						echo '<div id="madre'.$root["madre"].'" class="nombremadre" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><div class="madre">Con '.strip_tags ($root["momname"]).'</div></div>';
 						echo '<div class="intermedio"></div>';
 					}
 					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a class="enlace" onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
-			        echo  "<div class='x ". $clase . "'>" . $linea_nombre . "</div>";
-                    echo "</a></div>";
+					echo  "<div class='x ". $clase . "'>" . $linea_nombre . "</div>";
+					error_reporting(E_ALL);
+					ini_set('display_errors', 1);
+					ini_set('display_startup_errors', 1);
+					$sqlEsposasarbol = "SELECT e.id, e.nombre FROM madre e where e.esposo = " . $root["pequeno"];
+					$esposasarbol = $conn->query($sqlEsposasarbol);
+					
+					if ($esposasarbol->num_rows > 0){ 
+						echo "<div class='x'><p><b>Parejas/Partners: </b></p>";
+					
+					
+						while( $esposa = mysqli_fetch_assoc( $esposasarbol)){
+							echo "<div class='x'>";
+							//echo $esposa['id'];
+							echo $esposa["nombre"];
+							echo "</div>";
+						}
+						echo "</div>";
+					}; 
+                    echo "</div>";
 					echo '<div class="delante"></div>';
 					echo "</div>";
 					
@@ -483,15 +502,15 @@
 							</div>
 							<div class="modal-body">
 								<?php if ($persona["nacimiento"]){ ?>
-								<p><b>Nacimiento: </b><?php echo $persona["nacimiento"] ?></p>
+								<p><b>Nacimiento/Birth: </b><?php echo $persona["nacimiento"] ?></p>
 								<?php } ?>
 								<?php if ($persona["muerte"]){ ?>
-								<p><b>Muerte: </b><?php echo $persona["muerte"] ?></p>
+								<p><b>Muerte/Death: </b><?php echo $persona["muerte"] ?></p>
 								<?php } ?>
 								<!--<p><b>Origen: </b><?php echo $persona["origen"] ?></p>-->
-								<p><b>Ubicación Final: </b><?php echo $persona["ubicacion"] ?></p>
+								<p><b>Ubicación Final/Final Location: </b><?php echo $persona["ubicacion"] ?></p>
 								<?php if ($persona["comentario"]){ ?>
-								<p><b>Comentario: </b></p>
+								<p><b>Comentario/Observations: </b></p>
 								<p><?php echo $persona["comentario"] ?></p>
 								<?php } ?>
 								<p><b>Numero Interno: </b><?php echo $persona["id"] ?></p>
@@ -500,7 +519,7 @@
 								$esposas = $conn->query($sqlEsposas);
 								?>
 								<?php if ($esposas->num_rows > 0){ ?>
-								<p><b>Parejas: </b></p>
+								<p><b>Parejas/Partners: </b></p>
 								<div class="accordion" id="accordionExample">
 								<?php
 								while( $esposa = mysqli_fetch_assoc( $esposas)){
@@ -517,13 +536,13 @@
 										<div id="collapse<?php echo $esposa['id']; ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 											<div class="card-body">
 												<?php if ($esposa["nacimiento"]){ ?>
-												<p><b>Nacimiento: </b><?php echo $esposa["nacimiento"] ?></p>
+												<p><b>Nacimiento/Birth: </b><?php echo $esposa["nacimiento"] ?></p>
 												<?php } ?>
 												<?php if ($esposa["muerte"]){ ?>
-												<p><b>Muerte: </b><?php echo $esposa["muerte"] ?></p>
+												<p><b>Muerte/Death: </b><?php echo $esposa["muerte"] ?></p>
 												<?php } ?>
 												<?php if ($esposa["comentario"]){ ?>
-												<p><b>Comentario: </b></p>
+												<p><b>Comentario/Observations: </b></p>
 												<p><?php echo $esposa["comentario"] ?></p>
 												<?php } ?>
 											</div>
@@ -535,7 +554,7 @@
 								</div>
 								<?php } ?>
 								<?php if ($persona["galeria"]){ ?>
-                                <p><b>Fotos/Photos/<i class="fa fa-camera" aria-hidden="true"></i>: </b>
+                                <p><b>Fotos/Photos<i class="fa fa-camera" aria-hidden="true"></i>: </b>
 									<a target="_blank" rel="noopener noreferrer" class="btn btn-success" href="<?php echo $persona["galeria"] ?>">Abrir Galeria</a>
 								</p>
 								<?php } ?>

@@ -1,7 +1,7 @@
 <?php
 	$servername="localhost";
 		$username="root";
-		$password="";
+		$password="root";
 		$dbname="drinelmo_arbol";
 		$conn = new mysqli($servername, $username, $password, $dbname);
 		// server should keep session data for AT LEAST 1 hour
