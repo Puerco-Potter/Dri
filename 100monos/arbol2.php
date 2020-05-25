@@ -281,7 +281,7 @@
 
 			<?php
 				while( $persona = mysqli_fetch_assoc( $todos)){
-					echo '<option data-value="pariente' . $persona["id"] . '" value="';
+					echo "<option data-value='pariente" . $persona["id"] . "' value='";
 					if ($persona["nacimiento"] == ""){
 						$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r", "\""), '', $persona["nombre"])));
 					}else{
@@ -309,10 +309,10 @@
 					$linea_nombre = str_replace ('&Uacute;','U',$linea_nombre);
 					
 					echo $linea_nombre;
-					echo '"></option>';
+					echo "'></option>";
 				}
 				while( $persona = mysqli_fetch_assoc( $madres)){
-					echo '<option data-value="pariente' . $persona["esposo"] . '" value="';
+					echo "<option data-value='pariente" . $persona["esposo"] . "' value='";
 					$linea_nombre = trim(strip_tags(str_replace (array("\r\n", "\n", "\r", "\""), '', $persona["nombre"])));
 
 					$linea_nombre = str_replace ('á','a',$linea_nombre);
@@ -337,7 +337,7 @@
 					$linea_nombre = str_replace ('&Uacute;','U',$linea_nombre);
 					
 					echo $linea_nombre;
-					echo '"></option>';
+					echo "'></option>";
 				} 
 			?>
 			</datalist>
@@ -443,7 +443,7 @@
 					echo "<div class='cajon'>";
 					echo "<div class='cajitaNombre'>";
 					if ($root["madre"]) {
-						echo '<div id="madre'.$root["madre"].'" class="nombremadre" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><div class="madre">Con '.strip_tags ($root["momname"]).'</div></div>';
+						echo '<div id="madre'.$root["madre"].'" class="nombremadre" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><div class="madre">+ '.strip_tags ($root["momname"]).'</div></div>';
 						echo '<div class="intermedio"></div>';
 					}
 					echo '<div class="nombre" id="pariente' . $root["pequeno"] . '" style="background-color:' . $colorlinea  . ';color:' . $texto .'"><a class="enlace" onmouseover="" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal' . $root["pequeno"] . '">';
@@ -508,7 +508,7 @@
 								<p><b>Muerte/Death: </b><?php echo $persona["muerte"] ?></p>
 								<?php } ?>
 								<!--<p><b>Origen: </b><?php echo $persona["origen"] ?></p>-->
-								<p><b>Ubicación Final/Final Location: </b><?php echo $persona["ubicacion"] ?></p>
+								<!-- <p><b>Ubicación Final/Final Location: </b><?php echo $persona["ubicacion"] ?></p> -->
 								<?php if ($persona["comentario"]){ ?>
 								<p><b>Comentario/Observations: </b></p>
 								<p><?php echo $persona["comentario"] ?></p>
@@ -608,11 +608,11 @@
 	$(document).ready(function() {
 		//esto es para que los nombres permanezcan sin borrarse del imput
 	var data = {}; 
-	$("#gente option").each(function(i,el) {  
+	$('#gente option').each(function(i,el) {  
 	   data[$(el).data("value")] = $(el).val();
 	});
 	// `data` : object of `data-value` : `value`
-	console.log(data, $("#gente option").val());
+	console.log(data, $('#gente option').val());
 
 
 	    $('#boton').click(function()
@@ -621,10 +621,10 @@
 				backdrop: 'static',
 				keyboard: false
 			});
-	    	$("#wrapper").panzoom("reset");
+	    	$('#wrapper').panzoom("reset");
 			//Agregar cartelito de buscando
 	        var value = $('#selected').val();
-	        var valor = "" + $('#gente [value="' + value + '"]').data('value');
+	        var valor = "" + $("#gente [value='" + value + "']").data('value');
 	        var ancla = "#" + valor;
 	        var anclajs = "" + valor;
 	        //$('html, body').animate({

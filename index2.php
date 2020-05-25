@@ -60,7 +60,7 @@
 	}
 	</style>
 </head>
-<body class="w-100" style="background: #FEF9ED; height: 100vh;">
+<body class="w-100" style="background: #F4EAD0; height: 100vh;">
 <!-- <h1 class="bg-light text-center font-weight-bold" style="padding-bottom:5px;">&#x1F333; DRI &#x1F333;</h1> -->
 	<div class="container d-flex flex-column justify-content-center align-items-center">
 		<div>
@@ -77,7 +77,7 @@
 						<a class="button4" style="background-color:#f14e4e" href="100monos/videosESP.php"><span class="flag-icon flag-icon-es"></span> Árbol genealógico</a>
 					</div>
 					<div class="d-flex align-items-center justify-content-end" style="height:100px">
-						<a class="button4" style="background-color:#f1bb4e" href="benvenuti.htm"><span class="flag-icon flag-icon-it"></span> L`Albero Genealógico</a>
+						<a class="button4" style="background-color:#f1bb4e; color: black;" href="benvenuti.htm"><span class="flag-icon flag-icon-it"></span> L`Albero Genealógico</a>
 					</div>
 					<!-- <div class="d-flex align-items-center" style="height:100px">
 						<a class="button4" style="background-color:#84f14e" href="Benvindos.htm"><span class="flag-icon flag-icon-pt"></span> Árvore Genealógica</a>
@@ -85,7 +85,7 @@
 				</div>
 				<div class="col-sm-4 d-flex flex-column justify-content-center p-0">
 					<div class="d-flex align-items-center justify-content-center" style="height:100px">
-						<a class="button4" style="background-color:#84f14e" href="Benvindos.htm"><span class="flag-icon flag-icon-pt"></span> Árvore Genealógica</a>
+						<a class="button4" style="background-color:#84f14e; color: black;" href="Benvindos.htm"><span class="flag-icon flag-icon-pt"></span> Árvore Genealógica</a>
 					</div>
 					<img class="img-fluid" src="arbol.png">
 					<div class="d-flex justify-content-center w-100">
@@ -94,7 +94,7 @@
 				</div>
 				<div class="col-sm-4">
 					<div class="d-flex align-items-center justify-content-end" style="height:100px">
-						<a class="button4" style="background-color:#4ef18f" href="WELCOME.HTM"><span class="flag-icon flag-icon-gb"></span> Family Tree</a>
+						<a class="button4" style="background-color:#4ef18f; color: black;" href="WELCOME.HTM"><span class="flag-icon flag-icon-gb"></span> Family Tree</a>
 					</div>
 					<div class="d-flex align-items-center" style="height:100px">
 						<a class="button4" style="background-color:#4e9af1" href="WELCOME.HTM"><span class="flag-icon flag-icon-fr"></span> L'arbre généalogique</a>
@@ -115,16 +115,16 @@
 		<div class= "row d-md-none">
 			<div class="w-100">
 				<div class="d-flex w-100 flex-column justify-content-center" style="height:100px">
-					<a class="button4" style="background-color:#84f14e" href="Benvindos.htm"><span class="flag-icon flag-icon-pt"></span> Árvore Genealógica</a>
+					<a class="button4" style="background-color:#84f14e; color: black;" href="Benvindos.htm"><span class="flag-icon flag-icon-pt"></span> Árvore Genealógica</a>
 				</div>
 				<div class="d-flex w-100 flex-column justify-content-center" style="height:100px">
 					<a class="button4" style="background-color:#f14e4e" href="Bienve_cast.htm"><span class="flag-icon flag-icon-es"></span> Árbol genealógico</a>
 				</div>
 				<div class="d-flex w-100 flex-column justify-content-center" style="height:100px">
-					<a class="button4" style="background-color:#f1bb4e" href="benvenuti.htm"><span class="flag-icon flag-icon-it"></span> L` Albero Genealógico</a>
+					<a class="button4" style="background-color:#f1bb4e; color: black;" href="benvenuti.htm"><span class="flag-icon flag-icon-it"></span> L` Albero Genealógico</a>
 				</div>
 				<div class="d-flex w-100 flex-column justify-content-center" style="height:100px">
-					<a class="button4" style="background-color:#4ef18f" href="WELCOME.HTM"><span class="flag-icon flag-icon-gb"></span> Family Tree</a>
+					<a class="button4" style="background-color:#4ef18f; color: black;" href="WELCOME.HTM"><span class="flag-icon flag-icon-gb"></span> Family Tree</a>
 				</div>
 				<div class="d-flex w-100 flex-column justify-content-center" style="height:100px">
 					<a class="button4" style="background-color:#4e9af1" href="WELCOME.HTM"><span class="flag-icon flag-icon-fr"></span> L 'arbre généalogique</a>

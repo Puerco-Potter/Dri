@@ -11,6 +11,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css" integrity="sha256-YjcCvXkdRVOucibC9I4mBS41lXPrWfqY2BnpskhZPnw=" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<style>
 		#boton,
 		#botonmas,
@@ -87,10 +88,17 @@
 		.nav-pills .show>.nav-link {
 			background-color: #f14e4e;
 		}
+
+		.nav-pills .nav-link {
+			border-radius: .25rem;
+			border: 1px solid black;
+			background: white;
+			color: red;
+		}
 	</style>
 </head>
 
-<body class="w-100" style="background: #FEF9ED; height: 100vh;">
+<body class="w-100" style="background: #F4EAD0; height: 100vh;">
 	<!-- <h1 class="bg-light text-center font-weight-bold" style="padding-bottom:5px;">&#x1F333; DRI &#x1F333;</h1> -->
 	<div class="container">
 		<div class="d-flex justify-content-center align-items-center">
@@ -99,9 +107,9 @@
 				</big></big>
 		</div>
 		<div class="d-flex justify-content-center w-100">
-			
+
 		</div>
-		<h1>Videos Tutoriales:</h1>
+		<!-- <h1>Videos Tutoriales:</h1> -->
 		<div class="row">
 			<div class="col-lg-2 col-xs-12">
 				<div class="nav flex-column nav-pills border" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -124,9 +132,13 @@
 		</div>
 
 		<hr>
-		<a href="arbol2.php" style="background-color: #4ef18f;" class="btn btn-warning btn-lg btn-block"><i class="fas fa-list-ul"></i> Ingreso al Arbol Interactivo</a>
+		<div class="d-flex justify-content-center align-items-center w-100">
+			<a href="arbol2.php" style='background-color: #4ef18f; color:black;' class="button4 btn-lg btn-lg">🌳 Ingreso al Arbol Interactivo</a>
+		</div>
 		<h1>Comentarios:</h1>
-		<div id="disqus_thread"></div>
+		<div id="disqus-wrapper">
+			<div id="disqus_thread"></div>
+		</div>
 	</div>
 	<nav class="navbar fixed-bottom nav-mas">
 		<img style="width: 100px; height:100px;" src="../bordehome.png">
@@ -161,6 +173,39 @@
 		})();
 	</script>
 	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	<script>
+		// $(document).ready(function() {
+		// 	$("select[title='Disqus']").ready(function() {
+		// 		//$("select[title='Disqus']").contents().find('body').html('Hey, i`ve changed content of <body>! Yay!!!');
+		// 		console.log("hola");
+		// 		//$( "<p>Test</p>" ).insertAfter( ".js" );
+		// 		$("select[title='Disqus']").contents().find('body').html('<div> blah </div>');
+		// 	});
+		// });
+		// $(document).ready(function() {
+		// 	window.disqus_no_style = true;
+
+		// 	$.getScript('http://sitename.disqus.com/embed.js', function() {
+		// 		var loader = setInterval(function() {
+		// 			var iframe = $("select[title='Disqus']"); // or some other selector to get the iframe
+		// 			//$('#main-nav', iframe.contents()).addClass('border');
+		// 				let frameElement = $("select[title='Disqus']");
+		// 				let doc = frameElement.contentDocument;
+		// 				doc.body.innerHTML = doc.body.innerHTML + '<style> #no-posts{color:white}</style>';
+		// 			console.log("hola");
+		// 			// if ($("select[title='Disqus']").html().length) {
+		// 			// 	clearInterval(loader);
+		// 			// 	disqusReady();
+		// 			// }
+		// 		}, 50);
+		// 	});
+
+		// 	function disqusReady() {
+		// 		console.log("hola1");
+		// 		//$( "<p>Test</p>" ).insertAfter( "#email-signup" );
+		// 	}
+		// });
+	</script>
 
 </body>
 
