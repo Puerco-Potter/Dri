@@ -15,7 +15,7 @@ switch ($lang) {
 		$comentarios = "Comentarios";
 		$contador = "Contador de Visitas";
 		$ingreso = "Acceso al árbol genealógico";
-		$idiomaJS = "es";
+		$idiomaJS = "esp";
 		$contacto= "Email de contacto";
 		break;
 	case 'ITA':
