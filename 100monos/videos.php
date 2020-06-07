@@ -234,8 +234,8 @@ switch ($lang) {
 		</div>
 		<h1><?php echo $contador ?>:</h1>
 		<!-- Start of CuterCounter Code -->
-		<a href="https://www.webfreecounter.com/" target="_blank"><img src="https://www.cutercounter.com/hits.php?id=hemxxaqpc&nd=6&style=9" border="0" alt="hit counter"></a>
-		<!-- End of CuterCounter Code -->
+<a href="https://www.webfreecounter.com/" target="_blank"><img src="https://www.cutercounter.com/hits.php?id=hxxfqqo&nd=6&style=72" border="0" alt="best free website hit counter"></a>
+<!-- End of CuterCounter Code -->
 		<h1><?php echo $comentarios ?>:</h1>
 		<div id="disqus-wrapper">
 			<div id="disqus_thread"></div>
