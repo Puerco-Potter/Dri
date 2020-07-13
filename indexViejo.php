@@ -1,3 +1,8 @@
+<?php
+		require('conexion.php');
+		require('redireccion.php');
+        
+?>
 <!DOCTYPE html>
 <html>
 <head>

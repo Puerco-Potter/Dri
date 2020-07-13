@@ -451,21 +451,21 @@
 					error_reporting(E_ALL);
 					ini_set('display_errors', 1);
 					ini_set('display_startup_errors', 1);
-					$sqlEsposasarbol = "SELECT e.id, e.nombre FROM madre e where e.esposo = " . $root["pequeno"];
-					$esposasarbol = $conn->query($sqlEsposasarbol);
+					// $sqlEsposasarbol = "SELECT e.id, e.nombre FROM madre e where e.esposo = " . $root["pequeno"];
+					// $esposasarbol = $conn->query($sqlEsposasarbol);
 					
-					if ($esposasarbol->num_rows > 0){ 
-						echo "<div class='x' style='line-height: 55px;'><p style='text-decoration: underline white;'><i>Parejas/Partners: </i></p>";
+					// if ($esposasarbol->num_rows > 0){ 
+					// 	echo "<div class='x' style='line-height: 55px;'><p style='text-decoration: underline white;'><i>Parejas/Partners: </i></p>";
 					
 					
-						while( $esposa = mysqli_fetch_assoc( $esposasarbol)){
-							echo "<div class='x'><i>";
-							//echo $esposa['id'];
-							echo $esposa["nombre"];
-							echo "</i></div>";
-						}
-						echo "</div>";
-					}; 
+					// 	while( $esposa = mysqli_fetch_assoc( $esposasarbol)){
+					// 		echo "<div class='x'><i>";
+					// 		//echo $esposa['id'];
+					// 		echo $esposa["nombre"];
+					// 		echo "</i></div>";
+					// 	}
+					// 	echo "</div>";
+					// }; 
                     echo "</div>";
 					echo '<div class="delante"></div>';
 					echo "</div>";
@@ -518,7 +518,7 @@
 								$sqlEsposas = "SELECT e.id, e.nombre, e.nacimiento, e.muerte, e.comentario, e.esposo FROM madre e where e.esposo = " . $persona["id"];
 								$esposas = $conn->query($sqlEsposas);
 								?>
-								<?php if ($esposas->num_rows > 0){ ?>
+								<?php /* if ($esposas->num_rows > 0){ ?>
 								<p><b>Parejas/Partners: </b></p>
 								<div class="accordion" id="accordionExample">
 								<?php
@@ -552,7 +552,7 @@
 								};
 								?>
 								</div>
-								<?php } ?>
+								<?php } */?>
 								<?php if ($persona["galeria"]){ ?>
                                 <p><b>Fotos/Photos<i class="fa fa-camera" aria-hidden="true"></i>: </b>
 									<a target="_blank" rel="noopener noreferrer" class="btn btn-success" href="<?php echo $persona["galeria"] ?>">Abrir Galeria</a>
