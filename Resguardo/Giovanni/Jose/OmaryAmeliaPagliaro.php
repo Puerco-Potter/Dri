@@ -1,0 +1,98 @@
+
+<?php
+require('../../100monos/conexion.php');
+require('../../100monos/redireccion.php');
+    
+?><html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Omar Jos�</title>
+</head>
+
+<body bgcolor="#FFFFCC">
+
+<table border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse; mso-table-layout-alt: fixed; mso-padding-alt: 0cm 3.5pt 0cm 3.5pt" width="646">
+  <tr>
+    <td width="634" valign="top" style="padding-left: 3.5pt; padding-right: 3.5pt; padding-top: 0cm; padding-bottom: 0cm" colspan="4">
+      <font face="Arial" size="5"><span style="mso-bidi-font-size: 10.0pt"><b>Omar
+      Jos� &quot;Pirucho&quot; (1926 � 70) -<o:p>
+      Amelia
+      G. Pagliaro &quot;Pocha&quot;&nbsp; (1926 - 2008)</b>
+      </span></font>
+    </td>
+  </tr>
+  <tr>
+    <td width="91" valign="top" style="padding-left: 3.5pt; padding-right: 3.5pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal">&nbsp;</p>
+
+
+
+
+
+
+
+      <p class="MsoNormal"><font face="Arial"><span style="font-size: 11.0pt; mso-bidi-font-size: 10.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img border="0" src="../../../images/Flechitas/l0aresre.gif" width="32" height="32"></span></font><span style="font-size:11.0pt;mso-bidi-font-size:10.0pt"><font face="Arial"><b style="mso-bidi-font-weight:normal"><u><o:p></o:p>
+      </u></b></font>
+      </span></p>
+    </td>
+    <td width="263" valign="top" style="padding-left: 3.5pt; padding-right: 3.5pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal"><span style="font-size:10.0pt"><font face="Arial">&nbsp;<o:p>
+      </o:p>
+      </font>
+      </span></p>
+      <p class="MsoNormal">&nbsp;</p>
+      <p class="MsoNormal"><font face="Arial" size="3"><b>
+		<a target="_blank" href="gustavo_y_sus_hijos.htm">Gustavo Jos� (1961)
+      � Marta B. Rojas (1965)</a></b></font></p>
+      <p class="MsoNormal"><font face="Arial"><span style="font-size: 10.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span><span style="font-size: 11.0pt; mso-bidi-font-size: 10.0pt"><img border="0" src="../../../images/Flechitas/l0aresre.gif" width="32" height="32"></span></font><span style="font-size:10.0pt"><font face="Arial"><b style="mso-bidi-font-weight:normal"><u><o:p></o:p>
+      </u></b></font></span></p>
+    </td>
+    <td width="162" valign="top" style="padding-left: 3.5pt; padding-right: 3.5pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal"><span style="mso-bidi-font-size: 10.0pt"><font face="Arial" size="3"><b>&nbsp;<o:p>
+      </o:p>
+      </b></font>
+      </span></p>
+      <p class="MsoNormal">&nbsp;</p>
+      <p class="MsoNormal">&nbsp;</p>
+      <p class="MsoNormal">&nbsp;</p>
+      <p class="MsoNormal"><span style="mso-bidi-font-size: 10.0pt"><font face="Arial" size="3"><b>Gabriel
+      Alejandro (1996)<o:p>
+      </o:p>
+      </b></font>
+      </span></p>
+    </td>
+    <td width="82" valign="top" style="padding-left: 3.5pt; padding-right: 3.5pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal"><font face="Arial">&nbsp;<span style="font-size:8.0pt;mso-bidi-font-size:10.0pt"><o:p>
+      </o:p>
+      </span></font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="91" valign="top" style="padding-left: 3.5pt; padding-right: 3.5pt; padding-top: 0cm; padding-bottom: 0cm">
+    </td>
+    <td width="263" valign="top" style="padding-left: 3.5pt; padding-right: 3.5pt; padding-top: 0cm; padding-bottom: 0cm">
+    </td>
+    <td width="162" valign="top" style="padding-left: 3.5pt; padding-right: 3.5pt; padding-top: 0cm; padding-bottom: 0cm">
+      &nbsp;
+      <p><font face="Arial" size="3"><b>Florencia (2000)</b></font>
+    </td>
+    <td width="82" valign="top" style="padding-left: 3.5pt; padding-right: 3.5pt; padding-top: 0cm; padding-bottom: 0cm">
+    </td>
+  </tr>
+</table>
+
+<p><font face="Arial"><o:p>
+ <span lang="ES-MX" style="mso-ansi-language:ES-MX"><font size="4" face="Arial">
+<a target="_self" href="Jose.htm"><img border="0" src="../../../images/Flechitas/7.gif" width="45" height="38">
+ Volver
+ a los padres de Omar Jos�</a></font></span></o:p></font></p>
+
+</body>
+
+</html>

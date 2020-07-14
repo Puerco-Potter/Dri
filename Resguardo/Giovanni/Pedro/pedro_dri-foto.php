@@ -1,0 +1,33 @@
+
+<?php
+require('../../100monos/conexion.php');
+require('../../100monos/redireccion.php');
+    
+?><html>
+
+<head>
+<meta http-equiv="Content-Language" content="es-ar">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Pedro Dri</title>
+</head>
+
+<body bgcolor="#99FFCC">
+
+<p><font face="Arial" size="3"><b><u>Pedro Dri:</u></b></font></p>
+
+
+
+
+
+
+
+
+
+
+<p><img border="0" src="PedroDri.jpg" width="277" height="462"></p>
+
+</body>
+
+</html>

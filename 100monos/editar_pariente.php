@@ -93,6 +93,8 @@
                         }; 
                     ?>
                 </select>
+                <input type="checkbox" id="colorear" name="colorear"> <label for="colorear">Aplicar Origen a Todos los Hijos</label>
+                <br>
                 <label for="lugar">Ubicacion:</label>
                 <select class="form-control" id="lugar" name="lugar" type="search" placeholder="Ubicacion..." aria-label="Buscar"  autocomplete=off>
                 
@@ -109,6 +111,8 @@
                         }; 
                     ?>
                 </select>
+                <input type="checkbox" id="colorearU" name="colorearU"> <label for="colorearU">Aplicar Ubicación a Todos los Hijos</label>
+                <br>
                 <label for="nacimiento">Nacimiento:</label>
                 <textarea class="form-control" id="nacimiento" name="nacimiento" placeholder="Nacimiento..."><?php echo $pariente['nacimiento'] ?></textarea>
                 <label for="muerte">Muerte:</label>
@@ -209,6 +213,37 @@
     </div>
 
     <?php
+
+function colorearHijos(&$id, &$pais){
+    //consigo todos los hijos
+    global $conn;
+    $sql_colorear1 = "SELECT * FROM pariente WHERE padre_id =" . $id;
+	$hijos = $conn->query($sql_colorear1);
+    
+    $sql_colorear = "UPDATE `pariente` SET 
+            `origen_id`=" . $pais ." 
+            WHERE padre_id=" . $id;
+    $res = $conn->query($sql_colorear);
+    while( $persona = mysqli_fetch_assoc( $hijos)){
+        colorearHijos($persona["id"],$pais);
+    }
+}
+
+function colorearHijosU(&$id, &$pais){
+    //consigo todos los hijos
+    global $conn;
+    $sql_colorear1 = "SELECT * FROM pariente WHERE padre_id =" . $id;
+	$hijos = $conn->query($sql_colorear1);
+    
+    $sql_colorear = "UPDATE `pariente` SET 
+            `radicado_id`=" . $pais ." 
+            WHERE padre_id=" . $id;
+    $res = $conn->query($sql_colorear);
+    while( $persona = mysqli_fetch_assoc( $hijos)){
+        colorearHijosU($persona["id"],$pais);
+    }
+}
+
         if (isset($_POST['confirmar'])) {
 
             if (empty($_POST['padre'] )){
@@ -234,6 +269,13 @@
             `enlace`=''
             WHERE id=" . $_GET['id'];
             $resultado = $conn->query($sql_subida);
+
+            if($_POST['colorear']){
+                colorearHijos($_GET['id'],$_POST['pais']);
+            }
+            if($_POST['colorearU']){
+                colorearHijosU($_GET['id'],$_POST['lugar']);
+            }
         }
 	?>
 

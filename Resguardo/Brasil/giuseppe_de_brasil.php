@@ -1,0 +1,296 @@
+<?php
+		require('../100monos/conexion.php');
+		require('../100monos/redireccion.php');
+        
+?>
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Giuseppe</title>
+</head>
+
+<body bgcolor="#FFCC99">
+
+<p>&nbsp;</p>
+<table border="1" width="92%" id="table2" style="border-width: 0px">
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium"><b>
+		<font face="Arial">Giuseppe</font></b><p>
+      <font face="Arial" size="3"><span style="mso-bidi-font-size: 10.0pt"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </b></span></font><b><span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial">
+      <img border="0" src="../Giovanni/Jose/RobertoyMaTeresa/l0aresre.gif" width="32" height="32"></font></span></b><font face="Arial" size="3"><span style="mso-bidi-font-size: 10.0pt"><b>&nbsp;</b></span></font></td>
+		<td width="126" style="border-style: none; border-width: medium">
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p><font face="Arial" size="3"><span style="mso-bidi-font-size: 10.0pt">
+		<b>Alexandre - </b></span></font></p>
+		<p><font face="Arial" size="3"><span style="mso-bidi-font-size: 10.0pt">
+		<b>Ida Parise Dri&nbsp;&nbsp; </b></span></font>
+		<b><span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img border="0" src="../Giovanni/Jose/RobertoyMaTeresa/l0aresre.gif" width="32" height="32"></font></span></b></p></td>
+		<td width="104" style="border-style: none; border-width: medium">&nbsp;<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p><font face="Arial" size="3"><span style="mso-bidi-font-size: 10.0pt">
+		<b>Ciro Nelson -</b></span></font><b><font face="Arial"> Hermandina Das 
+		Dores <i>(moravam em Santiago)</i></font></b></td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		<font face="Arial" size="3">
+		<span style="mso-bidi-font-size: 10.0pt"><b>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </b></span></font></td>
+		<td width="104" style="border-style: none; border-width: medium"><b><span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img border="0" src="../Giovanni/Jose/RobertoyMaTeresa/l0aresre.gif" width="32" height="32"></font></span></b><p>&nbsp;</p>
+		<p>&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">
+		<p><b><font face="Arial">Maria Bernadete Dri - Lima</font></b><span style="mso-bidi-font-size: 10.0pt"><font face="Arial" size="3"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></font><b><font face="Arial"><i>(mora 
+		em Santa Catarina)&nbsp;&nbsp;</i></font></b><font face="Arial" size="3"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></font></span></p>
+		<p><b><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</font></b><span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial" size="3"><b>&nbsp;</b></font></span><b><span style="mso-bidi-font-size: 10.0pt"><font face="Arial"><img border="0" src="../Giovanni/Jose/RobertoyMaTeresa/l0aresre.gif" width="32" height="32"></font></span></b></p></td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;<p>&nbsp;</p>
+		<p><b><font face="Arial">Mateus</font></b></td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium"><font face="Arial" size="3">
+		<span style="mso-bidi-font-size: 10.0pt"><b>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </b></span></font></td>
+		<td width="141" style="border-style: none; border-width: medium">
+		<p><b><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</font></b><font face="Arial" size="3">
+		<span style="mso-bidi-font-size: 10.0pt"><b>
+      &nbsp;</b></span></font></p>
+		<p>&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">
+		<p><b><font face="Arial">&nbsp;Amanda</font></b></td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium"><b>
+		<font face="Arial">Luiz Carlos das Dores Dri </font> <span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial"><i>(mora em Santa Catarina)&nbsp;&nbsp;</i></font></span></b><p>
+		<b><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</font><span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial">
+      <img border="0" src="../Giovanni/Jose/RobertoyMaTeresa/l0aresre.gif" width="32" height="32"></font></span></b><p>&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;<p><b><font face="Arial">Tatiana Pereira Dri -</font></b><font face="Arial" size="3"><span style="mso-bidi-font-size: 10.0pt"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </b></span></font><b><span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial">
+      <img border="0" src="../Giovanni/Jose/RobertoyMaTeresa/l0aresre.gif" width="32" height="32"></font></span></b></td>
+		<td style="border-style: none; border-width: medium">&nbsp;<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;<p><b><font face="Arial">Agata</font></b></td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">
+		<p><b><font face="Arial">&nbsp;</font></b><font face="Arial" size="3"><span style="mso-bidi-font-size: 10.0pt"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b></span></font> </p>
+		<p><b><font face="Arial">Diego Pereira Dri </font></b> </p>
+		<p>&nbsp;</p>
+		<p><b><font face="Arial">Bibiana Pereira Dri</font></b><p>&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium"><b>
+		<font face="Arial">Maria Elizabeth </font> <span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial"><i>(mora em Porto Alegre)&nbsp;&nbsp;</i></font></span></b></td>
+		<td width="90" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;<p>
+		<b><font face="Arial">Mara L�cia </font> <span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial"><i>(mora em Cascavel)&nbsp;&nbsp;</i></font></span></b></td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium"><p><b>
+		<font face="Arial">Luiz Alberto&nbsp; </font></b> </p>
+		<p><b><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+		</font><span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial">
+      <img border="0" src="../Giovanni/Jose/RobertoyMaTeresa/l0aresre.gif" width="32" height="32"></font></span></b><p>&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p><b><font face="Arial">Marcella Lopes Dri&nbsp; </font></b> </p>
+		<p>&nbsp;<p><b><font face="Arial">Marcelo Luccas Rodrigues Dri</font></b><p>&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium"><b>
+		<font face="Arial">Nara Regina Dri</font><span style="mso-bidi-font-size: 10.0pt"><font face="Arial"><i> 
+		(mora em Santa Catarina)&nbsp;&nbsp;</i></font></span></b><p><b>
+		<font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</font><span style="mso-bidi-font-size: 10.0pt">
+		<font face="Arial">
+      <img border="0" src="../Giovanni/Jose/RobertoyMaTeresa/l0aresre.gif" width="32" height="32"></font></span></b><p>&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;<p>
+		<b><font face="Arial">Marcio Dri Madruga</font></b></td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium"><b><font face="Arial">Lurdes <i>(mora em 
+		Lagoa Vermelha)</i></font></b><p>&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium"><b><font face="Arial">Silas</font></b><p>&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium"><b><font face="Arial">Dalvo</font></b><p>&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium"><b><font face="Arial">Auber</font></b><p>&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium"><b><font face="Arial">Pablo</font></b><p>&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium"><b><font face="Arial">Ilone <i>(mora em
+		</i></font>
+		<span class="EstiloDeCorreioEletrnico15">
+		<span style="font-family: Arial; font-style: italic">S�o Francsico de 
+		Assis</span></span><font face="Arial"><i>)</i></font></b><p>&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;</td>
+		<td width="104" style="border-style: none; border-width: medium"><b><font face="Arial">Zolaine <i>(mora em 
+		Santa Mar�a)</i></font></b></td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;<p><b><font face="Arial">Henrique</font></b></td>
+		<td width="104" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="93" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="126" style="border-style: none; border-width: medium">
+		&nbsp;<p><b><font face="Arial">Eugenio</font></b></td>
+		<td width="104" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="141" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td width="90" style="border-style: none; border-width: medium">&nbsp;</td>
+		<td style="border-style: none; border-width: medium">&nbsp;</td>
+	</tr>
+	</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font face="Arial" size="3"><span style="mso-bidi-font-size: 10.0pt"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b></span></font>
+</p>
+<div>
+	<table id="table1">
+		<tr>
+			<td>
+			<div>
+&nbsp;</div>
+
+
+
+
+
+
+			</td>
+		</tr>
+	</table>
+</div>
+
+</body>
+
+</html>
